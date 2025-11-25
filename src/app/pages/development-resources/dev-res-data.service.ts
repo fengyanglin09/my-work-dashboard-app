@@ -10,7 +10,7 @@ export class DevResDataService {
 
     getData() {
         return [
-            { id: 1, label: 'Cloud', activeItemId: 'cloud', name: 'cloud', description: 'cloud development resources' ,
+            { id: 1, label: 'Cloud App', activeItemId: 'cloud app', name: 'cloud app', description: 'cloud development resources' ,
             rowCounts: 7,
             resources: [
                 {
@@ -88,7 +88,18 @@ export class DevResDataService {
 
             ]
             } ,
-            { id: 2, label: 'Dev Tools', activeItemId: 'dev tools', name: 'dev tools', description: 'Description for Resource 2',
+
+            { id: 2, label: 'On-Prem App', activeItemId: 'on-prem app', name: 'on-prem app', description: 'on-prem development resources' ,
+                rowCounts: 7,
+                resources: [
+
+
+
+
+                ]
+            } ,
+
+            { id: 3, label: 'Dev Tools', activeItemId: 'dev tools', name: 'dev tools', description: 'Description for Resource 2',
                 rowCounts: 7,
                 resources: [
 
@@ -169,7 +180,7 @@ export class DevResDataService {
                 ]
 
             } ,
-            { id: 3, label: 'Dev References', activeItemId: 'dev references', name: 'dev references', description: 'Description for Resource 3',
+            { id: 4, label: 'Dev References', activeItemId: 'dev references', name: 'dev references', description: 'Description for Resource 3',
                 rowCounts: 10,
                 resources: [
                     {

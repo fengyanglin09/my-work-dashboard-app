@@ -12,7 +12,7 @@ import { ResourceCategory } from '../../core/model/cheatsheet.model';
     styleUrl: './development-resources.component.scss'
 })
 export class DevelopmentResourcesComponent implements OnInit {
-    active: number | string = 'cloud';
+    active: number | string = 'cloud app';
 
     developmentResources!: ResourceCategory[];
 
