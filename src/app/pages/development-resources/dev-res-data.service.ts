@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MayoDevelopResource } from './dev-res-data.model';
+import { ResourceCategory } from '../../core/model/cheatsheet.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -235,7 +236,7 @@ export class DevResDataService {
 
                 ]
             } ,
-            ] as MayoDevelopResource[];
+            ] as ResourceCategory[];
     }
 
 

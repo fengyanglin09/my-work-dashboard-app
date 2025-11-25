@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Button } from 'primeng/button';
 import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
 import { DevResDataService } from './dev-res-data.service';
-import { MayoDevelopResource } from './dev-res-data.model';
+import { ResourceCategory } from '../../core/model/cheatsheet.model';
+
 
 @Component({
     selector: 'app-development-resources',
@@ -13,7 +14,7 @@ import { MayoDevelopResource } from './dev-res-data.model';
 export class DevelopmentResourcesComponent implements OnInit {
     active: number | string = 'cloud';
 
-    developmentResources!: MayoDevelopResource[];
+    developmentResources!: ResourceCategory[];
 
     activeIndexChange(index: number | string) {
         this.active = index;
