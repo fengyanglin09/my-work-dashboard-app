@@ -110,7 +110,7 @@ export class SpapDataService {
                 configurationItem: 'CI155931678',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:gfr',
                 orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=gfr',
-                onCallLink: undefined,
+                onCallLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=oncall:renal',
 
                 environments: [
                     {
@@ -208,7 +208,7 @@ export class SpapDataService {
                 configurationItem: 'CI02041840',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:nerds',
                 orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=nerds',
-                onCallLink: undefined,
+                onCallLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=oncall:nerds',
 
                 environments: [
                     {

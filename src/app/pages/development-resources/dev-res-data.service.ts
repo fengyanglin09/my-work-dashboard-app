@@ -31,6 +31,7 @@ export class DevResDataService {
                         { label: 'Server Status (USA)', action: () => window.open('https://status.cloud.google.com/regional/americas') },
                         { label: 'Cloud App Factory (CAF)', action: () => window.open('https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/Cloud-App-Factory.aspx') },
                         { label: 'CAF Documents', action: () => window.open('https://mctools.sharepoint.com/teams/cloudappfactory/Shared%20Documents/Forms/AllItems.aspx') },
+                        {label: 'CAF Best Practices', action: () => window.open('https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/CAF-Best-Practices.aspx?xsdata=MDV8MDJ8fDc4ZWRiZTI4NWQwODQwN2RmYmIxMDhkZTJiOWFhMGVmfGEyNWZmZjljM2Y2MzRmYjI5YThhZDliZGQwMzIxZjlhfDB8MHw2Mzg5OTYxNDAyNTgyMjkxNjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T20xbFpYUnBibWRmVFRKSk5VNXFVWGxOYWxsMFQxUk5lVnBwTURCT1JHc3pURmRGZVU1NlozUk5WMHBxV21wb2JVMUVhelZPVjBaclFIUm9jbVZoWkM1Mk1pOXRaWE56WVdkbGN5OHhOelkwTURFM01qSTBOVE00fDIzMDkxMzUyODcxNTRjMWI5OTUzMDhkZTJiOWFhMGVkfDU2NmMyYTNkNzQ2ODQ3MGE4Y2M0YzdlYzcxZWY5OTZm&sdata=azA5UllDOVZxVUVDTUFtbklKazNUbVFkTFZPeHdBK29rMEtSemFHK09uRT0%3d&ovuser=a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a%2cLin.Pengpeng%40mayo.edu&OR=Teams-HL&CT=1764035189819&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI1MC8yNTExMDIwMjMxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d&SafelinksUrl=https%3a%2f%2fmctools.sharepoint.com%2fteams%2fcloudappfactory%2fSitePages%2fCAF-Best-Practices.aspx') },
                         { label: 'Mayo GCP Learning', action: () => window.open('https://mcc.mayo.edu/resources/google-learning') },
                     ]
                 },
@@ -87,7 +88,7 @@ export class DevResDataService {
             ]
             } ,
             { id: 2, label: 'Dev Tools', activeItemId: 'dev tools', name: 'dev tools', description: 'Description for Resource 2',
-                rowCounts: 5,
+                rowCounts: 7,
                 resources: [
 
                     {
@@ -120,6 +121,8 @@ export class DevResDataService {
                             { label: 'Git Learning', action: () => window.open('https://learngitbranching.js.org/?locale=en_US') },
                             { label: 'Git Cheat Sheet', action: () => window.open('https://git-scm.com/cheat-sheet') },
                             { label: 'Git Cheat Sheet (GitHub)', action: () => window.open('https://education.github.com/git-cheat-sheet-education.pdf') },
+                            { label: 'Git Workflows', action: () => window.open('https://nvie.com/posts/a-successful-git-branching-model/') },
+                            { label: 'Git Workflows (Atlassian)', action: () => window.open('https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow') },
                         ]
                     },
                     {
@@ -166,7 +169,7 @@ export class DevResDataService {
 
             } ,
             { id: 3, label: 'Dev References', activeItemId: 'dev references', name: 'dev references', description: 'Description for Resource 3',
-                rowCounts: 9,
+                rowCounts: 10,
                 resources: [
                     {
                         label: 'Angular Development',
