@@ -1,1 +1,66 @@
-<p>access-and-account-resources works!</p>
+<div class="card">
+
+    <!-- Top selector buttons -->
+    <div class="flex mb-4 gap-2 justify-end">
+        @for (resource of supportResources; track resource.id) {
+            <p-button
+                (onClick)="active = resource?.activeItemId ?? ''"
+                [rounded]="true"
+                [label]="resource.label"
+                styleClass="w-auto h-8 p-0"
+                [outlined]="active !== resource.activeItemId"
+            />
+        }
+    </div>
+
+    <p-accordion [(value)]="active">
+        @for (resource of supportResources; track resource.id) {
+
+            <p-accordion-panel [value]="resource?.activeItemId ?? ''">
+
+                <p-accordion-header>
+                    <span class="uppercase font-bold">{{ resource.name }}</span>
+                </p-accordion-header>
+
+                <p-accordion-content>
+
+                    <!-- FULL MEGAMENU ROW (categories side-by-side) -->
+                    <div
+                        class="grid grid-flow-col gap-4"
+                        [style.grid-template-rows]="'repeat(' + resource.rowCounts + ', minmax(0, 1fr))'"
+                    >
+
+                        @for (resourceItem of resource.resources; track resourceItem.label) {
+
+                            <button
+
+                                class="p-button-text  text-left rounded"
+                                disabled
+                            >
+                                <span style="color: gray; font-weight: bolder; padding-left: 1rem">{{ resourceItem.label }} </span>
+                            </button>
+
+                            @for (item of resourceItem.items; track item.label) {
+
+                                <button
+                                    class="p-button-text  text-left rounded"
+                                    (click)="item.action()">
+                                    <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                </button>
+
+                            }
+
+
+                        }
+
+                    </div>
+
+
+                </p-accordion-content>
+
+            </p-accordion-panel>
+
+        }
+    </p-accordion>
+
+</div>
