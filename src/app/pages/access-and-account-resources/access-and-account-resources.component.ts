@@ -1,23 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourceCategory } from '../../core/model/cheatsheet.model';
-import { SupportResourcesService } from '../support-resources/support-resources.service';
 import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
 import { Button } from 'primeng/button';
+import { AccessAndAccountResourcesService } from './access-and-account-resources.service';
 
 @Component({
-  selector: 'app-access-and-account-resources',
-  imports: [
-      Accordion,
-      AccordionContent,
-      AccordionHeader,
-      AccordionPanel,
-      Button
-  ],
-  templateUrl: './access-and-account-resources.component.html',
-  styleUrl: './access-and-account-resources.component.scss'
+    selector: 'app-access-and-account-resources',
+    imports: [Accordion, AccordionContent, AccordionHeader, AccordionPanel, Button],
+    templateUrl: './access-and-account-resources.component.html',
+    styleUrl: './access-and-account-resources.component.scss'
 })
 export class AccessAndAccountResourcesComponent implements OnInit {
-    active: number | string = 'support tools';
+    active: number | string = 'Access & Support';
 
     supportResources!: ResourceCategory[];
 
@@ -25,7 +19,7 @@ export class AccessAndAccountResourcesComponent implements OnInit {
         this.active = index;
     }
 
-    constructor(private dataService: SupportResourcesService) {}
+    constructor(private dataService: AccessAndAccountResourcesService) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {

@@ -1,6 +1,16 @@
+export interface emailItem {
+    emailAddress: string;          // email address
+    subject?: string;            // email subject
+    body?: string;              // email body
+    action: () => void;         // callback for click
+}
+
 export interface CheatItem {
     label: string;
-    icon?: string;              // optional PrimeIcons
+    type?: 'link' | 'doc' | 'email'; // type of item
+    icon?: 'fas fa-file-alt' | 'fas fa-link' | 'fas fa-envelope';
+    url?: string;          // URL for link or document
+    emailItem?: emailItem;  // email item details
     action: () => void;         // callback for click
 }
 

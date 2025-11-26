@@ -25,9 +25,13 @@
                 <p-accordion-content>
 
                     <!-- FULL MEGAMENU ROW (categories side-by-side) -->
+<!--                    <div-->
+<!--                        class="grid grid-flow-col gap-4"-->
+<!--                        [style.grid-template-rows]="'repeat(' + resource.rowCounts + ', minmax(0, 1fr))'"-->
+<!--                    >-->
+
                     <div
-                        class="grid grid-flow-col gap-4"
-                        [style.grid-template-rows]="'repeat(' + resource.rowCounts + ', minmax(0, 1fr))'"
+                        class = "flex flex-col flex-wrap" style="height: 30em"
                     >
 
                         @for (resourceItem of resource.resources; track resourceItem.label) {
@@ -42,11 +46,36 @@
 
                                     @for (item of resourceItem.items; track item.label) {
 
-                                            <button
-                                                class="p-button-text  text-left rounded"
-                                                (click)="item.action()">
-                                                <span style=" padding-left: 1rem">{{ item.label }}</span>
-                                            </button>
+                                        @switch (item.type){
+                                            @case('link'){
+                                                <a
+                                                    class="p-button-text  text-left rounded"
+                                                    [href]="item.url"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                                </a>
+                                            }
+
+                                            @case('email'){
+                                                <a
+                                                    class="p-button-text  text-left rounded"
+                                                    [href]="'mailto:' + item.emailItem?.emailAddress + '?subject=' + (item.emailItem?.subject || '') + '&body=' + (item.emailItem?.body || '')"
+                                                >
+                                                    <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                                </a>
+                                            }
+
+                                            @default{
+                                                <!--                                         Default case can be handled here if needed-->
+                                                <button
+                                                    class="p-button-text  text-left rounded"
+                                                    (click)="item.action()">
+                                                    <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                                </button>
+                                            }
+                                        }
 
                                     }
 
