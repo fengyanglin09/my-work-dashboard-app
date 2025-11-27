@@ -10,7 +10,7 @@ export class SupportResourcesService {
     getData() {
         return [
             { id: 1, label: 'Support Tools', activeItemId: 'support tools', name: 'support tools', description: 'mayo support tools description' ,
-                rowCounts: 7,
+
                 resources: [
 
 
@@ -20,21 +20,21 @@ export class SupportResourcesService {
             } ,
 
             { id: 2, label: 'Support Documents & Links', activeItemId: 'support documents', name: 'support documents', description: 'Description for supporting docs',
-                rowCounts: 10,
+
                 resources: [
 
                     {
                         label: 'Mayo Internal Links',
                         items: [
-                            { label: 'Home Page', action: () => window.open('https://mayoweb.mayo.edu/') },
+                            { label: 'Home Page', type: 'link', icon:'fas fa-link',  url:'https://mayoweb.mayo.edu/' },
                         ]
                     },
                     {
                         label: 'Cloud Support Links',
                         items: [
-                            { label: 'Enterprise Directory Services', action: () => window.open('https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354') },
-                            { label: 'Cloud App Factory Request', action: () => window.open('https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515') },
-                            { label: 'Apigee Support Request', action: () => window.open('https://docs.mcc.mayo.edu/docs/mcc/apigee-x/contactusx') },
+                            { label: 'Enterprise Directory Services', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354' },
+                            { label: 'Cloud App Factory Request', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515' },
+                            { label: 'Apigee Support Request', type: 'link', icon:'fas fa-link',  url:'https://docs.mcc.mayo.edu/docs/mcc/apigee-x/contactusx' },
                         ]
                     },
 

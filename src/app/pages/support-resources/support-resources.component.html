@@ -49,6 +49,7 @@
                                             rel="noopener noreferrer"
                                         >
                                             <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                            <i [class]= item.icon style="margin-left: 0.5rem;"></i>
                                         </a>
                                     }
 
@@ -58,7 +59,17 @@
                                             [href]="'mailto:' + item.emailItem?.emailAddress + '?subject=' + (item.emailItem?.subject || '') + '&body=' + (item.emailItem?.body || '')"
                                         >
                                             <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                            <i [class]= item.icon style="margin-left: 0.5rem;"></i>
                                         </a>
+                                    }
+
+                                    @case('doc'){
+                                        <button
+                                            class="p-button-text  text-left rounded"
+                                            (click)="displayDialog(item.htmlText || '')">
+                                            <span style=" padding-left: 1rem">{{ item.label }}</span>
+                                            <i [class]= item.icon style="margin-left: 0.5rem;"></i>
+                                        </button>
                                     }
 
                                     @default{
@@ -87,3 +98,8 @@
     </p-accordion>
 
 </div>
+
+
+<p-dialog header="App Specifics" [(visible)]="showDialog" (onHide)="hideDialog()" [style]="{ width: '50vw' }">
+    <div [innerHTML]="dialogContent"></div>
+</p-dialog>

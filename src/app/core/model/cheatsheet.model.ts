@@ -7,10 +7,12 @@ export interface emailItem {
 
 export interface CheatItem {
     label: string;
-    type?: 'link' | 'doc' | 'email'; // type of item
-    icon?: 'fas fa-file-alt' | 'fas fa-link' | 'fas fa-envelope';
+    type?: 'link' | 'doc' | 'email' | 'download'; // type of item
+    icon?: 'fas fa-file-alt' | 'fas fa-link' | 'fas fa-envelope' | 'fas fa-download';
     url?: string;          // URL for link or document
+    htmlText?: string;         // display text for link or document
     emailItem?: emailItem;  // email item details
+    filePath?: string;      // file path for download
     action: () => void;         // callback for click
 }
 
@@ -27,6 +29,5 @@ export class ResourceCategory {
     activeItemId?: string;
     name?: string;
     description?: string;
-    rowCounts?: number;                //number of rows or number of items per column
     resources?: CheatCategory[];
 }
