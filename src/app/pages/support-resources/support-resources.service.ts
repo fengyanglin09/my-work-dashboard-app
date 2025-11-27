@@ -27,6 +27,7 @@ export class SupportResourcesService {
                         label: 'Mayo Internal Links',
                         items: [
                             { label: 'Home Page', type: 'link', icon:'fas fa-link',  url:'https://mayoweb.mayo.edu/' },
+                            { label: 'Service Now', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/' },
                         ]
                     },
                     {
