@@ -14,8 +14,6 @@ export class SupportResourcesService {
                 resources: [
 
 
-
-
                 ]
             } ,
 
@@ -26,7 +24,24 @@ export class SupportResourcesService {
                     {
                         label: 'Mayo Internal Links',
                         items: [
-                            { label: 'Home Page', type: 'link', icon:'fas fa-link',  url:'https://mayoweb.mayo.edu/' },
+                            { label: 'Mayo Home Page', type: 'link', icon:'fas fa-link',  url:'https://mayoweb.mayo.edu/' },
+                            { label: 'IT Admin Page', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/IT-Admin-Assist/SitePages/Home.aspx' },
+                            { label: 'Peripherals Purchase', type: 'doc', icon:'fas fa-file-alt',
+                                htmlText: `
+                                         <div>
+                                              <p><b>How to order a purchase:</b> </p>
+                                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
+                                                <li><code>Go to IT Admin page</code>
+                                                <a href="https://mctools.sharepoint.com/teams/IT-Admin-Assist/SitePages/Home.aspx" target="_blank" rel="noopener">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                                </li>
+                                                <li><code>ask an Admin through the Admin request page to purchase one.  Would be 100 80167 Cost Center, Tracking ID: STAFFMGT when they ask</code>
+
+                                                </li>
+                                               </ol>
+                                          </div>
+                        ` },
                             { label: 'Service Now', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/' },
                         ]
                     },
