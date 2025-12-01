@@ -1,6 +1,6 @@
 import { Component, OnInit, WritableSignal } from '@angular/core';
 import { SpapDataService } from './spap-data.service';
-import { AppHeaderInfo, AppHeaderInfoType, AppItemIcon, SpecialtyApp } from './spap-data.model';
+import { AppHeaderInfo, AppHeaderInfoType, AppHostIcon, AppItemIcon, SpecialtyApp } from './spap-data.model';
 import { TableModule } from 'primeng/table';
 import { Button, ButtonDirective } from 'primeng/button';
 import { Tag } from 'primeng/tag';
@@ -106,5 +106,11 @@ export class SpecialtyAppsComponent implements OnInit {
     protected displayDialog(applicationSpecification: string, appSpecs: string) {
         this.dialogContent = appSpecs;
         this.showDialog = true;
+    }
+
+    protected readonly AppHostIcon = AppHostIcon;
+
+    getAppHostIcon(appHost: SpecialtyApp['appHost']): string {
+        return this.AppHostIcon[appHost ?? 'azure'] || 'default-icon-class';
     }
 }

@@ -15,6 +15,13 @@ export const AppItemIcon = {
     'onCallLink': 'fa fa-headset'
 }
 
+export const AppHostIcon = {
+    'azure': "fa fa-cloud",
+    'google': "fab fa-google",
+    'on-premise': "fa fa-server",
+    'hybrid': "fa fa-network-wired"
+}
+
 export type AppHeaderInfoType = 'name' | 'image' | 'backlogUrl';
 
 
@@ -97,6 +104,7 @@ export interface AppCategory {
 export interface SpecialtyApp {
     id?: number;
     name?: string;
+    appHost?: 'azure' | 'google' | 'on-premise' | 'hybrid';
     configurationItem?: string;
     wikiLink?: string;
     orgLink?: string;

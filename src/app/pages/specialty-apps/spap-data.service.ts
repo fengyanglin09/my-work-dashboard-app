@@ -10,6 +10,7 @@ export class SpapDataService {
             {
                 id: 11,
                 name: 'SMASH',
+                appHost: 'google',
                 configurationItem: 'CI131329162',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:smash',
                 orgLink: undefined,
@@ -22,7 +23,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: 'https://smash-webapp-d.dlmp-cad-n.caf.mccapp.com/',
                         appSwaggerUri: undefined,
-                        apigeeUri: 'https://dev.mcc.apix.mayo.edu/cad-lis-api/',
+                        apigeeUri: undefined,
                         appDbConnectionString: 'smash-webapp-d-404913688383:us-central1:smash-webapp-d-404913688383-db-dlmp-cad-dev',
                         appAzureId: 'a9f477ca-c91c-4d40-a9f8-f2d8923b74a4'
                     },
@@ -32,7 +33,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: 'https://smash-webapp-t.dlmp-cad-n.caf.mccapp.com/',
                         appSwaggerUri: undefined,
-                        apigeeUri: 'https://test.mcc.apix.mayo.edu/cad-lis-api/',
+                        apigeeUri: undefined,
                         appDbConnectionString: 'smash-webapp-t-404913688383:us-central1:smash-webapp-t-404913688383-db-dlmp-cad-test',
                         appAzureId: 'a9f477ca-c91c-4d40-a9f8-f2d8923b74a4'
                     },
@@ -42,7 +43,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: 'https://smash-webapp-s.dlmp-cad-p.caf.mccapp.com/',
                         appSwaggerUri: undefined,
-                        apigeeUri: 'https://stage.mcc.apix.mayo.edu/cad-lis-api/',
+                        apigeeUri: undefined,
                         appDbConnectionString: 'smash-webapp-s-465825341433:us-central1:smash-webapp-s-465825341433-db-dlmp-cad-stage',
                         appAzureId: 'b9fbb305-1c8e-4529-b7fc-c7e5731aebf2'
                     },
@@ -52,7 +53,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: 'https://smash-webapp-p.dlmp-cad-p.caf.mccapp.com/',
                         appSwaggerUri: undefined,
-                        apigeeUri: 'https://prod.mcc.apix.mayo.edu/cad-lis-api/',
+                        apigeeUri: undefined,
                         appDbConnectionString: 'smash-webapp-p-465825341433:us-central1:smash-webapp-p-465825341433-db-dlmp-cad-prod',
                         appAzureId: 'b9fbb305-1c8e-4529-b7fc-c7e5731aebf2'
                     }
@@ -107,6 +108,7 @@ export class SpapDataService {
             {
                 id: 12,
                 name: 'GFR',
+                appHost: 'on-premise',
                 configurationItem: 'CI155931678',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:gfr',
                 orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=gfr',
@@ -205,6 +207,7 @@ export class SpapDataService {
             {
                 id: 13,
                 name: 'NERDS',
+                appHost: 'azure',
                 configurationItem: 'CI02041840',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:nerds',
                 orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=nerds',
@@ -285,6 +288,7 @@ export class SpapDataService {
             {
                 id: 14,
                 name: 'Pub Services',
+                appHost: 'google',
                 configurationItem: 'CI01611088',
                 wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:ngs:genomics_commons:publicationservices',
                 orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=genomics_commons_pubservices',
@@ -297,7 +301,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://pub-svcs-d.dlmp-cad-n.caf.mccapp.com/swagger-ui/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://dev.mcc.apix.mayo.edu/pub-med-api/',
                         appDbConnectionString: 'pub-svcs-d-404913688383:us-central1:pub-svcs-d-404913688383-db-dlmp-cad-dev',
                         appAzureId: 'ef7a3f0b-bca6-4e8b-9c55-b7d481971546'
                     },
@@ -307,7 +311,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://pub-svcs-t.dlmp-cad-n.caf.mccapp.com/swagger-ui/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://test.mcc.apix.mayo.edu/pub-med-api/',
                         appDbConnectionString: 'pub-svcs-t-404913688383:us-central1:pub-svcs-t-404913688383-db-dlmp-cad-test',
                         appAzureId: 'ef7a3f0b-bca6-4e8b-9c55-b7d481971546'
                     },
@@ -317,7 +321,7 @@ export class SpapDataService {
                         available: false,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://pub-svcs-s.dlmp-cad-p.caf.mccapp.com/swagger-ui/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://test.mcc.apix.mayo.edu/pub-med-api/',
                         appDbConnectionString: 'pub-svcs-s-465825341433:us-central1:pub-svcs-s-465825341433-db-dlmp-cad-stage',
                         appAzureId: '9d1a5200-f474-4dde-9707-b32825b26b22'
                     },
@@ -327,7 +331,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://pub-svcs-p.dlmp-cad-p.caf.mccapp.com/swagger-ui/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://prod.mcc.apix.mayo.edu/pub-med-api/',
                         appDbConnectionString: 'pub-svcs-p-465825341433:us-central1:pub-svcs-p-465825341433-db-dlmp-cad-prod',
                         appAzureId: '9d1a5200-f474-4dde-9707-b32825b26b22'
                     }
@@ -385,7 +389,7 @@ export class SpapDataService {
 
             {
                 id: 21,
-                name: 'Dotnet App',
+                name: 'Dotnet',
                 configurationItem: undefined,
                 wikiLink: undefined,
                 orgLink: undefined,
@@ -478,7 +482,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://cadlis.dev.mayo.edu/swagger/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://dev.mcc.apix.mayo.edu/cad-lis-api/',
                         appDbConnectionString: undefined,
                         appAzureId: undefined
                     },
@@ -488,7 +492,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://cadlis.int.mayo.edu/swagger/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://test.mcc.apix.mayo.edu/cad-lis-api/',
                         appDbConnectionString: undefined,
                         appAzureId: undefined
                     },
@@ -498,7 +502,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://cadlis.stg.mayo.edu/swagger/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://stage.mcc.apix.mayo.edu/cad-lis-api/',
                         appDbConnectionString: undefined,
                         appAzureId: undefined
                     },
@@ -508,7 +512,7 @@ export class SpapDataService {
                         available: true,
                         appWebUri: undefined,
                         appSwaggerUri: 'https://cadlis.prod.mayo.edu/swagger/index.html',
-                        apigeeUri: undefined,
+                        apigeeUri: 'https://prod.mcc.apix.mayo.edu/cad-lis-api/',
                         appDbConnectionString: undefined,
                         appAzureId: undefined
                     }
@@ -535,23 +539,8 @@ export class SpapDataService {
                         repoUri: 'https://dev.azure.com/mclm/GBS%20CAD/_git/apg-x-pxy-cad-lis-api'
                     }
                 ],
-                updatedOn: '2025-11-09',
-                appSpecs: `
-                           <div>
-                              <p><b>Client Apps (SPAA):</b></p>
-                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
-                                <li><code>Specimen Management and Specimen Handling (SMASH)
-                                 <a href="https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:smash" target="_blank" rel="noopener">
-                                  <i class="fa fa-external-link-alt"></i>
-                                 </a>
-                                </code></li>
-                                <li><code>Glomerular Filtration Rate (GFR)
-                                 <a href="https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:gfr" target="_blank" rel="noopener">
-                                  <i class="fa fa-external-link-alt"></i>
-                                 </a>
-                                </code></li>
-                              </ol>
-                          </div>`,
+                updatedOn: '2025-12-01',
+                appSpecs: undefined,
                 appCategory: {
                     id: 3,
                     name: 'Dependency Apps'

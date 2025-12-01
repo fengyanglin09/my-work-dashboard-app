@@ -92,7 +92,11 @@
             <tr>
                 <td>
                     <span
-                        style="font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: large">{{ app.name }}</span>
+                        style="font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: large">
+                        <i [pTooltip]="app.appHost" tooltipPosition = "top" [class]="getAppHostIcon(app.appHost)" style="margin-right: 4px;"></i>
+
+                        {{ app.name }}
+                    </span>
                 </td>
                 <td>
                     <i (click)="displayPopover('App Configuration Item', app.configurationItem, op, $event)" [class]="AppItemIcon['configurationItem']" [ngStyle]="{'color': app.configurationItem ? 'green' : 'gray'}"
