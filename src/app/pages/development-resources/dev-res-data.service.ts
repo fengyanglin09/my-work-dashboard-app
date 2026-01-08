@@ -247,6 +247,32 @@ export class DevResDataService {
 
                 ]
             } ,
+            { id: 4, label: 'AI Assistance', activeItemId: 'ai assistance', name: 'ai assistance', description: 'AI Assistance Resources',
+
+                resources: [
+                    {
+                        label: 'General-Purpose',
+                        items: [
+                            { label: 'ChatGPT (OpenAI)', type: 'link', icon:'fas fa-link',  url:'https://chatgpt.com/' },
+                            { label: 'Gemini (Google)', type: 'link', icon:'fas fa-link',  url:'https://gemini.google.com/app' },
+                            { label: 'Grok (xAI)', type: 'link', icon:'fas fa-link',  url:'https://grok.com/' },
+                            { label: 'Meta AI (Meta)', type: 'link', icon:'fas fa-link',  url:'https://www.meta.ai/' },
+                            { label: 'Perplexity (Perplexity AI)', type: 'link', icon:'fas fa-link',  url:'https://www.perplexity.ai/' },
+                            { label: 'HuggingChat (Hugging Face)', type: 'link', icon:'fas fa-link',  url:'https://huggingface.co/models' },
+                            { label: 'Pi (Inflection AI)', type: 'link', icon:'fas fa-link',  url:'https://pi.ai/onboarding/pi-intro' },
+                            { label: 'Claude (Anthropic)', type: 'link', icon:'fas fa-link',  url:'https://claude.ai/new' },
+
+                        ]
+                    },
+                    {
+                        label: 'Org Specific',
+                        items: [
+                            { label: 'MAYA (Mayo Clinic)', type: 'link', icon:'fas fa-link',  url:'https://app.maya.mayo.edu/agents/servicedesk' },
+
+                        ]
+                    },
+                ]
+            } ,
             ] as ResourceCategory[];
     }
 

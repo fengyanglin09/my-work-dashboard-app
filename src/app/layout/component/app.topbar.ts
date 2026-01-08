@@ -32,7 +32,7 @@ import { UserInfoComponent } from '../../shared/components/user-info/user-info.c
                 <a class="layout-topbar-logo" routerLink="/">
                     <img src="assets/app/mayo-logo.png" alt="mayo specialty app & analytics" class="pr-1" style="height:1.5em; width:auto;" />
 
-                    <span>SPAA Dashboard</span>
+                    <span>Mark Lin Dashboard</span>
                 </a>
             </div>
 
