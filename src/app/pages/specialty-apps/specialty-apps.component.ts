@@ -2,7 +2,7 @@ import { Component, OnInit, WritableSignal } from '@angular/core';
 import { SpapDataService } from './spap-data.service';
 import { AppHeaderInfo, AppHeaderInfoType, AppHostIcon, AppItemIcon, SpecialtyApp } from './spap-data.model';
 import { TableModule } from 'primeng/table';
-import { Button, ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Tag } from 'primeng/tag';
 import { Ripple } from 'primeng/ripple';
 import { DatePipe, NgForOf, NgIf, NgStyle } from '@angular/common';
@@ -97,7 +97,6 @@ export class SpecialtyAppsComponent implements OnInit {
             }
         }
     }
-
 
     protected hideDialog() {
         this.showDialog = false;

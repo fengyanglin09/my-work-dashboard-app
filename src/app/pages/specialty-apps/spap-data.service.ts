@@ -388,6 +388,87 @@ export class SpapDataService {
             },
 
             {
+                id: 14,
+                name: 'SKO/SCF',
+                appHost: 'on-premise',
+                configurationItem: 'CI00025696',
+                wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:scf',
+                orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=25696',
+                onCallLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=oncall:sko',
+
+                environments: [
+                    {
+                        id: 1,
+                        name: 'Dev Environment',
+                        available: true,
+                        appWebUri: 'https://scf.tcdev.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN827Q/dlmp_sko_dev;domain=MFAD;useNTLMv2=true',
+                        appAzureId: 'd6be48ff-d02e-4511-adc1-a20d834a2fad'
+                    },
+                    {
+                        id: 2,
+                        name: 'Int/Test Environment',
+                        available: true,
+                        appWebUri: 'https://scf.tcint.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN927Q/dlmp_sko_int;domain=MFAD;useNTLMv2=true',
+                        appAzureId: 'd6be48ff-d02e-4511-adc1-a20d834a2fad'
+                    },
+                    {
+                        id: 3,
+                        name: 'Stg Environment',
+                        available: false,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: '',
+                        appAzureId: ''
+                    },
+                    {
+                        id: 4,
+                        name: 'Prod Environment',
+                        available: true,
+                        appWebUri: 'https://scf.tcprod.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN037Q/dlmp_sko_prod;domain=MFAD;useNTLMv2=true',
+                        appAzureId: 'e1d01570-3f93-44f9-ae0f-16ffb890ed22'
+                    }
+                ],
+                repos: [
+                    {
+                        id: 1,
+                        repoName: 'App',
+                        repoUri: 'https://dev.azure.com/mclm/GBS%20CAD/_git/SCF'
+                    },
+                    {
+                        id: 2,
+                        repoName: 'IAC',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 3,
+                        repoName: 'Api',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 4,
+                        repoName: 'Apigee',
+                        repoUri: undefined
+                    }
+                ],
+                updatedOn: '2026-01-08',
+                appSpecs: ``,
+                appCategory: {
+                    id: 1,
+                    name: 'Java Apps'
+                }
+            },
+
+            {
                 id: 21,
                 name: 'Dotnet',
                 configurationItem: undefined,
