@@ -49,6 +49,13 @@ export class DevResDataService {
                 },
 
                 {
+                    label: 'Mayo Integration',
+                    items: [
+                        { label: 'Cleo Harmony', type: 'link', icon:'fas fa-link',  url:'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:cad:cleoharmony' },
+                    ]
+                },
+
+                {
                     label: 'GCP Core Services',
                     items: [
                         { label: 'GCP Console', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com' },
