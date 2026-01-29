@@ -469,6 +469,87 @@ export class SpapDataService {
             },
 
             {
+                id: 15,
+                name: 'RTU/RTUSE',
+                appHost: 'on-premise',
+                configurationItem: 'CI00025696',
+                wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:rtu',
+                orgLink: 'https://mayoweb.mayo.edu/dlmp-im/systems-tools-listing.html?system=25493',
+                onCallLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=oncall:rtu',
+
+                environments: [
+                    {
+                        id: 1,
+                        name: 'Dev Environment',
+                        available: true,
+                        appWebUri: 'https://rtuse.tcdev.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN827Q/dlmp_rtu_dev;domain=MFAD;useNTLMv2=true',
+                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                    },
+                    {
+                        id: 2,
+                        name: 'Int/Test Environment',
+                        available: true,
+                        appWebUri: 'https://rtuse.tcint.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN927Q/dlmp_rtu_int;domain=MFAD;useNTLMv2=true',
+                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                    },
+                    {
+                        id: 3,
+                        name: 'Stg Environment',
+                        available: false,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: '',
+                        appAzureId: ''
+                    },
+                    {
+                        id: 4,
+                        name: 'Prod Environment',
+                        available: true,
+                        appWebUri: 'https://rtuse.tcprod.mayo.edu/',
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN033Q/dlmp_rtu_prod;domain=MFAD;useNTLMv2=true',
+                        appAzureId: 'e1d01570-3f93-44f9-ae0f-16ffb890ed22'
+                    }
+                ],
+                repos: [
+                    {
+                        id: 1,
+                        repoName: 'App',
+                        repoUri: 'https://dev.azure.com/mclm/GBS%20CAD/_git/RTUSE'
+                    },
+                    {
+                        id: 2,
+                        repoName: 'IAC',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 3,
+                        repoName: 'Api',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 4,
+                        repoName: 'Apigee',
+                        repoUri: undefined
+                    }
+                ],
+                updatedOn: '2026-01-08',
+                appSpecs: ``,
+                appCategory: {
+                    id: 1,
+                    name: 'Java Apps'
+                }
+            },
+
+            {
                 id: 21,
                 name: 'Dotnet',
                 configurationItem: undefined,
