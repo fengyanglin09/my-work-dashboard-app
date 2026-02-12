@@ -37,6 +37,13 @@ export class DevResDataService {
                 },
 
                 {
+                    label: 'CAF Repo',
+                    items: [
+                        { label: 'Dotnet Hello World', type: 'link', icon:'fas fa-link',  url:'https://dev.azure.com/mclm/Mayo%20Open%20Developer%20Network/_git/caf-helloworld-cs-dotnet' },
+                    ]
+                },
+
+                {
                     label: 'Apigee',
                     items: [
                         { label: 'Consumer Portal (Nonprod)', type: 'link', icon:'fas fa-link',  url:'https://nonprod.apiportal.mcc.apix.mayo.edu/' },
