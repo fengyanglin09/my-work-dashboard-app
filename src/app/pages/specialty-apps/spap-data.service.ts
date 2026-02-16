@@ -388,7 +388,7 @@ export class SpapDataService {
             },
 
             {
-                id: 14,
+                id: 15,
                 name: 'SKO/SCF',
                 appHost: 'on-premise',
                 configurationItem: 'CI00025696',
@@ -469,7 +469,7 @@ export class SpapDataService {
             },
 
             {
-                id: 15,
+                id: 16,
                 name: 'RTU/RTUSE',
                 appHost: 'on-premise',
                 configurationItem: 'CI00025696',

@@ -125,7 +125,8 @@ export class DevResDataService {
                             { label: 'C#', type: 'link', icon:'fas fa-link',  url:'https://learn.microsoft.com/en-us/dotnet/csharp/' },
                             { label: 'Dokuwiki', type: 'link', icon:'fas fa-link',  url:'https://www.dokuwiki.org/dokuwiki' },
                         ]
-                    },                    {
+                    },
+                    {
                         label: 'Database Systems',
                         items: [
                             { label: 'MSSQL', type: 'link', icon:'fas fa-link',  url:'https://learn.microsoft.com/en-us/sql/' },
@@ -133,6 +134,13 @@ export class DevResDataService {
                             { label: 'MongoDB', type: 'link', icon:'fas fa-link',  url:'https://www.mongodb.com/docs/manual/core/databases-and-collections/' },
                             { label: 'H2', type: 'link', icon:'fas fa-link',  url:'https://www.h2database.com/html/main.html' },
                             { label: 'SQLite', type: 'link', icon:'fas fa-link',  url:'https://sqlite.org/' },
+                        ]
+                    },
+                    {
+                        label: 'Database Management Tools',
+                        items: [
+                            { label: 'SQL Developer (Oracle)', type: 'link', icon:'fas fa-link',  url:'https://www.oracle.com/database/sqldeveloper/' },
+                            { label: 'DBeaver Community', type: 'link', icon:'fas fa-link',  url:'https://dbeaver.io/download/' },
                         ]
                     },
                     {
@@ -155,9 +163,8 @@ export class DevResDataService {
                         label: 'IDE Tools',
                         items: [
                             { label: 'Intellij IDEA', type: 'link', icon:'fas fa-link',  url:'https://www.jetbrains.com/idea/' },
-                            { label: 'VS Code', type: 'link', icon:'fas fa-link',  url:'https://code.visualstudio.com' },
-                            { label: 'SQL Developer (Oracle)', type: 'link', icon:'fas fa-link',  url:'https://www.oracle.com/database/sqldeveloper/' },
-                            { label: 'DBeaver Community', type: 'link', icon:'fas fa-link',  url:'https://dbeaver.io/download/' },
+                            { label: 'Rider - ASP.NET', type: 'link', icon:'fas fa-link',  url:'https://www.jetbrains.com/rider/' },
+                            { label: 'VS Code', type: 'link', icon:'fas fa-link',  url:'https://code.visualstudio.com' }
                         ]
                     },
                     {
@@ -173,6 +180,13 @@ export class DevResDataService {
                         items: [
                             { label: 'Azure DevOps', type: 'link', icon:'fas fa-link',  url:'https://dev.azure.com/mclm' },
                             { label: 'trello', type: 'link', icon:'fas fa-link',  url:'https://stackoverflow.com' },
+                        ]
+                    },
+
+                    {
+                        label: 'Project Design Tools',
+                        items: [
+                            { label: 'Lucid Chart', type: 'link', icon:'fas fa-link',  url:'https://lucid.app/' },
                         ]
                     },
 
@@ -253,6 +267,13 @@ export class DevResDataService {
                             { label: 'MapStruct Docs', type: 'link', icon:'fas fa-link',  url:'https://mapstruct.org/documentation/' },
                             { label: 'MapStruct + Lombok Integration', type: 'link', icon:'fas fa-link',  url:'https://mapstruct.org/documentation/stable/reference/html/#lombok' },
                             { label: 'MapStruct + Spring Boot Tutorial', type: 'link', icon:'fas fa-link',  url:'https://www.baeldung.com/mapstruct' }
+
+                        ]
+                    },
+                    {
+                        label: 'ASP.NET Core Development',
+                        items: [
+
 
                         ]
                     }
