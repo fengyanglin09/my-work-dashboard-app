@@ -9,18 +9,10 @@ export class SupportResourcesService {
 
     getData() {
         return [
+
+
             {
                 id: 1,
-                label: 'Support Tools',
-                activeItemId: 'support tools',
-                name: 'support tools',
-                description: 'mayo support tools description',
-
-                resources: []
-            },
-
-            {
-                id: 2,
                 label: 'Support Documents & Links',
                 activeItemId: 'support documents',
                 name: 'support documents',
@@ -126,9 +118,34 @@ export class SupportResourcesService {
                         `
                             }
                         ]
-                    }
+                    },
+                    {
+                        label: 'MAYO OIS Support Links',
+                        items: [
+                            { label: 'Veracode Link', type: 'link', icon: 'fas fa-link', url: 'https://veracode.mayo.edu/' },
+                            { label: 'Veracode Pipeline', type: 'link', icon: 'fas fa-link', url: 'https://dev.azure.com/mclm/ALM%20Reference/_wiki/wikis/project-wiki/8451/Veracode-Scanning-in-Pipeline' },
+                        ]
+                    },
+                    {
+                        label: 'MAYO App Support Links',
+                        items: [
+                            { label: 'Title21', type: 'link', icon: 'fas fa-link', url: 'https://mc.title21.com/' },
+                            { label: 'TPRM(3rd party risk management)', type: 'link', icon: 'fas fa-link', url: 'https://thirdpartyriskmanagement.mayo.edu/' },
+                        ]
+                    },
+
                 ]
-            }
+            },
+
+            {
+                id: 2,
+                label: 'Support Tools',
+                activeItemId: 'support tools',
+                name: 'support tools',
+                description: 'mayo support tools description',
+
+                resources: []
+            },
         ] as ResourceCategory[];
     }
 

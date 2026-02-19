@@ -12,7 +12,7 @@ import { Dialog } from 'primeng/dialog';
     styleUrl: './support-resources.component.scss'
 })
 export class SupportResourcesComponent implements OnInit {
-    active: number | string = 'support tools';
+    active: number | string = 'support documents';
 
     supportResources!: ResourceCategory[];
 
