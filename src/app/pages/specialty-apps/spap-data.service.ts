@@ -564,7 +564,7 @@ export class SpapDataService {
                         name: 'Dev Environment',
                         available: true,
                         appWebUri: undefined,
-                        appSwaggerUri: 'https://lis-hist-vwr-d.dlmp-cad-n.caf.mccapp.com/',
+                        appSwaggerUri: 'https://lis-hist-vwr-d.dlmp-cad-n.caf.mccapp.com/swagger/index.html',
                         apigeeUri: undefined,
                         appDbConnectionString: undefined,
                         appAzureId: undefined
