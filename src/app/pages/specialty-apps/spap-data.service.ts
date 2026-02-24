@@ -551,7 +551,8 @@ export class SpapDataService {
 
             {
                 id: 21,
-                name: 'Dotnet',
+                name: 'Hist Vwr API',
+                appHost: 'google',
                 configurationItem: undefined,
                 wikiLink: undefined,
                 orgLink: undefined,
@@ -563,7 +564,7 @@ export class SpapDataService {
                         name: 'Dev Environment',
                         available: true,
                         appWebUri: undefined,
-                        appSwaggerUri: undefined,
+                        appSwaggerUri: 'https://lis-hist-vwr-d.dlmp-cad-n.caf.mccapp.com/',
                         apigeeUri: undefined,
                         appDbConnectionString: undefined,
                         appAzureId: undefined
@@ -603,12 +604,12 @@ export class SpapDataService {
                     {
                         id: 1,
                         repoName: 'App',
-                        repoUri: undefined
+                        repoUri: 'https://dev.azure.com/mclm/GBS%20CAD/_git/LIS-HistoricalViewer-API'
                     },
                     {
                         id: 2,
                         repoName: 'IAC',
-                        repoUri: undefined
+                        repoUri: 'https://dev.azure.com/mclm/GBS%20CAD/_git/LIS-HistoricalViewer-IAC'
                     },
                     {
                         id: 3,
