@@ -45,7 +45,8 @@ export class SupportResourcesService {
                         `
                             },
                             { label: 'Service Now', type: 'link', icon: 'fas fa-link', url: 'https://mcsm.service-now.com/' },
-                            { label: 'Mayo Clinic IT Subscriptions', type: 'link', icon: 'fas fa-link', url: 'https://mcsubs.mayo.edu/' }
+                            { label: 'Mayo Clinic IT Subscriptions', type: 'link', icon: 'fas fa-link', url: 'https://mcsubs.mayo.edu/' },
+                            { label: 'Device Check', type: 'link', icon: 'fas fa-link', url: 'http://epsvc/refresh/eligible.aspx' }
                         ]
                     },
                     {
