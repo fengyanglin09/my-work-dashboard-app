@@ -235,7 +235,31 @@ export class DevResDataService {
                             { label: 'Highcharts Angular', type: 'link', icon:'fas fa-link',  url:'https://github.com/highcharts/highcharts-angular' },
                             { label: 'D3.js', type: 'link', icon:'fas fa-link',  url:'https://d3js.org/' },
                             { label: 'D3.js with Angular Guide', type: 'link', icon:'fas fa-link',  url:'https://blog.angular-university.io/angular-d3/' },
-                            { label: 'TinyMCE', type: 'link', icon:'fas fa-link',  url:'https://www.tiny.cloud/docs/integrations/angular/' }
+                            { label: 'TinyMCE', type: 'link', icon:'fas fa-link',  url:'https://www.tiny.cloud/docs/integrations/angular/' },
+                            { label: 'NGX-Quill', type: 'doc', icon:'fas fa-file-alt',
+                                htmlText: `
+                                         <div>
+                                              <p><b>Official Documentation Links:</b> </p>
+                                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
+                                                <li><code>GitHub (main docs):</code>
+                                                <a href="https://github.com/KillerCodeMonkey/ngx-quill" target="_blank" rel="noopener">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                                </li>
+                                                <li><code>NPM page:</code>
+                                                <a href="https://www.npmjs.com/package/ngx-quill" target="_blank" rel="noopener">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                                </li>
+                                                <li><code>Live examples:</code>
+                                                <a href="https://github.com/KillerCodeMonkey/ngx-quill-example" target="_blank" rel="noopener">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                                </li>
+
+                                              </ol>
+                                          </div>
+                        ` },
                         ]
                     },
 

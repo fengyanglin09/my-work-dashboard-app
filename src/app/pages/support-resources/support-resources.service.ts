@@ -54,6 +54,25 @@ export class SupportResourcesService {
                         items: [
                             { label: 'Enterprise Directory Services', type: 'link', icon: 'fas fa-link', url: 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354' },
                             { label: 'Cloud App Factory Request', type: 'link', icon: 'fas fa-link', url: 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515' },
+                            { label: 'Cloud App Factory Request', type: 'doc', icon:'fas fa-file-alt',
+                                htmlText: `
+                                         <div>
+                                              <p><b>Cloud App Factory Request:</b> </p>
+                                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
+                                                <li><code>Go to CAF request form:</code>
+                                                <a href="https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515" target="_blank" rel="noopener">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                                </li>
+                                                <li><code>Go to SailPoint and complete JIT access with the RFC</code>
+                                                <a href="assets/downloadDocs/CAD-CAF-Onboarding.pdf" target="_blank" rel="noopener">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                                </li>
+
+                                              </ol>
+                                          </div>
+                            ` },
                             { label: 'Apigee Support Request', type: 'link', icon: 'fas fa-link', url: 'https://docs.mcc.mayo.edu/docs/mcc/apigee-x/contactusx' }
                         ]
                     },
