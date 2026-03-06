@@ -631,6 +631,87 @@ export class SpapDataService {
             },
 
             {
+                id: 22,
+                name: 'SPAA Hist Vwr API',
+                appHost: 'google',
+                configurationItem: undefined,
+                wikiLink: undefined,
+                orgLink: undefined,
+                onCallLink: undefined,
+
+                environments: [
+                    {
+                        id: 1,
+                        name: 'Dev Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: 'https://lis-hist-vwr-d.dlmp-cad-n.caf.mccapp.com/swagger/index.html',
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 2,
+                        name: 'Int/Test Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 3,
+                        name: 'Stg Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 4,
+                        name: 'Prod Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    }
+                ],
+                repos: [
+                    {
+                        id: 1,
+                        repoName: 'App',
+                        repoUri: 'https://dev.azure.com/mclm/LT%20SAA/_git/LIS-HistoricalViewer-API'
+                    },
+                    {
+                        id: 2,
+                        repoName: 'IAC',
+                        repoUri: 'https://dev.azure.com/mclm/LT%20SAA/_git/LIS-HistoricalViewer-IAC'
+                    },
+                    {
+                        id: 3,
+                        repoName: 'Api',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 4,
+                        repoName: 'Apigee',
+                        repoUri: undefined
+                    }
+                ],
+                updatedOn: '2025-11-09',
+                appSpecs: undefined,
+                appCategory: {
+                    id: 2,
+                    name: 'DotNet Apps'
+                }
+            },
+
+            {
                 id: 31,
                 name: 'CLI API',
                 configurationItem: undefined,
