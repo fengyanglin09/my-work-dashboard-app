@@ -53,7 +53,6 @@ export class SupportResourcesService {
                         label: 'Cloud Support Links',
                         items: [
                             { label: 'Enterprise Directory Services', type: 'link', icon: 'fas fa-link', url: 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354' },
-                            { label: 'Cloud App Factory Request', type: 'link', icon: 'fas fa-link', url: 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515' },
                             { label: 'Cloud App Factory Request', type: 'doc', icon:'fas fa-file-alt',
                                 htmlText: `
                                          <div>
@@ -64,7 +63,7 @@ export class SupportResourcesService {
                                                     <i class="fa fa-external-link-alt"></i>
                                                 </a>
                                                 </li>
-                                                <li><code>Go to SailPoint and complete JIT access with the RFC</code>
+                                                <li><code>CAD On-Board Document</code>
                                                 <a href="assets/downloadDocs/CAD-CAF-Onboarding.pdf" target="_blank" rel="noopener">
                                                     <i class="fas fa-download"></i>
                                                 </a>
