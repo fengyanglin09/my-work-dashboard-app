@@ -3605,7 +3605,7 @@ p-datatable-gridlines .p-datatable-tbody > tr:last-child > td {
                                                 </li>
                                                </ol>
                                           </div>
-                        `},{label:"Service Now",type:"link",icon:"fas fa-link",url:"https://mcsm.service-now.com/"},{label:"Mayo Clinic IT Subscriptions",type:"link",icon:"fas fa-link",url:"https://mcsubs.mayo.edu/"},{label:"Device Check",type:"link",icon:"fas fa-link",url:"http://epsvc/refresh/eligible.aspx"}]},{label:"Cloud Support Links",items:[{label:"Enterprise Directory Services",type:"link",icon:"fas fa-link",url:"https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354"},{label:"Cloud App Factory Request",type:"link",icon:"fas fa-link",url:"https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=085eb106875b595466be40c6dabb3515"},{label:"Cloud App Factory Request",type:"doc",icon:"fas fa-file-alt",htmlText:`
+                        `},{label:"Service Now",type:"link",icon:"fas fa-link",url:"https://mcsm.service-now.com/"},{label:"Mayo Clinic IT Subscriptions",type:"link",icon:"fas fa-link",url:"https://mcsubs.mayo.edu/"},{label:"Device Check",type:"link",icon:"fas fa-link",url:"http://epsvc/refresh/eligible.aspx"}]},{label:"Cloud Support Links",items:[{label:"Enterprise Directory Services",type:"link",icon:"fas fa-link",url:"https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354"},{label:"Cloud App Factory Request",type:"doc",icon:"fas fa-file-alt",htmlText:`
                                          <div>
                                               <p><b>Cloud App Factory Request:</b> </p>
                                               <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
@@ -3614,7 +3614,7 @@ p-datatable-gridlines .p-datatable-tbody > tr:last-child > td {
                                                     <i class="fa fa-external-link-alt"></i>
                                                 </a>
                                                 </li>
-                                                <li><code>Go to SailPoint and complete JIT access with the RFC</code>
+                                                <li><code>CAD On-Board Document</code>
                                                 <a href="assets/downloadDocs/CAD-CAF-Onboarding.pdf" target="_blank" rel="noopener">
                                                     <i class="fas fa-download"></i>
                                                 </a>
