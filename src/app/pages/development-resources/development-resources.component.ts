@@ -4,6 +4,8 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'pr
 import { DevResDataService } from './dev-res-data.service';
 import { ResourceCategory } from '../../core/model/cheatsheet.model';
 import { Dialog } from 'primeng/dialog';
+import { HttpClient } from '@angular/common/http';
+import { marked } from 'marked';
 
 
 @Component({
@@ -24,7 +26,7 @@ export class DevelopmentResourcesComponent implements OnInit {
         this.active = index;
     }
 
-    constructor(private dataService: DevResDataService) {}
+    constructor(private dataService: DevResDataService, private http: HttpClient) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {
@@ -47,5 +49,15 @@ export class DevelopmentResourcesComponent implements OnInit {
     protected displayDialog(text: string) {
         this.dialogContent = text;
         this.showDialog = true;
+    }
+
+    /**
+     * Loads a markdown file, parses it to HTML, and displays in dialog
+     */
+    protected displayMarkdownDialog(mdFilePath: string) {
+        this.http.get(mdFilePath, { responseType: 'text' }).subscribe(md => {
+            this.dialogContent = marked.parse(md);
+            this.showDialog = true;
+        });
     }
 }

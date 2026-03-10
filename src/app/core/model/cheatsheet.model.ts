@@ -13,6 +13,7 @@ export interface CheatItem {
     htmlText?: string;         // display text for link or document
     emailItem?: emailItem;  // email item details
     filePath?: string;      // file path for download
+    mdFilePath?: string;   // markdown file path for dialog display
     action: () => void;         // callback for click
 }
 

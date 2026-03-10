@@ -75,7 +75,7 @@ export class DevResDataService {
                         { label: 'Kubernetes Engine (GKE)', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/kubernetes' },
                         { label: 'Cloud Functions', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/functions' },
                         { label: 'Cloud Run', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/run' },
-                        { label: 'BigQuery', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/bigquery' },
+                        { label: 'BigQuery', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/gcp/bigquery.md' },
                         { label: 'Cloud SQL', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/sql' },
                         { label: 'Firestore', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/firestore' },
                         { label: 'Datastore', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/datastore' },

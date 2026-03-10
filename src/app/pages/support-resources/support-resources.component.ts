@@ -4,6 +4,8 @@ import { SupportResourcesService } from './support-resources.service';
 import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
 import { Button } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
+import { marked } from 'marked';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-support-resources',
@@ -24,7 +26,7 @@ export class SupportResourcesComponent implements OnInit {
         this.active = index;
     }
 
-    constructor(private dataService: SupportResourcesService) {}
+    constructor(private dataService: SupportResourcesService, private http: HttpClient) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {
@@ -47,5 +49,15 @@ export class SupportResourcesComponent implements OnInit {
     protected displayDialog(text: string) {
         this.dialogContent = text;
         this.showDialog = true;
+    }
+
+    /**
+     * Loads a markdown file, parses it to HTML, and displays in dialog
+     */
+    protected displayMarkdownDialog(mdFilePath: string) {
+        this.http.get(mdFilePath, { responseType: 'text' }).subscribe(md => {
+            this.dialogContent = marked.parse(md);
+            this.showDialog = true;
+        });
     }
 }

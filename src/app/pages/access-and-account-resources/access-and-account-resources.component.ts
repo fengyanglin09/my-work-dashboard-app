@@ -4,6 +4,8 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'pr
 import { Button } from 'primeng/button';
 import { AccessAndAccountResourcesService } from './access-and-account-resources.service';
 import { Dialog } from 'primeng/dialog';
+import { marked } from 'marked';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-access-and-account-resources',
@@ -23,7 +25,7 @@ export class AccessAndAccountResourcesComponent implements OnInit {
         this.active = index;
     }
 
-    constructor(private dataService: AccessAndAccountResourcesService) {}
+    constructor(private dataService: AccessAndAccountResourcesService, private http: HttpClient) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {
@@ -46,5 +48,15 @@ export class AccessAndAccountResourcesComponent implements OnInit {
     protected displayDialog(text: string) {
         this.dialogContent = text;
         this.showDialog = true;
+    }
+
+    /**
+     * Loads a markdown file, parses it to HTML, and displays in dialog
+     */
+    protected displayMarkdownDialog(mdFilePath: string) {
+        this.http.get(mdFilePath, { responseType: 'text' }).subscribe(md => {
+            this.dialogContent = marked.parse(md);
+            this.showDialog = true;
+        });
     }
 }
