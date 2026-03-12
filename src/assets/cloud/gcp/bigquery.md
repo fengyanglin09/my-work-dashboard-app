@@ -49,5 +49,6 @@ Roles needed:  roles/bigquery.dataViewer, roles/bigquery.readSessionUser, roles/
 Also please add following projects to the VPCSC rule
 ml-mps-adl-mndsa-dlmpds-d
 ```
-
-
+**Note:** 
+- ADL side will need to add the bigquery project to the VPCSC rule.
+- CAF side will also need to add the source project to the VPCSC ADL egress rule
