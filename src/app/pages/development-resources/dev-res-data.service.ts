@@ -18,6 +18,7 @@ export class DevResDataService {
                         { label: 'DevOps', type: 'link', icon:'fas fa-link',  url:'https://dev.azure.com/mclm/' },
                         { label: 'Server Status', type: 'link', icon:'fas fa-link',  url:'https://status.dev.azure.com/' },
                         { label: 'Azure Portal', type: 'link', icon:'fas fa-link',  url:'https://portal.azure.com/' },
+                        { label: 'ResourceServerASPDOTNET', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/asp.net-core-resource-server.md' },
                         { label: 'Enterprise Skills Init', type: 'link', icon:'fas fa-link',  url:'https://esi.microsoft.com/' },
                     ]
                 },
