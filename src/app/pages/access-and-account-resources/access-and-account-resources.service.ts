@@ -55,6 +55,7 @@ export class AccessAndAccountResourcesService {
                         label: 'User Accounts',
                         items: [
                             { label: 'Master Data Management', type: 'link', icon:'fas fa-link',  url:'https://masterdatamanagement.mayo.edu/' },
+                            { label: 'Service Account Management', type: 'link', icon:'fas fa-link',  url:'https://idmp-prod-sam-ui.mayo.edu/' },
                             { label: 'Password Change', type: 'link', icon:'fas fa-link',  url:'https://changepass.mayo.edu/Tools/UserPasswordChange' },
                             { label: 'Microsoft Authenticator doc1', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/now/nav/ui/classic/params/target/kb_view.do%3Fsysparm_article%3DKB0101141' },
                             { label: 'Microsoft Authenticator doc2', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/now/nav/ui/classic/params/target/kb_view.do%3Fsysparm_article%3DKB0108430' },
