@@ -335,6 +335,13 @@ export class DevResDataService {
 
                         ]
                     },
+                    {
+                        label: 'Open Models Development',
+                        items: [
+                            { label: 'Ollama', type: 'link', icon:'fas fa-link',  url:'https://ollama.com/' },
+                            { label: 'LM Studio', type: 'link', icon:'fas fa-link',  url:'https://lmstudio.ai/' },
+                        ]
+                    },
                 ]
             } ,
             ] as ResourceCategory[];
