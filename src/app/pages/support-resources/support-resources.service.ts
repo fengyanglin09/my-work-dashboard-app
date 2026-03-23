@@ -68,6 +68,11 @@ export class SupportResourcesService {
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                                 </li>
+                                                <li><code>SAA On-Board Document</code>
+                                                <a href="assets/downloadDocs/LT-SAA-Onboarding.pdf" target="_blank" rel="noopener">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                                </li>
 
                                               </ol>
                                           </div>
