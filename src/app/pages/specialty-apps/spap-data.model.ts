@@ -48,7 +48,7 @@ export const AppHeaderInfo: AppHeader[] = [
                 icon: 'fa fa-tasks',
                 label: 'Empiricals',
                 target:'_blank',
-                command: () => window.open('https://dev.azure.com/mclm/GBS%20CAD/_backlogs/backlog/Empiricals/Stories', '_blank')
+                command: () => window.open('https://dev.azure.com/mclm/LT%20SAA/_backlogs/backlog/Empiricals/Stories', '_blank')
             }
         ]
 
