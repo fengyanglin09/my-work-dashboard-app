@@ -29,7 +29,7 @@ bq ls --project_id=[Porject B id i.e.- ml-mps-adl-mndsa-dlmpds-d-23a9]
 - request attachment (for dev):
 ```yaml
 
-Service Account:  gsa6-sde-phi-d-spaa-hvr14@lis-hist-vwr-d.iam.gserviceaccount.com
+Service Account:  gsa6-sde-phi-d-spaa-hvra6@lis-hx-vwr-d.iam.gserviceaccount.com
 Owner Email:  lin.pengpeng@mayo.edu
 Supervisor Email:  Sorenson.James@mayo.edu
 Business Purpose:  need access to bigquery for the LIS-Historical-Viewer project in a non-production environment
@@ -38,16 +38,17 @@ Access Level:  Primary
 Environment:  Development, Testing
 Dataset Entitlement Business Approvers:  James Sorenson
 Source Organization:  mccp-solutions
-Source Project ID:  lis-hist-vwr-d
-Source Project Name:  lis-hist-vwr-d
+Source Project ID:  lis-hx-vwr-d
+Source Project Name:  lis-hx-vwr-d
+Source Project Number: 565778079647
 Reason for requiring access:  Application access - patient care operations
 Summary of how the data will be used:  client applications will be able to retrieve patient information
-Intended use category (e.g., Patient Care, Patient Billing, Healthcare Operations) - Patient Care, Healthcare Operations
+Intended use category: (e.g., Patient Care, Patient Billing, Healthcare Operations) - Patient Care, Healthcare Operations
 
 Roles needed:  roles/bigquery.dataViewer, roles/bigquery.readSessionUser, roles/storage.objectViewer
 
-Also please add following projects to the VPCSC rule
-ml-mps-adl-mndsa-dlmpds-d
+Note: Also please add following projects to the VPCSC rule (both ADL and CAF primeter)
+    ml-mps-adl-mndsa-dlmpds-d
 ```
 **Note:** the big query project will need to be added to the VPCSC rule by both sides (ADL and CAF) in order for the connection to work.
 
