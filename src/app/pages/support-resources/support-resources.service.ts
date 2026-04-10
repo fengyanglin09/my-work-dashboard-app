@@ -20,6 +20,12 @@ export class SupportResourcesService {
 
                 resources: [
                     {
+                        label: 'LT SAA Links',
+                        items: [
+                            { label: 'SharePoint Home Page', type: 'link', icon: 'fas fa-link', url: 'https://mctools.sharepoint.com/teams/LTSAA' },
+                        ]
+                    },
+                    {
                         label: 'Mayo Internal Links',
                         items: [
                             { label: 'Mayo Home Page', type: 'link', icon: 'fas fa-link', url: 'https://mayoweb.mayo.edu/' },
