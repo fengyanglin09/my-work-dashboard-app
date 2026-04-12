@@ -305,6 +305,14 @@ export class DevResDataService {
 
 
                         ]
+                    },
+                    {
+                        label: 'Library Repo',
+                        items: [
+                            { label: 'npm package repo', type: 'link', icon:'fas fa-link',  url:'https://www.npmjs.com/login' }
+
+
+                        ]
                     }
 
 
