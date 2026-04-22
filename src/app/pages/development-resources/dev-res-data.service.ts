@@ -19,6 +19,8 @@ export class DevResDataService {
                         { label: 'Server Status', type: 'link', icon:'fas fa-link',  url:'https://status.dev.azure.com/' },
                         { label: 'Azure Portal', type: 'link', icon:'fas fa-link',  url:'https://portal.azure.com/' },
                         { label: 'Azure Entra Admin Center', type: 'link', icon:'fas fa-link',  url:'https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/' },
+                        { label: 'Azure App Registration', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/app-registration.md' },
+                        { label: 'Azure Assign AD Group for Users', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/load-user-group.md' },
                         { label: 'ResourceServerASPDOTNET', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/asp.net-core-resource-server.md' },
                         { label: 'Enterprise Skills Init', type: 'link', icon:'fas fa-link',  url:'https://esi.microsoft.com/' },
                     ]

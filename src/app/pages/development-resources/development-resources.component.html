@@ -115,6 +115,6 @@
 </div>
 
 
-<p-dialog header="Text Resource" [(visible)]="showDialog" (onHide)="hideDialog()" [style]="{ width: '50vw' }">
+<p-dialog header="Text Resource" [(visible)]="showDialog" (onHide)="hideDialog()" [style]="{ width: 'auto', maxWidth: '70vw' }">
     <div class="markdown-body" [innerHTML]="dialogContent"></div>
 </p-dialog>
