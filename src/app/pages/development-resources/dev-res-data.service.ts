@@ -64,7 +64,7 @@ export class DevResDataService {
                 {
                     label: 'Mayo Integration',
                     items: [
-                        { label: 'Cleo Harmony', type: 'link', icon:'fas fa-link',  url:'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:cad:cleoharmony' },
+                        { label: 'Cleo Harmony', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/integration/Cleo-Harmony.md' },
                     ]
                 },
 
