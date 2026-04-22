@@ -103,6 +103,15 @@ export class DevResDataService {
                         { label: 'API Gateway', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/api-gateway' },
                         { label: 'Artifact Registry', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/artifacts' }
                     ]
+                },
+
+                {
+                    label: 'Security',
+                    items: [
+                        { label: 'Client Credential Api Tool Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/oauth-setup-keyrunner.md' },
+
+
+                    ]
                 }
 
 
