@@ -146,7 +146,12 @@ export class SupportResourcesService {
                                             </section>
 
                         `
-                            }
+                            },
+                            { label: 'Web Application Restart', type: 'link', icon: 'fas fa-link', url: 'http://dotnetprod.mayo.edu/mwt/appmanager/' },
+                            { label: 'Tomcat Context Files (Win)', type: 'link', icon: 'fas fa-link', url: 'file://mfad.mfroot.org/rchweb/sow/Tomcat/dlm' },
+                            { label: 'Tomcat Context Files (Mac)', type: 'link', icon: 'fas fa-link', url: 'smb://mfad.mfroot.org/rchweb/sow/Tomcat/dlm' },
+                            { label: 'Tomcat Logs (Win)', type: 'link', icon: 'fas fa-link', url: 'file://mfad.mfroot.org/rchweb/reap/Tomcat/dlm' },
+                            { label: 'Tomcat Logs (Mac)', type: 'link', icon: 'fas fa-link', url: 'smb://mfad.mfroot.org/rchweb/reap/Tomcat/dlm' },
                         ]
                     },
                     {
