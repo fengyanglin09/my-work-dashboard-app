@@ -23,6 +23,7 @@ export class SupportResourcesService {
                         label: 'LT SAA Links',
                         items: [
                             { label: 'SharePoint Home Page', type: 'link', icon: 'fas fa-link', url: 'https://mctools.sharepoint.com/teams/LTSAA' },
+                            { label: 'PTO Request Process', type: 'download', icon:'fas fa-download',  filePath: 'assets/downloadDocs/PTO-Request-Process.pdf' },
                         ]
                     },
                     {

@@ -71,6 +71,16 @@
                                             <i [class]= item.icon style="margin-left: 0.5rem;"></i>
                                         </button>
                                     }
+                                    @case ('download') {
+                                        <a
+                                            class="p-button-text text-left rounded"
+                                            [href]="item.filePath"
+                                            download
+                                        >
+                                            <span style="padding-left: 1rem">{{ item.label }}</span>
+                                            <i [class]="item.icon" style="margin-left: 0.5rem;"></i>
+                                        </a>
+                                    }
 
                                     @default{
                                         <!--                                         Default case can be handled here if needed-->
