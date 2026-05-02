@@ -281,6 +281,7 @@ export class DevResDataService {
                     {
                         label: 'Spring Boot Development',
                         items: [
+                            { label: 'JAVA Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/JAVA/Manage_Java_Versions.md' },
                             { label: 'Spring Official Docs', type: 'link', icon:'fas fa-link',  url:'https://docs.spring.io/spring-framework/docs/current/reference/html/' },
                             { label: 'Spring Boot Docs', type: 'link', icon:'fas fa-link',  url:'https://docs.spring.io/spring-boot/docs/current/reference/html/' },
                             { label: 'Spring Initializr', type: 'link', icon:'fas fa-link',  url:'https://start.spring.io/' },
