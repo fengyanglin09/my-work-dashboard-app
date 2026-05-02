@@ -23,6 +23,11 @@ brew install openjdk@17
 brew install openjdk@21
 ```
 
+for MAC Pro Chip:
+```zsh
+arch -arm64 brew install openjdk@21
+```
+
 Homebrew installs Java versions in `/usr/local/opt/` or `/opt/homebrew/opt/` (depending on your system architecture).
 
 ---
