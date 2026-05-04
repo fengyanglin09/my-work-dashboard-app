@@ -175,6 +175,7 @@ export class DevResDataService {
                             { label: 'Git Workflows', type: 'link', icon:'fas fa-link',  url:'https://nvie.com/posts/a-successful-git-branching-model/' },
                             { label: 'Git Workflows (Atlassian)', type: 'link', icon:'fas fa-link',  url:'https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow' },
                             { label: 'Git Workflows (Team)', type: 'download', icon:'fas fa-download',  filePath: 'assets/downloadDocs/Gitflow.pdf' },
+                            { label: 'Git Removing File From History', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/git/git-cleanup-guide.md' },
                         ]
                     },
                     {
