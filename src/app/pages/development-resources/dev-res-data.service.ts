@@ -152,6 +152,8 @@ export class DevResDataService {
                             { label: 'MongoDB', type: 'link', icon:'fas fa-link',  url:'https://www.mongodb.com/docs/manual/core/databases-and-collections/' },
                             { label: 'H2', type: 'link', icon:'fas fa-link',  url:'https://www.h2database.com/html/main.html' },
                             { label: 'SQLite', type: 'link', icon:'fas fa-link',  url:'https://sqlite.org/' },
+                            { label: 'MSSQL Local Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/database/sqlserver-mac-m4-podman.md' },
+                            { label: 'MSSQL Local Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/database/sqlserver-mac-setup-summary.md' },
                         ]
                     },
                     {
