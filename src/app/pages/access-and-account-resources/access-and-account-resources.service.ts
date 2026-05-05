@@ -49,6 +49,7 @@ export class AccessAndAccountResourcesService {
                                               </ol>
                                           </div>
                         ` },
+                            { label: 'Software Subscription', type: 'link', icon:'fas fa-link',  url:'https://mcsm.service-now.com/employeeconnect?id=nr_it_topic&topic_id=692c9895c3e4a2d0b1b935001501314f&in_context=true' },
                         ]
                     },
                     {
