@@ -183,7 +183,7 @@ podman run \
   --name sqlserver \
   --platform linux/amd64 \
   -e ACCEPT_EULA=Y \
-  -e MSSQL_SA_PASSWORD=YourStr0ng!Pass \
+  -e MSSQL_SA_PASSWORD=NerdsLocalRun01 \
   -e MSSQL_PID=Developer \
   -p 1433:1433 \
   -v sqldata:/var/opt/mssql \
