@@ -33,7 +33,7 @@ podman run \
   --name sqlserver \
   --platform linux/amd64 \
   -e ACCEPT_EULA=Y \
-  -e "MSSQL_SA_PASSWORD=MyPass@word123" \
+  -e "MSSQL_SA_PASSWORD=NerdsLocalRun01" \
   -e MSSQL_PID=Developer \
   -p 1433:1433 \
   -d \
@@ -69,7 +69,7 @@ podman ps -a
 
 # Connect via sqlcmd inside the container
 podman exec -it sqlserver /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P 'MyPass@word123' -No
+  -S localhost -U sa -P 'NerdsLocalRun01' -No
 ```
 
 ---
@@ -85,7 +85,7 @@ podman run \
   --name sqlserver \
   --platform linux/amd64 \
   -e ACCEPT_EULA=Y \
-  -e "MSSQL_SA_PASSWORD=MyPass@word123" \
+  -e "MSSQL_SA_PASSWORD=NerdsLocalRun01" \
   -e MSSQL_PID=Developer \
   -p 1433:1433 \
   -v sqldata:/var/opt/mssql \
@@ -122,7 +122,7 @@ podman run \
 ```properties
 spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=yourdb;encrypt=false;trustServerCertificate=true
 spring.datasource.username=sa
-spring.datasource.password=MyPass@word123
+spring.datasource.password=NerdsLocalRun01
 spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
 
 # If using JPA/Hibernate
@@ -137,7 +137,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=yourdb;encrypt=false;trustServerCertificate=true
     username: sa
-    password: MyPass@word123
+    password: NerdsLocalRun01
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
