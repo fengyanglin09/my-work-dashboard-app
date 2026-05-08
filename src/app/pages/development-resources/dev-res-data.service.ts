@@ -22,6 +22,7 @@ export class DevResDataService {
                         { label: 'Azure App Registration', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/app-registration.md' },
                         { label: 'Azure Assign AD Group for Users', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/load-user-group.md' },
                         { label: 'ResourceServerASPDOTNET', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/asp.net-core-resource-server.md' },
+                        { label: 'Azure CLI', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/azure-cli-mac-cheatsheet.md' },
                         { label: 'Enterprise Skills Init', type: 'link', icon:'fas fa-link',  url:'https://esi.microsoft.com/' },
                     ]
                 },
