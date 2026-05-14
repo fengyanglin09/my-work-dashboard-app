@@ -314,7 +314,8 @@ export class DevResDataService {
                             { label: 'MapStruct', type: 'link', icon:'fas fa-link',  url:'https://mapstruct.org/' },
                             { label: 'MapStruct Docs', type: 'link', icon:'fas fa-link',  url:'https://mapstruct.org/documentation/' },
                             { label: 'MapStruct + Lombok Integration', type: 'link', icon:'fas fa-link',  url:'https://mapstruct.org/documentation/stable/reference/html/#lombok' },
-                            { label: 'MapStruct + Spring Boot Tutorial', type: 'link', icon:'fas fa-link',  url:'https://www.baeldung.com/mapstruct' }
+                            { label: 'MapStruct + Spring Boot Tutorial', type: 'link', icon:'fas fa-link',  url:'https://www.baeldung.com/mapstruct' },
+                            { label: 'VaVr', type: 'link', icon:'fas fa-link',  url:'https://vavr.io/' }
 
                         ]
                     },
