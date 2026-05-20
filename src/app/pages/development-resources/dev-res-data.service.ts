@@ -320,20 +320,28 @@ export class DevResDataService {
                         ]
                     },
                     {
+                        label: 'Java Development tools',
+                        items: [
+                            { label: 'Java API for Microsoft Doc', type: 'link', icon:'fas fa-link',  url:'https://poi.apache.org/' },
+                            { label: 'Apache KIE - (Drools)', type: 'link', icon:'fas fa-link',  url:'https://kie.apache.org/' }
+
+                        ]
+                    },
+                    {
+                        label: 'Library publish Repo',
+                        items: [
+                            { label: 'npm package repo', type: 'link', icon:'fas fa-link',  url:'https://www.npmjs.com/login' },
+                            { label: 'maven central repo', type: 'link', icon:'fas fa-link',  url:'https://central.sonatype.com/' }
+
+                        ]
+                    },
+                    {
                         label: 'ASP.NET Core Development',
                         items: [
 
 
                         ]
                     },
-                    {
-                        label: 'Library Repo',
-                        items: [
-                            { label: 'npm package repo', type: 'link', icon:'fas fa-link',  url:'https://www.npmjs.com/login' },
-                            { label: 'maven central repo', type: 'link', icon:'fas fa-link',  url:'https://central.sonatype.com/' }
-
-                        ]
-                    }
 
 
 
