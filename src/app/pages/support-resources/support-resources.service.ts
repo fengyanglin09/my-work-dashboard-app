@@ -153,6 +153,7 @@ export class SupportResourcesService {
                             { label: 'Tomcat Context Files (Mac)', type: 'link', icon: 'fas fa-link', url: 'smb://mfad.mfroot.org/rchweb/sow/Tomcat/dlm' },
                             { label: 'Tomcat Logs (Win)', type: 'link', icon: 'fas fa-link', url: 'file://mfad.mfroot.org/rchweb/reap/Tomcat/dlm' },
                             { label: 'Tomcat Logs (Mac)', type: 'link', icon: 'fas fa-link', url: 'smb://mfad.mfroot.org/rchweb/reap/Tomcat/dlm' },
+                            { label: 'Web Hosting Info', type: 'link', icon: 'fas fa-link', url: 'https://mayoweb.mayo.edu/mwsandbox/infodash.html' },
                         ]
                     },
                     {
