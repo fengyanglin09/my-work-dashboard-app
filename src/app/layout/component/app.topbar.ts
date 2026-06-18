@@ -30,9 +30,9 @@ import { UserInfoComponent } from '../../shared/components/user-info/user-info.c
                     <i class="pi pi-bars"></i>
                 </button>
                 <a class="layout-topbar-logo" routerLink="/">
-                    <img src="assets/app/mayo-logo.png" alt="mayo specialty app & analytics" class="pr-1" style="height:1.5em; width:auto;" />
+                    <img src="assets/brand/favicon.png" alt="mayo specialty app dashboard" class="pr-1" style="height:1.5em; width:auto;" />
 
-                    <span>SPAA Dashboard</span>
+                    <span>Mark L Dashboard</span>
                 </a>
             </div>
 

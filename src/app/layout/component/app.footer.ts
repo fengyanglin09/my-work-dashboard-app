@@ -5,8 +5,10 @@ import { Component } from '@angular/core';
     selector: 'app-footer',
     template: `<div class="layout-footer">
 
-        <img src="assets/app/mayo-footer.png" alt="Footer Logo" style="height: 1.8em; width: auto">
-        Mayo Foundation for Medical Education and Research © 2025. All rights reserved.
+        <img src="assets/brand/favicon.png" alt="Footer Logo" style="height: 1.8em; width: auto">
+        Mark L for Medical Education and Research © {{ currentYear }}. All rights reserved.
     </div>`
 })
-export class AppFooter {}
+export class AppFooter {
+    currentYear = new Date().getFullYear();
+}

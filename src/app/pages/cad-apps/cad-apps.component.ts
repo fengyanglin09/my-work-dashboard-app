@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/auth/auth.service';
+import { AppHeader, ApplicationDashboardApp } from '../../core/model/application-dashboard.model';
+import { ApplicationDashboardComponent } from '../../shared/components/application-dashboard/application-dashboard.component';
+import { CadAppsService } from './cad-apps.service';
 
 @Component({
     selector: 'app-cad-apps',
-    imports: [],
-    templateUrl: './cad-apps.component.html',
-    styleUrl: './cad-apps.component.scss'
+    imports: [ApplicationDashboardComponent],
+    template: `<app-application-dashboard [apps]="apps" [appHeaderInfo]="appHeaderInfo" emptyMessage="No CAD apps have been added yet." />`,
+    providers: [CadAppsService]
 })
 export class CadAppsComponent implements OnInit {
+    apps: ApplicationDashboardApp[] = [];
+    appHeaderInfo: AppHeader[] = [];
 
-    constructor(private auth: AuthService) {
-    }
+    constructor(private dataService: CadAppsService) {}
 
     ngOnInit(): void {
-        // if (!this.auth.isLoggedIn()) {
-        //     this.auth.login();
-        // }
-        //
-        // console.log("Roles:", this.auth.getUserRoles());
-        //
-        // this.auth.getUserPhoto().then(photo => {
-        //     const userPhoto = photo;
-        //     console.log(photo);
-        // });
+        this.appHeaderInfo = this.dataService.getHeaderInfo();
+
+        this.dataService.getDataXLarge().then((data) => {
+            this.apps = data;
+        });
     }
 }

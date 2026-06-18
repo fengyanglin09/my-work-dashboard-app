@@ -72,8 +72,7 @@ Fill in the following fields:
 
 
 ## screenshot for getting access token in KeyRunner
-![OAuth Access Token](/assets/security/access-token.png)
+![OAuth Access Token](/assets/pages/development-resources/security/access-token.png)
 
 ## screenshot for setting up OAuth in KeyRunner
-![OAuth Setup](/assets/security/oauth-setup.png)
-
+![OAuth Setup](/assets/pages/development-resources/security/oauth-setup.png)

@@ -23,7 +23,7 @@ export class SupportResourcesService {
                         label: 'LT SAA Links',
                         items: [
                             { label: 'SharePoint Home Page', type: 'link', icon: 'fas fa-link', url: 'https://mctools.sharepoint.com/teams/LTSAA' },
-                            { label: 'PTO Request Process', type: 'download', icon:'fas fa-download',  filePath: 'assets/downloadDocs/PTO-Request-Process.pdf' },
+                            { label: 'PTO Request Process', type: 'download', icon:'fas fa-download',  filePath: 'assets/pages/support-resources/downloads/pto-request-process.pdf' },
                         ]
                     },
                     {
@@ -71,12 +71,12 @@ export class SupportResourcesService {
                                                 </a>
                                                 </li>
                                                 <li><code>CAD On-Board Document</code>
-                                                <a href="assets/downloadDocs/CAD-CAF-Onboarding.pdf" target="_blank" rel="noopener">
+                                                <a href="assets/pages/support-resources/downloads/cad-caf-onboarding.pdf" target="_blank" rel="noopener">
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                                 </li>
                                                 <li><code>SAA On-Board Document</code>
-                                                <a href="assets/downloadDocs/LT-SAA-Onboarding.pdf" target="_blank" rel="noopener">
+                                                <a href="assets/pages/support-resources/downloads/lt-saa-onboarding.pdf" target="_blank" rel="noopener">
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                                 </li>

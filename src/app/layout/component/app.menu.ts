@@ -21,24 +21,17 @@ export class AppMenu {
     ngOnInit() {
         this.model = [
             {
-                label: 'SPAA Unit',
+                label: 'APPS',
                 items: [
                     { label: 'SAA Apps', icon: 'fa fa-laptop', routerLink: ['/pages/specialty-app-dashboard'] },
-                    { label: 'Analytics reports', icon: 'pi pi-chart-bar', routerLink: ['/pages/analytics-report-dashboard'] },
-                ]
-            },
-            {
-                label: 'GES Unit',
-                items: [
                     { label: 'CAD Apps', icon: 'fa fa-desktop', routerLink: ['/pages/cad-app-dashboard'] },
-                    // { label: 'Double Helix - Java', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
                 ]
-
             },
 
             {
-                label: 'Mayo Resources',
+                label: 'Resources',
                 items: [
+                    { label: 'App Resources', icon: 'fa fa-layer-group', routerLink: ['/pages/app-resource-dashboard'] },
                     { label: 'Development', icon: 'fa fa-tools', routerLink: ['/pages/development-resource-dashboard'] },
                     { label: 'Support', icon: 'fa fa-headset', routerLink: ['/pages/support-resource-dashboard'] },
                     { label: 'Access & Accounts', icon: 'fa fa-user-shield', routerLink: ['/pages/access-accounts-resource-dashboard'] },

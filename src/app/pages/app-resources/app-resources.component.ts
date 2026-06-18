@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { DevResDataService } from './dev-res-data.service';
 import { ResourceCategory } from '../../core/model/cheatsheet.model';
+import { AppResourcesService } from './app-resources.service';
 import { ResourceDashboardComponent } from '../../shared/components/resource-dashboard/resource-dashboard.component';
 
 @Component({
-    selector: 'app-development-resources',
+    selector: 'app-app-resources',
     imports: [ResourceDashboardComponent],
     template: `<app-resource-dashboard [resources]="resources" />`
 })
-export class DevelopmentResourcesComponent implements OnInit {
+export class AppResourcesComponent implements OnInit {
     resources: ResourceCategory[] = [];
 
-    constructor(private dataService: DevResDataService) {}
+    constructor(private dataService: AppResourcesService) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SpecialtyApp } from './spap-data.model';
+import { AppHeader, AppHeaderInfo, SpecialtyApp } from './spap-data.model';
 
 @Injectable()
 // { providedIn: 'root' }
 export class SpapDataService {
+    getHeaderInfo() {
+        return AppHeaderInfo as AppHeader[];
+    }
+
     getData() {
         return [
             {

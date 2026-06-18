@@ -1,4 +1,3 @@
-
 :host ::ng-deep .p-rowgroup-footer td {
     font-weight: 700;
 }
@@ -9,19 +8,18 @@
     }
 
     .p-row-toggler {
+        margin-right: 0.25rem;
         vertical-align: middle;
-        margin-right: .25rem;
     }
 }
 
-
-
 :host ::ng-deep .p-dialog-content ol {
-    list-style-type: decimal !important;
     padding-left: 1.5rem !important;
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
+    list-style-type: decimal !important;
 }
+
 :host ::ng-deep .p-dialog-content li {
     display: list-item !important;
 }

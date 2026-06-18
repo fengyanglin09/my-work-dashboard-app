@@ -19,10 +19,10 @@ export class DevResDataService {
                         { label: 'Server Status', type: 'link', icon:'fas fa-link',  url:'https://status.dev.azure.com/' },
                         { label: 'Azure Portal', type: 'link', icon:'fas fa-link',  url:'https://portal.azure.com/' },
                         { label: 'Azure Entra Admin Center', type: 'link', icon:'fas fa-link',  url:'https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/' },
-                        { label: 'Azure App Registration', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/app-registration.md' },
-                        { label: 'Azure Assign AD Group for Users', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/load-user-group.md' },
-                        { label: 'ResourceServerASPDOTNET', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/asp.net-core-resource-server.md' },
-                        { label: 'Azure CLI', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/azure/azure-cli-mac-cheatsheet.md' },
+                        { label: 'Azure App Registration', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/azure-app-registration.md' },
+                        { label: 'Azure Assign AD Group for Users', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/azure-load-user-group.md' },
+                        { label: 'ResourceServerASPDOTNET', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/security/aspnet-core-resource-server.md' },
+                        { label: 'Azure CLI', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/azure-cli-mac-cheatsheet.md' },
                         { label: 'Enterprise Skills Init', type: 'link', icon:'fas fa-link',  url:'https://esi.microsoft.com/' },
                     ]
                 },
@@ -36,10 +36,10 @@ export class DevResDataService {
                         { label: 'Server Status (USA)', type: 'link', icon:'fas fa-link',  url:'https://status.cloud.google.com/regional/americas' },
                         { label: 'Cloud App Factory (CAF)', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/Cloud-App-Factory.aspx' },
                         { label: 'CAF Documents', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/Shared%20Documents/Forms/AllItems.aspx' },
-                        { label: 'CAF Pipeline Info', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/CAF/caf_pipeline.md' },
+                        { label: 'CAF Pipeline Info', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/caf-pipeline.md' },
                         { label: 'CAF Best Practices', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/CAF-Best-Practices.aspx?xsdata=MDV8MDJ8fDc4ZWRiZTI4NWQwODQwN2RmYmIxMDhkZTJiOWFhMGVmfGEyNWZmZjljM2Y2MzRmYjI5YThhZDliZGQwMzIxZjlhfDB8MHw2Mzg5OTYxNDAyNTgyMjkxNjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T20xbFpYUnBibWRmVFRKSk5VNXFVWGxOYWxsMFQxUk5lVnBwTURCT1JHc3pURmRGZVU1NlozUk5WMHBxV21wb2JVMUVhelZPVjBaclFIUm9jbVZoWkM1Mk1pOXRaWE56WVdkbGN5OHhOelkwTURFM01qSTBOVE00fDIzMDkxMzUyODcxNTRjMWI5OTUzMDhkZTJiOWFhMGVkfDU2NmMyYTNkNzQ2ODQ3MGE4Y2M0YzdlYzcxZWY5OTZm&sdata=azA5UllDOVZxVUVDTUFtbklKazNUbVFkTFZPeHdBK29rMEtSemFHK09uRT0%3d&ovuser=a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a%2cLin.Pengpeng%40mayo.edu&OR=Teams-HL&CT=1764035189819&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI1MC8yNTExMDIwMjMxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d&SafelinksUrl=https%3a%2f%2fmctools.sharepoint.com%2fteams%2fcloudappfactory%2fSitePages%2fCAF-Best-Practices.aspx' },
                         { label: 'SDE ADL/LPR', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/SDE-ADL-LPR-How-To.aspx?web=1' },
-                        { label: 'CAF Docs', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/CAF/caf_docs.md' },
+                        { label: 'CAF Docs', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/caf-docs.md' },
                         { label: 'MCC Live & MCC Solution', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/SDE-MCC-Live-App-Tenant-How-To.aspx?web=1' },
                         { label: 'MCC Big Query', type: 'link', icon:'fas fa-link',  url:'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/BigQuery-QuickStart.aspx' },
                         { label: 'Mayo GCP Learning', type: 'link', icon:'fas fa-link',  url:'https://mcc.mayo.edu/resources/google-learning' },
@@ -68,7 +68,7 @@ export class DevResDataService {
                 {
                     label: 'Mayo Integration',
                     items: [
-                        { label: 'Cleo Harmony', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/integration/Cleo-Harmony.md' },
+                        { label: 'Cleo Harmony', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/integration/cleo-harmony.md' },
                     ]
                 },
 
@@ -82,7 +82,7 @@ export class DevResDataService {
                         { label: 'Kubernetes Engine (GKE)', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/kubernetes' },
                         { label: 'Cloud Functions', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/functions' },
                         { label: 'Cloud Run', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/run' },
-                        { label: 'BigQuery', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/cloud/gcp/bigquery.md' },
+                        { label: 'BigQuery', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/cloud/gcp-bigquery.md' },
                         { label: 'Cloud SQL', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/sql' },
                         { label: 'Firestore', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/firestore' },
                         { label: 'Datastore', type: 'link', icon:'fas fa-link',  url:'https://console.cloud.google.com/datastore' },
@@ -110,7 +110,7 @@ export class DevResDataService {
                 {
                     label: 'Security',
                     items: [
-                        { label: 'Client Credential Api Tool Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/security/oauth-setup-keyrunner.md' },
+                        { label: 'Client Credential Api Tool Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/security/oauth-setup-keyrunner.md' },
 
 
                     ]
@@ -153,8 +153,8 @@ export class DevResDataService {
                             { label: 'MongoDB', type: 'link', icon:'fas fa-link',  url:'https://www.mongodb.com/docs/manual/core/databases-and-collections/' },
                             { label: 'H2', type: 'link', icon:'fas fa-link',  url:'https://www.h2database.com/html/main.html' },
                             { label: 'SQLite', type: 'link', icon:'fas fa-link',  url:'https://sqlite.org/' },
-                            { label: 'MSSQL Local Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/database/sqlserver-mac-m4-podman.md' },
-                            { label: 'MSSQL Local Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/database/sqlserver-mac-setup-summary.md' },
+                            { label: 'MSSQL Local Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/database/sql-server-mac-m4-podman.md' },
+                            { label: 'MSSQL Local Setup', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/database/sql-server-mac-setup-summary.md' },
                         ]
                     },
                     {
@@ -177,8 +177,8 @@ export class DevResDataService {
                             { label: 'Git Cheat Sheet (GitHub)', type: 'link', icon:'fas fa-link',  url:'https://education.github.com/git-cheat-sheet-education.pdf' },
                             { label: 'Git Workflows', type: 'link', icon:'fas fa-link',  url:'https://nvie.com/posts/a-successful-git-branching-model/' },
                             { label: 'Git Workflows (Atlassian)', type: 'link', icon:'fas fa-link',  url:'https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow' },
-                            { label: 'Git Workflows (Team)', type: 'download', icon:'fas fa-download',  filePath: 'assets/downloadDocs/Gitflow.pdf' },
-                            { label: 'Git Removing File From History', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/git/git-cleanup-guide.md' },
+                            { label: 'Git Workflows (Team)', type: 'download', icon:'fas fa-download',  filePath: 'assets/pages/development-resources/downloads/gitflow.pdf' },
+                            { label: 'Git Removing File From History', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/git/git-cleanup-guide.md' },
                         ]
                     },
                     {
@@ -285,8 +285,8 @@ export class DevResDataService {
                     {
                         label: 'Spring Boot Development',
                         items: [
-                            { label: 'JAVA Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/JAVA/Manage_Java_Versions.md' },
-                            { label: 'JAVA Upgrade', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/JAVA/JDK_UPGRADE_PLAN.md' },
+                            { label: 'JAVA Installation', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/java/manage-java-versions.md' },
+                            { label: 'JAVA Upgrade', type: 'doc', icon:'fas fa-file-alt',  mdFilePath: 'assets/pages/development-resources/java/jdk-upgrade-plan.md' },
                             { label: 'Spring Official Docs', type: 'link', icon:'fas fa-link',  url:'https://docs.spring.io/spring-framework/docs/current/reference/html/' },
                             { label: 'Spring Boot Docs', type: 'link', icon:'fas fa-link',  url:'https://docs.spring.io/spring-boot/docs/current/reference/html/' },
                             { label: 'Spring Initializr', type: 'link', icon:'fas fa-link',  url:'https://start.spring.io/' },

@@ -1,63 +1,21 @@
-import { Component, OnInit, WritableSignal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ResourceCategory } from '../../core/model/cheatsheet.model';
 import { SupportResourcesService } from './support-resources.service';
-import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
-import { Button } from 'primeng/button';
-import { Dialog } from 'primeng/dialog';
-import { marked } from 'marked';
-import { HttpClient } from '@angular/common/http';
+import { ResourceDashboardComponent } from '../../shared/components/resource-dashboard/resource-dashboard.component';
 
 @Component({
     selector: 'app-support-resources',
-    imports: [Accordion, AccordionContent, AccordionHeader, AccordionPanel, Button, Dialog],
-    templateUrl: './support-resources.component.html',
-    styleUrl: './support-resources.component.scss'
+    imports: [ResourceDashboardComponent],
+    template: `<app-resource-dashboard [resources]="resources" [dialogStyle]="{ width: '50vw' }" />`
 })
 export class SupportResourcesComponent implements OnInit {
-    active: number | string = 'support documents';
+    resources: ResourceCategory[] = [];
 
-    supportResources!: ResourceCategory[];
-
-    protected showDialog: boolean | WritableSignal<boolean> = false;
-    protected dialogContent: any; // example - `<p>This is a <b>bold</b> word and <span style="color:blue">blue text</span>.</p> `
-
-
-    activeIndexChange(index: number | string) {
-        this.active = index;
-    }
-
-    constructor(private dataService: SupportResourcesService, private http: HttpClient) {}
+    constructor(private dataService: SupportResourcesService) {}
 
     ngOnInit(): void {
         this.dataService.getDataXLarge().then((data) => {
-            this.supportResources = data;
-        });
-    }
-
-    getMaxItems(resource: any) {
-        return Math.max(...resource.resources.map((r: any) => r.items.length));
-    }
-
-    getTotalItemCount(resource: any) {
-        return resource.resources.reduce((total: number, r: any) => total + r.items.length, 0);
-    }
-
-    protected hideDialog() {
-        this.showDialog = false;
-    }
-
-    protected displayDialog(text: string) {
-        this.dialogContent = text;
-        this.showDialog = true;
-    }
-
-    /**
-     * Loads a markdown file, parses it to HTML, and displays in dialog
-     */
-    protected displayMarkdownDialog(mdFilePath: string) {
-        this.http.get(mdFilePath, { responseType: 'text' }).subscribe(md => {
-            this.dialogContent = marked.parse(md);
-            this.showDialog = true;
+            this.resources = data;
         });
     }
 }
