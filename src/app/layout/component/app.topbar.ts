@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StyleClassModule } from 'primeng/styleclass';
 import { LayoutService } from '../service/layout.service';
@@ -48,7 +48,7 @@ import { UserInfoComponent } from '../../shared/components/user-info/user-info.c
                         <!--                        <span>Messages</span>-->
                         <!--                    </button>-->
 
-                        @if (userPhoto !== null) {
+                        @if (userInfo) {
                             <button
                                 #profile
                                 type="button"
@@ -56,7 +56,12 @@ import { UserInfoComponent } from '../../shared/components/user-info/user-info.c
                                 (click)="op.toggle($event)"
                                 aria-label="User menu"
                             >
-                                <p-avatar [image]="userPhoto" shape="circle" styleClass="ring-2 ring-offset-2 ring-primary"></p-avatar>
+                                <p-avatar
+                                    [image]="userPhoto"
+                                    [label]="userPhoto ? undefined : userInitials"
+                                    shape="circle"
+                                    styleClass="ring-2 ring-offset-2 ring-primary"
+                                ></p-avatar>
                             </button>
 
                             <p-popover
@@ -64,7 +69,7 @@ import { UserInfoComponent } from '../../shared/components/user-info/user-info.c
                                 styleClass="profile-popover"
                                 [appendTo]="profile"
                             >
-                                <app-user-card [user]="userInfo" [photo]="userPhoto"></app-user-card>
+                                <app-user-card [user]="userInfo" [photo]="userPhoto" (logout)="logout()"></app-user-card>
                             </p-popover>
 
                         } @else {
@@ -90,25 +95,42 @@ export class AppTopbar implements OnInit {
     @Input()
     userInfo: UserInfo | undefined = undefined;
 
+    userInitials = '';
+
     constructor(
         public layoutService: LayoutService,
-        private auth: AuthService
+        private auth: AuthService,
+        private router: Router
     ) {}
     ngOnInit(): void {
         if (this.auth.isLoggedIn()) {
             this.auth.getUserProfile().then((user) => {
-                console.log('User info:', user);
                 this.userInfo = user;
+                this.userInitials = this.getInitials(user.fullName);
             });
 
             this.auth.getUserPhoto().then((photo) => {
                 this.userPhoto = photo;
-                // console.log(photo);
             });
         }
     }
 
+    logout() {
+        this.auth.logout();
+        this.router.navigate(['/login']);
+    }
+
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
+    }
+
+    private getInitials(name: string): string {
+        return name
+            .split(' ')
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((part) => part[0])
+            .join('')
+            .toUpperCase();
     }
 }

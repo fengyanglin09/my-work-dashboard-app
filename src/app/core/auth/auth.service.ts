@@ -1,143 +1,183 @@
 import { Injectable } from '@angular/core';
-import {
-    MsalService,
-    MsalBroadcastService
-} from '@azure/msal-angular';
-import { AuthenticationResult, AccountInfo } from '@azure/msal-browser';
-import { HttpClient } from '@angular/common/http';
-import { filter } from 'rxjs/operators';
-import { firstValueFrom } from 'rxjs';
-import { UserInfo } from './auth.model';
+import { environment } from '../../../environments/environment';
+import { GoogleCredentialResponse, GoogleIdTokenPayload, UserInfo } from './auth.model';
+
+declare global {
+    interface Window {
+        google?: {
+            accounts: {
+                id: {
+                    initialize: (config: GoogleIdentityInitializeConfig) => void;
+                    renderButton: (parent: HTMLElement, options: GoogleIdentityButtonConfig) => void;
+                    prompt: () => void;
+                    disableAutoSelect: () => void;
+                };
+            };
+        };
+    }
+}
+
+interface GoogleIdentityInitializeConfig {
+    client_id: string;
+    callback: (response: GoogleCredentialResponse) => void;
+    auto_select?: boolean;
+    cancel_on_tap_outside?: boolean;
+}
+
+interface GoogleIdentityButtonConfig {
+    theme?: 'outline' | 'filled_blue' | 'filled_black';
+    size?: 'large' | 'medium' | 'small';
+    text?: 'signin_with' | 'signup_with' | 'continue_with' | 'signin';
+    shape?: 'rectangular' | 'pill' | 'circle' | 'square';
+    logo_alignment?: 'left' | 'center';
+    width?: string | number;
+}
+
+const credentialStorageKey = 'mqml-dashboard.googleCredential';
+const userStorageKey = 'mqml-dashboard.googleUser';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    private credential: string | null = localStorage.getItem(credentialStorageKey);
+    private profile: GoogleIdTokenPayload | null = this.readStoredProfile();
 
-    private activeAccount: AccountInfo | null = null;
-
-    constructor(
-        private msal: MsalService,
-        private http: HttpClient,
-        private msalBroadcast: MsalBroadcastService
-    ) {
-        this.initialize();
-    }
-
-    /** Initialize MSAL & activate account */
-    private initialize() {
-        const accounts = this.msal.instance.getAllAccounts();
-        if (accounts.length > 0) {
-            this.activeAccount = accounts[0];
-            this.msal.instance.setActiveAccount(accounts[0]);
-        }
-
-        // Listen for login redirect complete
-        this.msalBroadcast.inProgress$
-            .pipe(filter((status) => status === 'none'))
-            .subscribe(() => {
-                const active = this.msal.instance.getActiveAccount();
-                if (active) this.activeAccount = active;
-            });
-    }
-
-    /** Trigger login */
-    login() {
-        this.msal.loginRedirect();
-    }
-
-    /** Trigger logout */
-    logout() {
-        this.msal.logoutRedirect();
-    }
-
-    /** Whether user is logged in */
     isLoggedIn(): boolean {
-        return !!this.activeAccount;
+        return !!this.profile && !this.isExpired(this.profile);
     }
 
-    /** Extract ID token */
+    async initializeGoogleButton(parent: HTMLElement, onSuccess: () => void): Promise<void> {
+        await this.waitForGoogleIdentity();
+
+        window.google!.accounts.id.initialize({
+            client_id: environment.googleClientId,
+            callback: (response) => {
+                this.handleCredentialResponse(response);
+                onSuccess();
+            },
+            auto_select: false,
+            cancel_on_tap_outside: true
+        });
+
+        parent.innerHTML = '';
+        window.google!.accounts.id.renderButton(parent, {
+            theme: 'outline',
+            size: 'large',
+            text: 'signin_with',
+            shape: 'rectangular',
+            logo_alignment: 'left',
+            width: 280
+        });
+    }
+
+    logout(): void {
+        this.credential = null;
+        this.profile = null;
+        localStorage.removeItem(credentialStorageKey);
+        localStorage.removeItem(userStorageKey);
+        window.google?.accounts.id.disableAutoSelect();
+    }
+
     getIdToken(): string | null {
-        const idToken = this.msal.instance.getActiveAccount()?.idTokenClaims;
-        return idToken ? JSON.stringify(idToken) : null;
+        return this.credential;
     }
 
-    /** Extract App Roles from ID token */
     getUserRoles(): string[] {
-        const claims: any = this.msal.instance.getActiveAccount()?.idTokenClaims;
-        if (!claims) return [];
-
-        // appRoles are usually under "roles" or "appRoles"
-        return claims.roles || claims.appRoles || [];
+        return ['Google User'];
     }
 
-    /** Get Microsoft 365 user profile (name, email, etc.) */
-    async getUserInfo(): Promise<any> {
-        const token = await this.getAccessToken(["User.Read", "Group.Read.All", "User.Read.All"]);
-
-        return firstValueFrom(this.http.get("https://graph.microsoft.com/v1.0/me", {
-            headers: { Authorization: `Bearer ${token}` }
-        }));
+    async getUserInfo(): Promise<UserInfo | null> {
+        return this.getUserProfile();
     }
 
-
-    /** Acquire access token */
-    async getAccessToken(scopes: string[] = ["User.Read"]): Promise<string | null> {
-        try {
-            const result = await firstValueFrom(this.msal.acquireTokenSilent({
-                scopes,
-                account: this.activeAccount!
-            }));
-            return result.accessToken as string;
-        } catch {
-            // Redirect fallback
-            this.msal.acquireTokenRedirect({ scopes });
-            return null;
-        }
+    async getAccessToken(): Promise<string | null> {
+        return null;
     }
 
-    /** Get user profile info from Graph */
     async getUserProfile(): Promise<UserInfo> {
-        const token = await this.getAccessToken(["User.Read"]);
-
-        const graphUser: any = await firstValueFrom(
-            this.http.get("https://graph.microsoft.com/v1.0/me", {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-        );
-
-
+        if (!this.profile) {
+            throw new Error('No Google profile is available.');
+        }
 
         return {
-            fullName: graphUser.displayName,
-            firstName: graphUser.givenName,
-            lastName: graphUser.surname,
-            jobTitle: graphUser.jobTitle,
-            email: graphUser.mail || graphUser.userPrincipalName,
+            fullName: this.profile.name,
+            firstName: this.profile.given_name,
+            lastName: this.profile.family_name,
+            email: this.profile.email,
+            jobTitle: 'Google account',
             roles: this.getUserRoles()
-        } as UserInfo;
+        };
     }
 
-    /** Get user photo as base64 */
     async getUserPhoto(): Promise<string | null> {
-        const token = await this.getAccessToken(["User.Read"]);
-        try {
-            const blob = await firstValueFrom(
-                this.http
-                .get("https://graph.microsoft.com/v1.0/me/photo/$value", {
-                    headers: { Authorization: `Bearer ${token}` },
-                    responseType: 'blob'
-                }));
+        return this.profile?.picture ?? null;
+    }
 
-            return await this.convertBlobToBase64(blob!);
+    private handleCredentialResponse(response: GoogleCredentialResponse): void {
+        const profile = this.decodeCredential(response.credential);
+
+        this.credential = response.credential;
+        this.profile = profile;
+
+        localStorage.setItem(credentialStorageKey, response.credential);
+        localStorage.setItem(userStorageKey, JSON.stringify(profile));
+    }
+
+    private decodeCredential(credential: string): GoogleIdTokenPayload {
+        const payload = credential.split('.')[1];
+        const normalizedPayload = this.padBase64(payload.replace(/-/g, '+').replace(/_/g, '/'));
+        const decodedPayload = decodeURIComponent(
+            atob(normalizedPayload)
+                .split('')
+                .map((char) => `%${(`00${char.charCodeAt(0).toString(16)}`).slice(-2)}`)
+                .join('')
+        );
+
+        const profile = JSON.parse(decodedPayload) as GoogleIdTokenPayload;
+        if (profile.aud !== environment.googleClientId) {
+            throw new Error('Google credential audience does not match this app.');
+        }
+
+        return profile;
+    }
+
+    private readStoredProfile(): GoogleIdTokenPayload | null {
+        const rawProfile = localStorage.getItem(userStorageKey);
+        if (!rawProfile) {
+            return null;
+        }
+
+        try {
+            const profile = JSON.parse(rawProfile) as GoogleIdTokenPayload;
+            return this.isExpired(profile) || profile.aud !== environment.googleClientId ? null : profile;
         } catch {
             return null;
         }
     }
 
-    private convertBlobToBase64(blob: Blob): Promise<string> {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result as string);
-            reader.readAsDataURL(blob);
+    private isExpired(profile: GoogleIdTokenPayload): boolean {
+        return profile.exp * 1000 <= Date.now();
+    }
+
+    private padBase64(value: string): string {
+        const padding = value.length % 4;
+        return padding === 0 ? value : `${value}${'='.repeat(4 - padding)}`;
+    }
+
+    private waitForGoogleIdentity(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            const startedAt = Date.now();
+            const timer = window.setInterval(() => {
+                if (window.google?.accounts?.id) {
+                    window.clearInterval(timer);
+                    resolve();
+                    return;
+                }
+
+                if (Date.now() - startedAt > 5000) {
+                    window.clearInterval(timer);
+                    reject(new Error('Google Identity Services did not load.'));
+                }
+            }, 50);
         });
     }
 }

@@ -4,6 +4,7 @@
     <div class="flex flex-col items-center text-center gap-2">
         <p-avatar
             [image]="photo"
+            [label]="photo ? undefined : user?.fullName?.charAt(0)"
             shape="circle"
             size="xlarge">
         </p-avatar>
@@ -37,4 +38,15 @@
             }
         </div>
     </div>
+
+    <button
+        pButton
+        type="button"
+        severity="secondary"
+        outlined
+        label="Sign out"
+        icon="pi pi-sign-out"
+        class="w-full"
+        (click)="logout.emit()"
+    ></button>
 </div>

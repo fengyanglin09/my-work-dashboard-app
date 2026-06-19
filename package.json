@@ -19,8 +19,6 @@
         "@angular/platform-browser": "^19.0.0",
         "@angular/platform-browser-dynamic": "^19.0.0",
         "@angular/router": "^19.0.0",
-        "@azure/msal-angular": "^4.0.21",
-        "@azure/msal-browser": "^4.26.1",
         "@fortawesome/fontawesome-free": "^7.1.0",
         "@primeng/themes": "^19.0.5",
         "chart.js": "4.4.2",

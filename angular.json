@@ -44,6 +44,7 @@
                     },
                     "configurations": {
                         "production": {
+                            "baseHref": "/my-work-dashboard-app/",
                             "budgets": [
                                 {
                                     "type": "initial",
