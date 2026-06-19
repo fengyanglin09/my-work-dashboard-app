@@ -66,6 +66,7 @@ export interface ApplicationDashboardApp {
     repos?: AppRepo[];
     updatedOn?: string | Date;
     appSpecs?: string;
+    appSpecsMdFilePath?: string;
     appCategory?: AppCategory;
 }
 

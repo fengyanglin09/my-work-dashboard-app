@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AppHeader, AppHeaderInfo, SpecialtyApp } from './spap-data.model';
 
 @Injectable()
@@ -85,24 +84,7 @@ export class SpapDataService {
                     }
                 ],
                 updatedOn: '2025-11-09',
-                appSpecs: `
-                        <div>
-                          <p><b>Dependency App:</b> <span style="color:#2c7be5;">CliApi</span></p>
-                          <ol style="margin-left: 1rem; list-style-type: decimal;">
-                            <li><code>/v1/Sslv/SampleInfo</code></li>
-                            <li><code>/v1/Sslv/Result</code></li>
-                            <li><code>/v1/SoftMic/Patient/getDemographics</code></li>
-                          </ol>
-                        </div>
-                         <div style="margin-top:5rem;">
-                          <p><b>Dependency Auth Server:</b> <span style="color:#2c7be5;">Azure Entra ID</span></p>
-                          <ol style="margin-left: 1rem; list-style-type: decimal;">
-                            <li><code>Azure Tenant Id - a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a</code></li>
-                            <li><code>App Roles - ADMINISTRATOR, TECH, SPECIALIST, CONSULTANT</code></li>
-                          </ol>
-                        </div>
-
-                        `,
+                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/smash.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -183,25 +165,7 @@ export class SpapDataService {
                     }
                 ],
                 updatedOn: '2025-11-18',
-                appSpecs: `
-                         <div>
-                              <p><b>Dependency App:</b> <span style="color:#2c7be5;">CliApi</span></p>
-                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
-                                <li><code>/v1/Result/bioChem</code></li>
-                                <li><code>/v1/Sslv/SampleInfo</code></li>
-                                <li><code>/v1/Sslv/Result</code></li>
-                                <li><code>/v1/SoftMic/Patient/getDemographics</code></li>
-                                <li><code>/v1/Case/SoftId/Search</code></li>
-                              </ol>
-                          </div>
-                          <div style="margin-top:5rem;">
-                              <p><b>Dependency Auth Server:</b> <span style="color:#2c7be5;">Azure Entra ID</span></p>
-                              <ol style="margin-left: 1rem; list-style-type: decimal;">
-                                <li><code>Azure Tenant Id - a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a</code></li>
-                                <li><code>App Roles - ADMINISTRATOR, TECH, NURSE</code></li>
-                              </ol>
-                        </div>
-                        `,
+                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/gfr.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -363,28 +327,7 @@ export class SpapDataService {
                     }
                 ],
                 updatedOn: '2025-11-09',
-                appSpecs: `
-                         <div>
-                              <p><b>Client Apps:</b></p>
-                              <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem;">
-                                <li><code>NGS Workbench (NGSWB)
-                                 <a href="https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:ngswb" target="_blank" rel="noopener">
-                                  <i class="fa fa-external-link-alt"></i>
-                                 </a>
-                                </code></li>
-                                <li><code>Microarray Workbench (MaWB/ACGH)
-                                 <a href="https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:acgh" target="_blank" rel="noopener">
-                                  <i class="fa fa-external-link-alt"></i>
-                                 </a>
-                                </code></li>
-                                <li><code>Mayo Gene Knowledge (MGK)
-                                <a href="https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:mgk" target="_blank" rel="noopener">
-                                  <i class="fa fa-external-link-alt"></i>
-                                </a>
-                                </code></li>
-                              </ol>
-                          </div>
-                        `,
+                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/pub-services.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -465,7 +408,7 @@ export class SpapDataService {
                     }
                 ],
                 updatedOn: '2026-01-08',
-                appSpecs: ``,
+                appSpecs: undefined,
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -546,7 +489,7 @@ export class SpapDataService {
                     }
                 ],
                 updatedOn: '2026-01-08',
-                appSpecs: ``,
+                appSpecs: undefined,
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -797,7 +740,7 @@ export class SpapDataService {
         ] as SpecialtyApp[];
     }
 
-    constructor(private http: HttpClient) {}
+    constructor() {}
 
     getDataMini() {
         return Promise.resolve(this.getData().slice(0, 5));

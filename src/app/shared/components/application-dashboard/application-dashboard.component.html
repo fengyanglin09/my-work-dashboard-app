@@ -140,9 +140,9 @@
                 <td>
                     <i
                         [class]="AppItemIcon['appSpecificationLink']"
-                        [ngStyle]="{ color: app.appSpecs ? 'green' : 'gray', cursor: app.appSpecs ? 'pointer' : 'not-allowed' }"
+                        [ngStyle]="{ color: hasAppSpecs(app) ? 'green' : 'gray', cursor: hasAppSpecs(app) ? 'pointer' : 'not-allowed' }"
                         style="font-size: 1.2em"
-                        (click)="app.appSpecs && displayDialog(app.appSpecs)"
+                        (click)="hasAppSpecs(app) && displayAppSpecs(app)"
                     ></i>
                 </td>
 

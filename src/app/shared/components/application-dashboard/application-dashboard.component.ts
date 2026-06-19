@@ -1,4 +1,5 @@
 import { DatePipe, NgForOf, NgIf, NgStyle } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges } from '@angular/core';
 import { ButtonDirective } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
@@ -11,6 +12,7 @@ import { SpeedDial } from 'primeng/speeddial';
 import { TableModule } from 'primeng/table';
 import { Tag } from 'primeng/tag';
 import { Tooltip } from 'primeng/tooltip';
+import { marked } from 'marked';
 import { AppHeader, AppHostIcon, AppItemIcon, ApplicationDashboardApp } from '../../../core/model/application-dashboard.model';
 
 @Component({
@@ -30,6 +32,8 @@ export class ApplicationDashboardComponent implements OnChanges {
     protected readonly AppItemIcon = AppItemIcon;
     protected showDialog = false;
     protected dialogContent = '';
+
+    constructor(private http: HttpClient) {}
 
     ngOnChanges(): void {
         this.expandedRowGroupKeys = {};
@@ -82,9 +86,33 @@ export class ApplicationDashboardComponent implements OnChanges {
         this.showDialog = false;
     }
 
-    protected displayDialog(appSpecs: string) {
+    protected hasAppSpecs(app: ApplicationDashboardApp): boolean {
+        return !!app.appSpecsMdFilePath || !!app.appSpecs;
+    }
+
+    protected displayAppSpecs(app: ApplicationDashboardApp) {
+        if (app.appSpecsMdFilePath) {
+            this.displayMarkdownDialog(app.appSpecsMdFilePath);
+            return;
+        }
+
+        if (app.appSpecs) {
+            this.displayDialog(app.appSpecs);
+        }
+    }
+
+    private displayDialog(appSpecs: string) {
         this.dialogContent = appSpecs;
         this.showDialog = true;
+    }
+
+    private displayMarkdownDialog(mdFilePath: string) {
+        this.http.get(mdFilePath, { responseType: 'text' }).subscribe((md) => {
+            Promise.resolve(marked.parse(md)).then((html) => {
+                this.dialogContent = html;
+                this.showDialog = true;
+            });
+        });
     }
 
     protected getAppHostIcon(appHost: ApplicationDashboardApp['appHost']): string {
