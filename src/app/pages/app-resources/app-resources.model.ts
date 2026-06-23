@@ -9,8 +9,15 @@ export const APP_RESOURCES: ResourceCategory[] = [
         description: 'Nerds app-specific resources',
         resources: [
             {
-                label: 'Database',
+                label: 'LocalSetup',
                 items: [
+                    {
+                        label: 'NERDS Local Setup',
+                        type: 'doc',
+                        icon: 'fas fa-file-alt',
+                        mdFilePath: 'assets/pages/app-resources/nerds/nerds-steup.md',
+                        action: () => {}
+                    },
                     {
                         label: 'SQL Server BACPAC Import - Podman macOS',
                         type: 'doc',
