@@ -1,0 +1,26 @@
+import { ResourceCategory } from '../../core/model/cheatsheet.model';
+import { doc, download, link } from '../../core/model/resource-item.factory';
+
+export const APP_RESOURCES: ResourceCategory[] = [
+    {
+        id: 1,
+        label: 'Nerds',
+        activeItemId: 'nerds',
+        name: 'nerds',
+        description: 'Nerds app-specific resources',
+        resources: [
+            {
+                label: 'LocalSetup',
+                items: [
+                    doc('NERDS Local Setup', 'assets/pages/app-resources/nerds/nerds-steup.md'),
+                    doc('SQL Server BACPAC Import - Podman macOS', 'assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md'),
+                    doc('Java cacerts Import Reference', 'assets/pages/app-resources/nerds/Java_cacerts_Import_Reference.md'),
+                    doc('Understanding Java Keystores and Truststores', 'assets/pages/app-resources/nerds/understanding_java_keystores_truststores.md'),
+                    download('Zscaler Certificate DER', 'assets/pages/app-resources/nerds/zscalercert.der'),
+                    download('Zscaler Certificate PEM', 'assets/pages/app-resources/nerds/zscalercert.pem'),
+                    link('Mayo Zscaler Knowledge Page', 'https://mcsm.service-now.com/now/nav/ui/classic/params/target/kb_view.do%3Fsysparm_article%3DKB0231309')
+                ]
+            }
+        ]
+    }
+];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpapDataService } from './spap-data.service';
-import { AppHeader, SpecialtyApp } from './spap-data.model';
+import { AppHeader, SpecialtyApp } from '../../core/model/application-dashboard.model';
 import { ApplicationDashboardComponent } from '../../shared/components/application-dashboard/application-dashboard.component';
 
 @Component({
