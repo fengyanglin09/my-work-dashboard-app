@@ -84,7 +84,7 @@ Install Microsoft Azure Storage Explorer from the official download page:
 
 If NERDS needs the local SQL Server database, use the companion setup guide:
 
-[SQL Server BACPAC Import - Podman macOS](assets/pages/app-resources/sqlserver_bacpac_import_podman_macos.md)
+[SQL Server BACPAC Import - Podman macOS](assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md)
 
 ## Quick Sanity Check
 
