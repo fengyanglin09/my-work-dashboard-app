@@ -13,6 +13,7 @@ export const SUPPORT_RESOURCES: ResourceCategory[] = [
                         label: 'LT SAA',
                         items: [
                             link('SharePoint Home Page', 'https://mctools.sharepoint.com/teams/LTSAA'),
+                            link('LT SAA Dashboard', 'https://mcsm.service-now.com/$pa_dashboard.do?sysparm_dashboard=8e4d18ed93290750b348f5cb5cba1036&sysparm_tab=7e5d5ced93290750b348f5cb5cba10c4&sysparm_cancelable=true&sysparm_editable=undefined&sysparm_active_panel=false'),
                             download('PTO Request Process', 'assets/pages/support-resources/downloads/pto-request-process.pdf')
                         ]
                     },
