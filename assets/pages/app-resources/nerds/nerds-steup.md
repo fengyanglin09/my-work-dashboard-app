@@ -138,3 +138,20 @@ Start Azurite again after cleanup.
 - [Install and run the Azurite emulator](https://learn.microsoft.com/en-us/azure/storage/common/storage-install-azurite)
 - [Use the Azurite emulator for local Azure Storage development](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite)
 - [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/)
+
+
+### Environment Variables for local Development (backend)
+APPLICATIONINSIGHTS_CONNECTION_STRING -> InstrumentationKey=f6390ebd-bd75-4532-ab84-14808fbe8f79
+azure.activedirectory.allow-telemetry -> true
+AzureKeyVaultBaseUrl -> https://cad-dev-napi-v3nc-kv.vault.azure.net
+AzureWebJobsStorage. -> UseDevelopmentStorage=true
+databaseName -> mydb
+encrypt -> true
+NerdsToSoftTestResultsQueueName -> nerds-local
+password -> NerdsLocalRun01
+SPRING_DATASOURCE_REPORTING_URL -> jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01
+SPRING_DATASOURCE_URL -> jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01
+SPRING_PROFILES_ACTIVE -> localdb
+trustServerCertificate -> true
+useIntelliJAzureCredentials -> CLI
+user -> sa
