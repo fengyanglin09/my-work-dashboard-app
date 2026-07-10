@@ -394,7 +394,8 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                         items: [
                             link('MAYA (Mayo Clinic)', 'https://app.maya.mayo.edu/agents/servicedesk'),
                             link('LiteLLM (Mayo Clinic)', 'https://llmgateway.mayo.edu/ui/'),
-                            link('LLM Gateway (Mayo Clinic)', 'https://llmgateway.mayo.edu/#/')
+                            link('LLM Gateway (Mayo Clinic)', 'https://llmgateway.mayo.edu/#/'),
+                            link('Claude Code via LLM Gateway (Mayo Clinic)', 'https://mctools-my.sharepoint.com/:w:/g/personal/mattson_nathan_mayo_edu/IQAEV2RfIUNbRZQzvFbSsMzyASK0OE-C2O4T1h1IO6ugu68?wdExp=TEAMS-TREATMENT&web=1&TeamsCID=63d1100e-40a3-476d-9c67-ae18e06fff59&isSPOFile=1&ovuser=a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a%2CLin.Pengpeng%40mayo.edu&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI1MC8yNjA2MTExODIxNiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&linkOpenTime=1783701397218'),
                         ]
                     },
                     {
