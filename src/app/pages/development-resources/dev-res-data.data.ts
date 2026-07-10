@@ -392,7 +392,9 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                     {
                         label: 'Org Specific',
                         items: [
-                            link('MAYA (Mayo Clinic)', 'https://app.maya.mayo.edu/agents/servicedesk')
+                            link('MAYA (Mayo Clinic)', 'https://app.maya.mayo.edu/agents/servicedesk'),
+                            link('LiteLLM (Mayo Clinic)', 'https://llmgateway.mayo.edu/ui/'),
+                            link('LLM Gateway (Mayo Clinic)', 'https://llmgateway.mayo.edu/#/')
                         ]
                     },
                     {
