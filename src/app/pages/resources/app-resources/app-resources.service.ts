@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ResourceCategory } from '../../core/model/cheatsheet.model';
-import { SUPPORT_RESOURCES } from './support-resources.data';
+import { ResourceCategory } from '../../../core/model/cheatsheet.model';
+import { APP_RESOURCES } from './app-resources.data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SupportResourcesService {
+export class AppResourcesService {
     getData(): ResourceCategory[] {
-        return SUPPORT_RESOURCES;
+        return APP_RESOURCES;
     }
 
     getDataMini() {

@@ -1,5 +1,5 @@
-import { ResourceCategory } from '../../core/model/cheatsheet.model';
-import { doc, link } from '../../core/model/resource-item.factory';
+import { ResourceCategory } from '../../../core/model/cheatsheet.model';
+import { doc, link } from '../../../core/model/resource-item.factory';
 
 export const ACCESS_AND_ACCOUNT_RESOURCES: ResourceCategory[] = [
             {

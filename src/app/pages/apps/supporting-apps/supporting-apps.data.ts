@@ -1,10 +1,10 @@
-import { AppHeader, SpecialtyApp } from '../../core/model/application-dashboard.model';
+import { AppHeader, SpecialtyApp } from '../../../core/model/application-dashboard.model';
 
-export const AppHeaderInfo: AppHeader[] = [
+export const SUPPORTING_APP_HEADERS: AppHeader[] = [
     {
         id: 1,
         name: 'Java Apps',
-        image: 'assets/pages/specialty-apps/images/java-app.png',
+        image: 'assets/pages/supporting-apps/images/java-app.png',
         backlogUrl: [
             {
                 icon: 'fa fa-tasks',
@@ -31,19 +31,19 @@ export const AppHeaderInfo: AppHeader[] = [
     {
         id: 2,
         name: 'DotNet Apps',
-        image: 'assets/pages/specialty-apps/images/dotnet-app.png',
+        image: 'assets/pages/supporting-apps/images/dotnet-app.png',
         backlogUrl: undefined
     },
 
     {
         id: 3,
         name: 'Dependency Apps',
-        image: 'assets/pages/specialty-apps/images/dependency-app.png',
+        image: 'assets/pages/supporting-apps/images/dependency-app.png',
         backlogUrl: undefined
     }
 ];
 
-export const SPECIALTY_APPS: SpecialtyApp[] = [
+export const SUPPORTING_APPS: SpecialtyApp[] = [
             {
                 id: 11,
                 name: 'SMASH',
@@ -118,7 +118,7 @@ export const SPECIALTY_APPS: SpecialtyApp[] = [
                     }
                 ],
                 updatedOn: '2025-11-09',
-                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/smash.md',
+                appSpecsMdFilePath: 'assets/pages/supporting-apps/specs/smash.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -199,7 +199,7 @@ export const SPECIALTY_APPS: SpecialtyApp[] = [
                     }
                 ],
                 updatedOn: '2025-11-18',
-                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/gfr.md',
+                appSpecsMdFilePath: 'assets/pages/supporting-apps/specs/gfr.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -361,7 +361,7 @@ export const SPECIALTY_APPS: SpecialtyApp[] = [
                     }
                 ],
                 updatedOn: '2025-11-09',
-                appSpecsMdFilePath: 'assets/pages/specialty-apps/specs/pub-services.md',
+                appSpecsMdFilePath: 'assets/pages/supporting-apps/specs/pub-services.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'

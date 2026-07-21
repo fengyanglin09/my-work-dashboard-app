@@ -23,8 +23,9 @@ export class AppMenu {
             {
                 label: 'APPS',
                 items: [
-                    { label: 'SAA Apps', icon: 'fa fa-laptop', routerLink: ['/pages/specialty-app-dashboard'] },
-                    { label: 'CAD Apps', icon: 'fa fa-desktop', routerLink: ['/pages/cad-app-dashboard'] },
+                    { label: 'Supporting Apps', icon: 'fa fa-laptop', routerLink: ['/pages/specialty-app-dashboard'] },
+                    { label: 'Supported Apps', icon: 'fa fa-desktop', routerLink: ['/pages/cad-app-dashboard'] },
+                    { label: 'Dependent Apps', icon: 'fa fa-project-diagram', routerLink: ['/pages/dependent-app-dashboard'] }
                 ]
             },
 

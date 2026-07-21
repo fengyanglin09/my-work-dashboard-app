@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AppHeader, SpecialtyApp } from '../../core/model/application-dashboard.model';
-import { AppHeaderInfo, SPECIALTY_APPS } from './spap-data.data';
+import { AppHeader, SpecialtyApp } from '../../../core/model/application-dashboard.model';
+import { SUPPORTING_APP_HEADERS, SUPPORTING_APPS } from './supporting-apps.data';
+
+const dependentAppCategoryId = 3;
 
 @Injectable()
-export class SpapDataService {
+export class SupportingAppsService {
     getHeaderInfo(): AppHeader[] {
-        return AppHeaderInfo;
+        return SUPPORTING_APP_HEADERS.filter((header) => header.id !== dependentAppCategoryId);
     }
 
     getData(): SpecialtyApp[] {
-        return SPECIALTY_APPS;
+        return SUPPORTING_APPS.filter((app) => app.appCategory?.id !== dependentAppCategoryId);
     }
 
     getDataMini() {

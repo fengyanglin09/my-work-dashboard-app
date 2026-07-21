@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourceCategory } from '../../core/model/cheatsheet.model';
+import { ResourceCategory } from '../../../core/model/cheatsheet.model';
 import { DEVELOPMENT_RESOURCES } from './dev-res-data.data';
 
 @Injectable({

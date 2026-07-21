@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceCategory } from '../../core/model/cheatsheet.model';
+import { ResourceCategory } from '../../../core/model/cheatsheet.model';
 import { SupportResourcesService } from './support-resources.service';
-import { ResourceDashboardComponent } from '../../shared/components/resource-dashboard/resource-dashboard.component';
+import { ResourceDashboardComponent } from '../../../shared/components/resource-dashboard/resource-dashboard.component';
 
 @Component({
     selector: 'app-support-resources',

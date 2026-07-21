@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourceCategory } from '../../core/model/cheatsheet.model';
+import { ResourceCategory } from '../../../core/model/cheatsheet.model';
 import { ACCESS_AND_ACCOUNT_RESOURCES } from './access-and-account-resources.data';
 
 @Injectable({
