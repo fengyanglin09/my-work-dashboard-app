@@ -21,7 +21,7 @@ export const SUPPORT_RESOURCES: ResourceCategory[] = [
                         label: 'Mayo Internal',
                         items: [
                             link('Mayo Home Page', 'https://mayoweb.mayo.edu/'),
-                            link('IT Admin Page', 'https://mctools.sharepoint.com/teams/IT-Admin-Assist/SitePages/Home.aspx'),
+                            link('IT Admin Page', 'https://mctools.sharepoint.com/teams/ITAAS'),
                             doc('Peripherals Purchase', 'assets/pages/support-resources/admin/peripherals-purchase.md'),
                             link('Device Check', 'http://epsvc/refresh/eligible.aspx')
                         ]

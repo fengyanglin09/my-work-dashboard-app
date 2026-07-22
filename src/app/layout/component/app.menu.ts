@@ -32,7 +32,7 @@ export class AppMenu {
             {
                 label: 'Resources',
                 items: [
-                    { label: 'App Resources', icon: 'fa fa-layer-group', routerLink: ['/pages/app-resource-dashboard'] },
+                    { label: 'App Related', icon: 'fa fa-layer-group', routerLink: ['/pages/app-resource-dashboard'] },
                     { label: 'Development', icon: 'fa fa-tools', routerLink: ['/pages/development-resource-dashboard'] },
                     { label: 'Support', icon: 'fa fa-headset', routerLink: ['/pages/support-resource-dashboard'] },
                     { label: 'Access & Accounts', icon: 'fa fa-user-shield', routerLink: ['/pages/access-accounts-resource-dashboard'] },

@@ -407,5 +407,24 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                         ]
                     }
                 ]
+            },
+            {
+                id: 9,
+                label: 'Learning Resources',
+                activeItemId: 'learning-resources',
+                name: 'learning-resources',
+                description: 'learning resources',
+                resources: [
+                    {
+                        label: 'Mayo',
+                        items: [
+                            link('IT University', 'https://insideit.mayo.edu/it-university'),
+                            link('OReilly', 'https://learning.oreilly.com/home/'),
+                            link('Coursera', 'https://www.coursera.org/programs/mayoclinic'),
+                            link('Pluralsight', 'https://app.pluralsight.com/'),
+                            link('Udemy', 'https://mayoclinic.udemy.com/'),
+                        ]
+                    }
+                ]
             }
         ];
