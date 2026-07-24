@@ -39,12 +39,12 @@ export const SUPPORT_RESOURCES: ResourceCategory[] = [
                         label: 'ServiceNow',
                         items: [
                             link('ServiceNow', 'https://mcsm.service-now.com/'),
-                            link('Enterprise Directory Services', 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354')
                         ]
                     },
                     {
                         label: 'Cloud Requests',
                         items: [
+                            link('Azure Enterprise AD Request', 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item_guide&sys_id=b90f01ea470996104d0ce07a216d4354'),
                             doc('Cloud App Factory Request', 'assets/pages/support-resources/cloud/cloud-app-factory-request.md'),
                             link('Apigee Support Request', 'https://docs.mcc.mayo.edu/docs/mcc/apigee-x/contactusx')
                         ]

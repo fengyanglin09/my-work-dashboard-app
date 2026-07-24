@@ -548,7 +548,7 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
                         appSwaggerUri: '',
                         apigeeUri: '',
                         appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN835Q/dlmp_listit_dev;domain=MFAD;useNTLMv2=true',
-                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                        appAzureId: 'ede386e2-9f2c-4b66-a8bf-c1570d7dd053'
                     },
                     {
                         id: 2,
@@ -558,7 +558,7 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
                         appSwaggerUri: '',
                         apigeeUri: '',
                         appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN930Q/dlmp_listit_int;domain=MFAD;useNTLMv2=truee',
-                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                        appAzureId: 'ede386e2-9f2c-4b66-a8bf-c1570d7dd053'
                     },
                     {
                         id: 3,
