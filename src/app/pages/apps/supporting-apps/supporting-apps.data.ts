@@ -531,6 +531,87 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
             },
 
             {
+                id: 17,
+                name: 'LISTIT-PLUS',
+                appHost: 'on-premise',
+                configurationItem: 'CI00021082',
+                wikiLink: 'https://cadwiki.mayo.edu/dokuwiki/doku.php?id=application:ucm',
+                orgLink: 'https://mcsm.service-now.com/now/nav/ui/classic/params/target/cmdb_ci_service_discovered.do%3Fsys_id%3Daecdadcb6f912100f49377f16a3ee4d6',
+                onCallLink: 'https://mctools.sharepoint.com/:w:/r/teams/LTSAA/_layouts/15/Doc.aspx?sourcedoc=%7BCE70EBC9-CA8D-4387-9C05-A475C7325118%7D&file=System_Overview_LISTIT.docx&action=default&mobileredirect=true',
+
+                environments: [
+                    {
+                        id: 1,
+                        name: 'Dev Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN835Q/dlmp_listit_dev;domain=MFAD;useNTLMv2=true',
+                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                    },
+                    {
+                        id: 2,
+                        name: 'Int/Test Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN930Q/dlmp_listit_int;domain=MFAD;useNTLMv2=truee',
+                        appAzureId: '5d4c0d61-5d05-48ef-bd01-9430a887bc21'
+                    },
+                    {
+                        id: 3,
+                        name: 'Stg Environment',
+                        available: false,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: '',
+                        appAzureId: ''
+                    },
+                    {
+                        id: 4,
+                        name: 'Prod Environment',
+                        available: true,
+                        appWebUri: undefined,
+                        appSwaggerUri: '',
+                        apigeeUri: '',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN042Q/dlmp_listit_prod;domain=MFAD;useNTLMv2=true',
+                        appAzureId: 'e1d01570-3f93-44f9-ae0f-16ffb890ed22'
+                    }
+                ],
+                repos: [
+                    {
+                        id: 1,
+                        repoName: 'App',
+                        repoUri: 'https://dev.azure.com/mclm/LT%20SAA/_git/LISTIT-PLUS'
+                    },
+                    {
+                        id: 2,
+                        repoName: 'IAC',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 3,
+                        repoName: 'Api',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 4,
+                        repoName: 'Apigee',
+                        repoUri: undefined
+                    }
+                ],
+                updatedOn: '2026-01-08',
+                appSpecs: undefined,
+                appCategory: {
+                    id: 1,
+                    name: 'Java Apps'
+                }
+            },
+
+            {
                 id: 21,
                 name: 'Hist Vwr API',
                 appHost: 'google',
