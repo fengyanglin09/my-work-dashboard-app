@@ -23,7 +23,8 @@ export const SUPPORT_RESOURCES: ResourceCategory[] = [
                             link('Mayo Home Page', 'https://mayoweb.mayo.edu/'),
                             link('IT Admin Page', 'https://mctools.sharepoint.com/teams/ITAAS'),
                             doc('Peripherals Purchase', 'assets/pages/support-resources/admin/peripherals-purchase.md'),
-                            link('Device Check', 'http://epsvc/refresh/eligible.aspx')
+                            link('Device Check', 'http://epsvc/refresh/eligible.aspx'),
+                            link('Mayo My SharePoint Files', 'https://mctools.sharepoint.com/_layouts/15/sharepoint.aspx/onedrive/my')
                         ]
                     }
                 ]
