@@ -22,7 +22,7 @@ Five things to hold onto:
 ## Diagram 1 — The round trip with its mapping layers
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     SRC["NERDS entities (source)<br/>Tasklist → TasklistPlate → TasklistSpecimen → TestResult<br/>+ Lot / TargetValue / Control / PlateLayoutSpot"]
 
@@ -39,11 +39,11 @@ flowchart TD
 
     NOTE["Consultant-verify path is separate:<br/>ReviewRequest → POST /consultant → ReviewResponse<br/>(one typed decision, not a whole plate)"] -.- ODM
 
-    classDef ent   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef pay   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef odm   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef gate  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef note  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef ent   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef pay   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef gate  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class SRC,BACK ent;
     class REQ,RESP pay;
@@ -51,7 +51,7 @@ flowchart TD
     class SEND,LOCAL gate;
     class NOTE note;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -70,7 +70,7 @@ Follow it top to bottom — it's a there-and-back with a translation at each edg
 All these classes are inner classes of `controllers/ResultsController.java`.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     R["Result<br/>__DecisionID__ (IBM ODM mapping key)<br/>plate"] --> P
 
@@ -90,17 +90,17 @@ flowchart TD
 
     NOTE["Measurement / GroupedMeasurement are the<br/>GENERIC shape ODM understands. Each test family's<br/>native fields are adapted into these — see the<br/>per-family adapter diagram."] -.- M
 
-    classDef top   fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef mid   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef meas  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef note  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef top   fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef mid   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef meas  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class R,P top;
     class SP,CT,CP,IFR,AB mid;
     class M,GM meas;
     class NOTE note;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -114,7 +114,7 @@ It's a nested tree: **one `Result` wraps one `Plate`; a `Plate` holds many `Spec
 ## Diagram 3 — Why mapping is *per test family* (the adapter)
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart LR
     subgraph FAMILIES["Family-specific instrument DTOs (native fields differ wildly)"]
         direction TB
@@ -136,11 +136,11 @@ flowchart LR
     N1["→ build direction: family fields packed INTO Measurement.rawValues"] -.- ADPT
     N2["← apply direction: ODM's computed Measurement unpacked BACK into family fields"] -.- ADPT
 
-    classDef fam  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef gen  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef adpt fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef fam  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef gen  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef adpt fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class A3,RT,GD fam;
     class GEN gen;
@@ -148,9 +148,9 @@ flowchart LR
     class ODM odm;
     class N1,N2 note;
 
-    style FAMILIES fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style FAMILIES fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -171,7 +171,7 @@ Also note **screen vs titration split within a family** (Gen5 → `Gen5ScreenRes
 ## Diagram 4 — How ODM's answer is written back onto NERDS entities
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart LR
     subgraph ODMR["ODM response fields (on the returned Result)"]
         direction TB
@@ -203,16 +203,16 @@ flowchart LR
     F6 --> T6
     F7 --> T7
 
-    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef ner  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ner  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
 
     class F1,F2,F3,F4,F5,F6,F7 odm;
     class T1,T2,T3,T4,T5,T6,T7 ner;
 
-    style ODMR fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#111111
-    style NERDSW fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style ODMR fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700
+    style NERDSW fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -229,7 +229,7 @@ Each arrow is one field-level write performed by `InstrumentResultService.update
 Everything above starts from *measurements*. But those measurements don't appear from nowhere — a **parser** reads them out of the raw instrument file first. Parsers are a separate per-family layer (`constraints/instrument_results/`), and they're the "parsers are involved in ODM mapping" you may have heard about.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     FILE["Instrument result FILE<br/>(Excel/CSV/text the machine outputs)"]
 
@@ -245,11 +245,11 @@ flowchart TD
 
     NOTE["All layers are PER TEST FAMILY,<br/>dispatched by (test family + test name):<br/>① Parser · ② ModelMapper config · ③ Mapping service<br/>+ TestFamilyRules glue, + bypass rules for QA"]
 
-    classDef file fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#111111;
-    classDef p1   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef p3   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef file fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#000000,font-weight:700;
+    classDef p1   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef p3   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class FILE file;
     class RAW,FAM,MERGE p1;
@@ -257,7 +257,7 @@ flowchart TD
     class ODM odm;
     class NOTE note;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### What a parser is

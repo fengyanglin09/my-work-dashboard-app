@@ -11,7 +11,7 @@ The main [`clinical-workflow.md`](clinical-workflow.md) diagram shows orders ori
 ## The three ways an order can enter NERDS
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     subgraph PRIMARY["A · Primary path — clinical, from Soft (external)"]
         P1[Physician orders test in Soft LIS] --> P2[NERDS_API reads the order<br/>direct REST call to Soft]
@@ -32,11 +32,11 @@ flowchart TD
     N2 --> NCFLOW[Non-clinical result loaded in NERDS<br/>/api/offline-orders/non-clinical-results]
     NCFLOW --> NCEND([Result kept in NERDS<br/>NOT sent to Soft clinical reporting])
 
-    classDef primary fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef offc    fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef offn    fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef merge   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef exit    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef primary fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef offc    fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef offn    fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef merge   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef exit    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
 
     class P1,P2 primary;
     class C1,C2 offc;
@@ -44,11 +44,11 @@ flowchart TD
     class NEW merge;
     class FLOW,NCEND exit;
 
-    style PRIMARY fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
-    style OFFC    fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style OFFN    fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style PRIMARY fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700
+    style OFFC    fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style OFFN    fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 **How to read it:** three origins on top, each in its own colored lane. Notice where they **converge** and where they **don't**:

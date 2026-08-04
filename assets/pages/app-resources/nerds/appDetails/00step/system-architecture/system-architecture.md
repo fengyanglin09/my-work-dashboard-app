@@ -32,7 +32,7 @@ This page has **four diagrams**, moving from the outside in. Two are the main st
 Who talks to the API, and what the API talks to.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart LR
     USER[Lab staff / Specialists /<br/>Consultants / Lab Director]
 
@@ -66,10 +66,10 @@ flowchart LR
     AUTO -->|polls pending worklist, creates tasklists,<br/>drives steps · /api/automation/*| API
 
     %% ---- node fills with near-black text (renders reliably everywhere) ----
-    classDef mayo  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef ext   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef azure fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef actor fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef mayo  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ext   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef azure fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef actor fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
 
     class USER actor;
     class UI,API mayo;
@@ -77,11 +77,11 @@ flowchart LR
     class AAD,KV,BLOB,QUEUE azure;
 
     %% subgraph backgrounds + dark title color (so titles show in dark themes)
-    style MAYO  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
-    style EXT   fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
-    style AZURE fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#111111
+    style MAYO  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700
+    style EXT   fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
+    style AZURE fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read this diagram
@@ -129,7 +129,7 @@ The 🟠 orange boxes are *other applications* (Soft, Functions, the automation 
 The context diagram shows the *wiring*; this sequence shows one specimen actually flowing through it, top to bottom, in time order. Watch the **read-is-direct / write-is-via-the-queue** split: the first stage is a synchronous there-and-back with Soft, while the last stage hands off to a queue and walks away. (A detailed, message-by-message walkthrough follows the diagram.)
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","textColor":"#111111","actorTextColor":"#111111","actorBkg":"#bbdefb","actorBorder":"#1565c0","actorLineColor":"#808080","lineColor":"#808080","signalColor":"#808080","signalTextColor":"#111111","noteBkg":"#fff9c4","noteBorder":"#f9a825","noteTextColor":"#111111","loopTextColor":"#111111","labelTextColor":"#111111","labelBoxBkgColor":"#e3f2fd","labelBoxBorderColor":"#1565c0","sequenceNumberColor":"#ffffff","activationBkgColor":"#e0e0e0","activationBorderColor":"#616161"}, "themeCSS":".messageText,text.messageText{fill:#111111 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.loopText,.loopText tspan{fill:#111111 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.noteText,text.noteText{fill:#111111 !important;}.messageLine0{stroke:#808080 !important;stroke-width:1.6px;}.messageLine1{stroke:#808080 !important;stroke-width:1.6px;}"}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","textColor":"#000000","actorTextColor":"#000000","actorBkg":"#bbdefb","actorBorder":"#1565c0","actorLineColor":"#111827","lineColor":"#111827","signalColor":"#111827","signalTextColor":"#000000","noteBkg":"#fff9c4","noteBorder":"#f9a825","noteTextColor":"#000000","loopTextColor":"#000000","labelTextColor":"#000000","labelBoxBkgColor":"#e3f2fd","labelBoxBorderColor":"#1565c0","sequenceNumberColor":"#ffffff","activationBkgColor":"#e0e0e0","activationBorderColor":"#616161"}, "themeCSS":".messageText,text.messageText{fill:#000000 !important;font-weight:700 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.loopText,.loopText tspan{fill:#000000 !important;font-weight:700 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.noteText,text.noteText{fill:#000000 !important;font-weight:700 !important;}.messageLine0{stroke:#111827 !important;stroke-width:1.6px;}.messageLine1{stroke:#111827 !important;stroke-width:1.6px;}"}}%%
 sequenceDiagram
     autonumber
     participant Soft as Soft LIS
@@ -213,7 +213,7 @@ If you remember one picture for "how does a result get to Soft," it's this one: 
 The layers every feature slices through, plus the cross-cutting concerns that wrap them.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     REQ([HTTP request<br/>/api/...]) --> FILTERS
 
@@ -254,11 +254,11 @@ flowchart TD
     SVC -->|final result| RESP([HTTP response<br/>DTO as JSON])
 
     %% ---- node fills with near-black text (renders reliably everywhere) ----
-    classDef filters fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
-    classDef app     fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef data    fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef aux     fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef edge    fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef filters fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
+    classDef app     fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef data    fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef aux     fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef edge    fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
 
     class SEC,VER,TZ filters;
     class CTRL,SVC,REPO,MODEL app;
@@ -267,11 +267,11 @@ flowchart TD
     class REQ,RESP edge;
 
     %% subgraph backgrounds + dark title color (so titles show in dark themes)
-    style FILTERS fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#111111
-    style APP     fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style DATA    fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#111111
+    style FILTERS fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700
+    style APP     fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style DATA    fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read this diagram
@@ -336,7 +336,7 @@ The blue band shows **two** SQL Server databases — a **PRIMARY** and a **REPOR
 The single `DataSourceRouter` diamond in the §2 diagram unpacks into this decision:
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     START([A service or repository runs a query]) --> ANN{Is the call annotated<br/>@ReportingDB?}
 
@@ -354,11 +354,11 @@ flowchart TD
     WHO[Who uses REPORTING:<br/>ReportsService · PendingAutomationService<br/>History / Tasklist / Lot query impls · Diagnostics] -.-> ANN
     MECH[How: ReportingDBInterceptor sets a flag,<br/>DataSourceRouter AbstractRoutingDataSource<br/>picks the pool per query] -.-> USER
 
-    classDef start   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
-    classDef decide  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef primary fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef replica fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef note    fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef start   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
+    classDef decide  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef primary fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef replica fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note    fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class START start;
     class ANN,CFG decide;
@@ -366,7 +366,7 @@ flowchart TD
     class USER,REPLICA replica;
     class WHO,MECH note;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 **How to read it:** start at the top and follow the two diamond decisions.

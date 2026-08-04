@@ -30,7 +30,7 @@ And weaving through ① and ③ is **ODM** — an external rules/decision engine
 ## Diagram 1 — The four pipelines and how ODM/Soft fit in
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     subgraph MAIN["Main pipeline — reviewing the TEST RESULT"]
         direction TB
@@ -55,18 +55,18 @@ flowchart TD
     IFAP -->|Report| SOFT
     IC2 -->|Complete| SOFT
 
-    classDef main   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef side   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef ext    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef main   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef side   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ext    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
 
     class QC,TEST,HUB,TRR,IFAP main;
     class IC,ICR,IC2 side;
     class ODM,SOFT ext;
 
-    style MAIN fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style SIDE fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style MAIN fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style SIDE fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -86,7 +86,7 @@ Walk it left to right, top to bottom:
 ## Diagram 2 — The Specialist / Consultant / Lab Director decision ladder
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     HANDOFF(["END of Testing: the tasklist's own tech-level<br/>QC/notes 'Review' STEP finishes<br/>— this HANDS OFF to clinical review below"]) --> ROUTE{"Where should the result go?<br/>ResultDecisionType, computed AUTOMATICALLY<br/>by ODM (call #1) or local family rules — no human yet"}
 
@@ -118,13 +118,13 @@ flowchart TD
 
     VERIFY["Reviewer types a decision & clicks 'Send to ODM'<br/>ODM call #2: verify / translate → formatted final result"] --> SIGN(["Sign Out<br/>→ FinalResults → Soft queue"])
 
-    classDef route  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef spec   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef ldir   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef odm    fill:#d1c4e9,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+    classDef route  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef spec   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ldir   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm    fill:#d1c4e9,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
 
     class HANDOFF,ROUTE route;
     class SPEC,HACT spec;
@@ -134,7 +134,7 @@ flowchart TD
     class QUEUE1,SIGN,OMITB,REDO exit;
     class HOLD,TERM bad;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -163,7 +163,7 @@ So the order in the diagram is correct and matches the text: ODM #1 happens firs
 ## Diagram 3 — The ODM round trip (the "Send to ODM" button, in detail)
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","textColor":"#111111","actorTextColor":"#111111","actorBkg":"#bbdefb","actorBorder":"#1565c0","actorLineColor":"#808080","lineColor":"#808080","signalColor":"#808080","signalTextColor":"#111111","noteBkg":"#fff9c4","noteBorder":"#f9a825","noteTextColor":"#111111","loopTextColor":"#111111","labelTextColor":"#111111","labelBoxBkgColor":"#e3f2fd","labelBoxBorderColor":"#1565c0","sequenceNumberColor":"#ffffff","activationBkgColor":"#e0e0e0","activationBorderColor":"#616161"}, "themeCSS":".messageText,text.messageText{fill:#111111 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.loopText,.loopText tspan{fill:#111111 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.noteText,text.noteText{fill:#111111 !important;}.messageLine0{stroke:#808080 !important;stroke-width:1.6px;}.messageLine1{stroke:#808080 !important;stroke-width:1.6px;}"}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","textColor":"#000000","actorTextColor":"#000000","actorBkg":"#bbdefb","actorBorder":"#1565c0","actorLineColor":"#111827","lineColor":"#111827","signalColor":"#111827","signalTextColor":"#000000","noteBkg":"#fff9c4","noteBorder":"#f9a825","noteTextColor":"#000000","loopTextColor":"#000000","labelTextColor":"#000000","labelBoxBkgColor":"#e3f2fd","labelBoxBorderColor":"#1565c0","sequenceNumberColor":"#ffffff","activationBkgColor":"#e0e0e0","activationBorderColor":"#616161"}, "themeCSS":".messageText,text.messageText{fill:#000000 !important;font-weight:700 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.loopText,.loopText tspan{fill:#000000 !important;font-weight:700 !important;paint-order:stroke;stroke:#ffffff;stroke-width:4px;}.noteText,text.noteText{fill:#000000 !important;font-weight:700 !important;}.messageLine0{stroke:#111827 !important;stroke-width:1.6px;}.messageLine1{stroke:#111827 !important;stroke-width:1.6px;}"}}%%
 sequenceDiagram
     autonumber
     participant User as Tech / Reviewer<br/>(NERDS_UI)
@@ -215,7 +215,7 @@ This is a **sequence diagram** (see `system-architecture.md` for the notation pr
 ## Diagram 4 — Interpretive-comment review & the mandatory 2nd review
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     START(["Comment entered on an OrderedTest<br/>(free-text report boilerplate)"]) --> CHK{"'Send To 2nd Review'<br/>checkbox, or reviewer<br/>completes their review"}
 
@@ -233,11 +233,11 @@ flowchart TD
 
     DONE --> SOFT[("posted directly to Soft queue<br/>— ODM is never involved")]
 
-    classDef stage  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef gate   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
-    classDef done   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef ext    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef stage  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef gate   fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
+    classDef done   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ext    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
 
     class START,CHK,CR,LR stage;
     class P2R,P2R2,GATE gate;
@@ -245,7 +245,7 @@ flowchart TD
     class DONE done;
     class SOFT ext;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -264,7 +264,7 @@ This is the state machine hiding behind `OrderedTest.updateICWfStatus(...)` — 
 This extends the IFA lane you saw in `testing-stage.md` (Diagram 4) — that one showed the *step sequence*; this one shows what happens *inside* the review-phase steps.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     A["IFA Ready For Review<br/>validate slide-book, instrument, intensity"] --> B["IFA In Review — TECH<br/>records interpretation, antibodies<br/>suspected, tissue scores"]
     B --> C{"applyRules:<br/>MATK or MATKTiter?"}
@@ -287,11 +287,11 @@ flowchart TD
 
     F -.->|"cannot be completed via the<br/>generic tasklist-step engine"| LOCK[["Only the Consultant review flow<br/>can complete this step —<br/>BadRequestException otherwise"]]
 
-    classDef tech   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef odm    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+    classDef tech   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
 
     class A,B,C,D,E,LOCAL tech;
     class F,G,H,LOCAL2 cons;
@@ -299,7 +299,7 @@ flowchart TD
     class PUSH1,PUSH2,SKIP exit;
     class LOCK bad;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -317,7 +317,7 @@ flowchart TD
 ## Diagram 6 — Three different things people call "override" (don't conflate them)
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TB
     subgraph A["① ODM Bypass — QA-only, whole plate/specimen"]
         direction TB
@@ -336,19 +336,19 @@ flowchart TB
         C2 --> C3["Tasklist is AUTO-ESCALATED<br/>to Additional (Specialist) Review"]
     end
 
-    classDef qa    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
-    classDef clin  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef data  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef qa    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
+    classDef clin  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef data  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
 
     class A1,A2,A3 qa;
     class B1,B2 clin;
     class C1,C2,C3 data;
 
-    style A fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#111111
-    style B fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style C fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#111111
+    style A fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700
+    style B fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style C fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it

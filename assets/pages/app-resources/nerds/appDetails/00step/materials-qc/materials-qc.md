@@ -23,7 +23,7 @@ That's the whole vocabulary. The rest of this file is just those five things and
 ## Diagram 1 — The concept (plain language first)
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     subgraph STOCK["What the lab STOCKS (the catalog)"]
         direction TB
@@ -44,20 +44,20 @@ flowchart TD
 
     CTRL -.->|"a control is a kind of<br/>Inventory too (type = Control)"| INV
 
-    classDef cat  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef lot  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef run  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef note fill:#fff9c4,stroke:#f9a825,stroke-width:1px,color:#333333;
+    classDef cat  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef lot  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef run  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note fill:#fff9c4,stroke:#f9a825,stroke-width:1px,color:#000000,font-weight:700;
 
     class INV cat;
     class LOT1,LOT2 lot;
     class TEST,INSTR,CTRL run;
     class MILK note;
 
-    style STOCK fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
-    style RUNTIME fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style STOCK fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700
+    style RUNTIME fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -71,37 +71,16 @@ flowchart TD
 
 ## Diagram 2 — The real entity relationships (ER)
 
-Once the concept is clear, here's how the model actually wires together (cardinality: `||` = one, `o{` = many).
+Once the concept is clear, here's how the model actually wires together. This is a real **Mermaid ER diagram**: the line endings show cardinality, and the boxes show entities plus selected key fields. The extra styling is only there to keep text readable in dark Markdown previews.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#555555","primaryColor":"#e3f2fd","primaryBorderColor":"#1565c0","primaryTextColor":"#111111","fontSize":"13px"}}}%%
+%%{init: {"theme":"base", "darkMode":false, "themeVariables":{"darkMode":false,"background":"#ffffff","primaryColor":"#ffffff","primaryTextColor":"#000000","primaryBorderColor":"#2563eb","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#2563eb","tertiaryColor":"#fff7ed","tertiaryTextColor":"#000000","tertiaryBorderColor":"#ea580c","lineColor":"#111827","textColor":"#000000","nodeTextColor":"#000000","fontSize":"15px","fontWeight":"800","attributeBackgroundColorOdd":"#ffffff","attributeBackgroundColorEven":"#ffffff"}, "er":{"fill":"#ffffff","stroke":"#111827","fontSize":15,"layoutDirection":"LR"}, "themeCSS":"svg{background-color:#ffffff !important;}.entityBox,.attributeBoxOdd,.attributeBoxEven,.er.entityBox,.er.attributeBoxOdd,.er.attributeBoxEven,.node rect{fill:#ffffff !important;stroke:#2563eb !important;stroke-width:2px !important;}.relationshipLine,.er.relationshipLine,.edgePath path,path.relationshipLine{stroke:#111827 !important;stroke-width:2.5px !important;fill:none !important;}.relationshipLabelBox,.er.relationshipLabelBox,.labelBkg,.edgeLabel rect{fill:#ffffff !important;background-color:#ffffff !important;opacity:1 !important;}.label,.label span,.node .label,.edgeLabel .label,.edgeLabel .label span,.er .entityLabel,.er .attributeLabel,.er .relationshipLabel,foreignObject,foreignObject *{color:#000000 !important;fill:#000000 !important;opacity:1 !important;font-weight:800 !important;text-shadow:none !important;}.edgeLabel .label text,.edgeLabel text,.node text,text,tspan{fill:#000000 !important;color:#000000 !important;opacity:1 !important;font-weight:800 !important;text-shadow:none !important;}.marker{stroke:#111827 !important;fill:none !important;}"}}%%
 erDiagram
-    INVENTORY ||--o{ LOT : "has batches"
-    INVENTORY ||--|| LOT_TEMPLATE : "defaults for new lots"
-    INVENTORY }o--o{ CONTROL_TYPE : "InventoryControlTypeMap"
-    INVENTORY }o--o{ TARGET_TYPE : "InventoryTargetTypeMaps"
-
-    LOT ||--o{ CONTROL_BARCODE : "scannable control aliquots"
-    LOT ||--o{ TARGET_VALUE : "expected control values"
-    LOT ||--o{ LOT_DOCUMENT : "attached docs"
-    LOT }o--o{ NERDS_TEST : "LotNerdsTestMap (used for)"
-
-    CONTROL_BARCODE }o--|| CONTROL_TYPE : "via InventoryControlTypeMap"
-    TARGET_VALUE }o--|| TARGET_TYPE : "measurement type"
-
-    INSTRUMENT }o--o{ NERDS_TEST : "InstrumentNerdsTestMap (runs)"
-    NERDS_TEST }o--o{ CONTROL_TYPE : "NerdsTestControlTypeMap (uses)"
-
-    TASKLIST }o--|| LOT : "one run uses"
-    TASKLIST }o--|| INSTRUMENT : "one run on"
-    TASKLIST }o--|| NERDS_TEST : "one run of"
-
-    PLATE_LAYOUT ||--o{ PLATE_LAYOUT_SPOT : "wells"
-    PLATE_LAYOUT_SPOT }o--o| CONTROL_TYPE : "spot may hold a control"
+    direction LR
 
     INVENTORY {
         string inventoryName
-        enum inventoryType "Reagent|Normal|Control|PrepsAndToxins|TestAssayControl"
+        enum inventoryType "Reagent | Normal | Control | PrepsAndToxins | TestAssayControl"
         bool archived
     }
     LOT {
@@ -113,21 +92,62 @@ erDiagram
     }
     INSTRUMENT {
         string instrumentName
-        enum instrumentType "PlateWasher|FlowCytometer|Microscope|..."
+        enum instrumentType "PlateWasher | FlowCytometer | Microscope | ..."
     }
     TASKLIST {
-        long lotId
-        long instrumentId
-        long nerdsTestId
-        string qcResult "Pass|Fail|Partial Fail"
+        long lotId FK
+        long instrumentId FK
+        long nerdsTestId FK
+        string qcResult "Pass | Fail | Partial Fail"
     }
+    LOT_TEMPLATE
+    INVENTORY_CONTROL_TYPE_MAP
+    TARGET_TYPE
+    TARGET_VALUE
+    CONTROL_BARCODE
+    LOT_DOCUMENT
+    NERDS_TEST
+    PLATE_LAYOUT
+    PLATE_LAYOUT_SPOT
+    CONTROL_TYPE
+
+    INVENTORY ||--o{ LOT : "has batches"
+    INVENTORY ||--|| LOT_TEMPLATE : "defaults for new lots"
+    INVENTORY ||--o{ INVENTORY_CONTROL_TYPE_MAP : "control mappings"
+    INVENTORY_CONTROL_TYPE_MAP }o--|| CONTROL_TYPE : "maps to"
+    INVENTORY }o--o{ TARGET_TYPE : "target types"
+
+    LOT ||--o{ TARGET_VALUE : "expected values"
+    LOT ||--o{ LOT_DOCUMENT : "attached docs"
+    LOT ||--o{ CONTROL_BARCODE : "scannable aliquots"
+    LOT }o--o{ NERDS_TEST : "used for"
+
+    TARGET_VALUE }o--|| TARGET_TYPE : "measurement type"
+    CONTROL_BARCODE }o--|| CONTROL_TYPE : "via inventory control map"
+
+    INSTRUMENT }o--o{ NERDS_TEST : "runs"
+    NERDS_TEST }o--o{ CONTROL_TYPE : "uses controls"
+
+    TASKLIST }o--|| LOT : "one run uses"
+    TASKLIST }o--|| INSTRUMENT : "one run on"
+    TASKLIST }o--|| NERDS_TEST : "one run of"
+
+    PLATE_LAYOUT ||--o{ PLATE_LAYOUT_SPOT : "wells"
+    PLATE_LAYOUT_SPOT }o--o| CONTROL_TYPE : "spot may hold control"
+
+    classDef default fill:#ffffff,stroke:#2563eb,stroke-width:2px,color:#000000,font-weight:700;
+    classDef join fill:#e0f2fe,stroke:#0369a1,stroke-width:2px,color:#000000,font-weight:700;
+    classDef run fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#000000,font-weight:700;
+
+    class INVENTORY_CONTROL_TYPE_MAP join
+    class TASKLIST run
 ```
 
 ### How to read it
 
-> **First, about the boxes:** every box is one table/entity. **A few show an attribute list (`INVENTORY`, `LOT`, `INSTRUMENT`, `TASKLIST`); the rest show only a name.** That's a *readability choice, not a real difference* — in a Mermaid ER diagram an entity only shows fields if you spell them out, so I only did it for the four "star" entities whose columns you actually need. **The name-only boxes still have columns** (mostly an id, a name, and foreign keys) — I just left them off to avoid clutter; their key fields are in the reference table lower down. Read a name-only box as "this entity exists and connects here," and look to the relationships (the lines) for its role.
+> **First, about the boxes:** every box is one table/entity. **A few show key fields (`INVENTORY`, `LOT`, `INSTRUMENT`, `TASKLIST`); the rest show only a name.** That's a *readability choice, not a real difference* — I only included fields for the four "star" entities whose columns you actually need. **The name-only boxes still have columns** (mostly an id, a name, and foreign keys) — I just left them off to avoid clutter; their key fields are in the reference table lower down. Read a name-only box as "this entity exists and connects here," and look to the relationship labels for its role.
 
-Now read **every** relationship as a sentence, grouped by what they hang off of. (Cardinality: `||`=one, `o{`=many, `o|`=zero-or-one; `}o--o{` = many-to-many via a join table.)
+Now read **every** relationship as a sentence, grouped by what they hang off of. The bullets below include the original ER shorthand for precision (`||`=one, `o{`=many, `o|`=zero-or-one; `}o--o{` = many-to-many via a join table).
 
 **Inventory (the product) connects to —**
 - **`INVENTORY ||--o{ LOT`** — one product has **many Lots** (batches). *The core relationship of this whole page.*
@@ -221,7 +241,7 @@ One code clue: `LotTemplateController`'s `new-lot/{inventoryId}` path uses the t
 "What is a lot" is clearest when you watch one move through its life.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     START(["New lot received / created<br/>from its Inventory's LotTemplate"]) --> V{"verificationRequired?"}
     V -->|yes| VER["Verify the lot<br/>verificationComplete + by/date"]
@@ -236,11 +256,11 @@ flowchart TD
     USE -.->|"pulled early"| EXT(["Extinguished<br/>extinguished + by/date"])
     USE -.->|"hidden from lists"| ARC(["Archived<br/>archived = true"])
 
-    classDef start fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
-    classDef gate  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef step  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef use   fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef terminal fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+    classDef start fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
+    classDef gate  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef step  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef use   fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef terminal fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
 
     class START start;
     class V,A gate;
@@ -248,7 +268,7 @@ flowchart TD
     class USE use;
     class EXP,EXT,ARC terminal;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
@@ -263,7 +283,7 @@ The three dashed exits are how a lot leaves use: **Expired** (time ran out), **E
 This connects the materials back to the tasklist you already understand.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     TL["ONE TASKLIST RUN"] --> N["NERDS test<br/>(what is being tested)"]
     TL --> L["Lot<br/>(which reagent batch)"]
@@ -286,19 +306,19 @@ flowchart TD
     L --> TV["TargetValue(s) on the lot<br/>= expected values for those controls"]
     TV -.->|"controls compared against"| QC
 
-    classDef run   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef mat   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef ctrl  fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef spot  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#111111;
+    classDef run   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef mat   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ctrl  fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef spot  fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class TL,N,QC run;
     class L,I mat;
     class CB,TV ctrl;
     class S1,S2,S3,S4 spot;
 
-    style PLATE fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#111111
+    style PLATE fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read it
