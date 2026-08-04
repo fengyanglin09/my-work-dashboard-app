@@ -1,0 +1,36 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    A["IFA Ready For Review<br/>validate slide-book, instrument, intensity"] --> B["IFA In Review — TECH<br/>records interpretation, antibodies<br/>suspected, tissue scores"]
+    B --> C{"applyRules:<br/>MATK or MATKTiter?"}
+    C -->|yes| ODM1[("Call ODM<br/>enhanceIFAResults")]
+    C -->|"no — other IFA test"| LOCAL["Apply equivalent rules LOCALLY<br/>applyApprovedExpiredRules<br/>(no ODM round trip)"]
+    ODM1 --> D
+    LOCAL --> D
+    D["Build results per decision:<br/>Report / Screen Review / Repeat"] --> E{"Tech Review step"}
+
+    E -->|Report specimens| PUSH1["Push straight to Soft queue<br/>IFATechReviewService"]
+    E -->|Screen Review specimens| F["Consultant Final Review"]
+    E -.->|"no specimens need<br/>Screen Review"| SKIP["Auto-skip Final Review step<br/>skipFinalReviewStepIfNoScreenReview"]
+
+    F --> G{"applyRules again:<br/>MATK or MATKTiter?"}
+    G -->|yes| ODM2[("Call ODM")]
+    G -->|no| LOCAL2["Apply rules locally"]
+    ODM2 --> H
+    LOCAL2 --> H
+    H["Consultant builds final results"] --> PUSH2["Push to Soft queue<br/>postTlSpecResultsToQueueNoAbort"]
+
+    F -.->|"cannot be completed via the<br/>generic tasklist-step engine"| LOCK[["Only the Consultant review flow<br/>can complete this step —<br/>BadRequestException otherwise"]]
+
+    classDef tech   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
+    classDef odm    fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+
+    class A,B,C,D,E,LOCAL tech;
+    class F,G,H,LOCAL2 cons;
+    class ODM1,ODM2 odm;
+    class PUSH1,PUSH2,SKIP exit;
+    class LOCK bad;
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

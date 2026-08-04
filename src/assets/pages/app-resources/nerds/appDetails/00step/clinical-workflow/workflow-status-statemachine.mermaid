@@ -1,0 +1,37 @@
+stateDiagram-v2
+    [*] --> New
+    New --> OnAssay: manual — tasklist created
+    New --> OnAutomation: queued for automation
+    OnAutomation --> OnAssay: automation tasklist created
+    OnAssay --> Review
+
+    Review --> SReview: specialist
+    Review --> CReview: consultant
+    Review --> LReview: lab director
+    Review --> Hold
+    Review --> FinalResults: Report
+
+    SReview --> Pending2ndReview
+    CReview --> Pending2ndReview
+    LReview --> Pending2ndReview
+    Pending2ndReview --> FinalResults
+    SReview --> FinalResults
+    CReview --> FinalResults
+    LReview --> FinalResults
+    Hold --> Review
+
+    Review --> OnAssay: Repeat / RepeatFailQC
+
+    FinalResults --> QueuedForSoft
+    QueuedForSoft --> SentToSoft
+    QueuedForSoft --> NotSentToSoft
+    NotSentToSoft --> QueuedForSoft
+
+    Review --> TNP
+    Review --> QNS
+    New --> Cancelled
+
+    SentToSoft --> [*]
+    TNP --> [*]
+    QNS --> [*]
+    Cancelled --> [*]

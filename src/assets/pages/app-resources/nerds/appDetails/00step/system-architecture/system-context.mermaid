@@ -1,0 +1,50 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart LR
+    USER[Lab staff / Specialists /<br/>Consultants / Lab Director]
+
+    subgraph MAYO["Mayo NERDS system"]
+        UI[NERDS_UI<br/>Angular SPA]
+        API[NERDS_API<br/>Spring Boot WAR]
+    end
+
+    subgraph EXT["External systems"]
+        SOFT[Soft LIS<br/>lab information system]
+        FUNCS[NERDS_FUNCTIONS<br/>Azure Functions]
+        AUTO[Automation line / instruments<br/>the robot]
+    end
+
+    subgraph AZURE["Azure platform"]
+        AAD[Azure AD / Entra<br/>OAuth2 JWTs]
+        KV[Azure Key Vault<br/>secrets]
+        BLOB[Azure Blob<br/>documents/photos]
+        QUEUE[Azure Queue<br/>results to Soft]
+    end
+
+    USER --> UI
+    UI -->|HTTPS + JWT| API
+    API -->|1· fetch specimens/orders<br/>direct REST call, waits for reply| SOFT
+    API -->|2· send results<br/>drop on queue, don't wait| QUEUE
+    QUEUE -->|delivered by NERDS_FUNCTIONS| SOFT
+    API --> BLOB
+    API -->|validate JWT| AAD
+    API -->|load secrets at startup| KV
+    FUNCS -.->|reads queue,<br/>posts to Soft| QUEUE
+    AUTO -->|polls pending worklist, creates tasklists,<br/>drives steps · /api/automation/*| API
+
+    %% ---- node fills with near-black text (renders reliably everywhere) ----
+    classDef mayo  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
+    classDef ext   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
+    classDef azure fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef actor fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+
+    class USER actor;
+    class UI,API mayo;
+    class SOFT,FUNCS,AUTO ext;
+    class AAD,KV,BLOB,QUEUE azure;
+
+    %% subgraph backgrounds + dark title color (so titles show in dark themes)
+    style MAYO  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
+    style EXT   fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style AZURE fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#111111
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

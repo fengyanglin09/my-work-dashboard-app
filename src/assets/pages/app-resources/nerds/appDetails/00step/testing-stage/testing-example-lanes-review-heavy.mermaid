@@ -1,0 +1,38 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"linear"}}}%%
+flowchart TB
+    subgraph IFA["OnAssay · IFA (multi-tier review)"]
+        direction TB
+        I1[1 · Created] --> I2[2 · Incubation<br/>≥60 min]
+        I2 --> I3[3 · Ready to Transfer]
+        I3 --> I4[4 · Stability Timer<br/>≤10800 min]
+        I4 --> I5[5 · Setup in Progress]
+        I5 --> I6[6 · Setup Complete]
+        I6 --> I7[7 · Ready for Review<br/>testStatus → Review]
+        I7 --> I8[8 · In Review]
+        I8 --> I9[10 · Tech Review]
+        I9 --> I10[11 · Final Review]
+        I10 --> I11[12 · Complete]
+    end
+
+    subgraph RTQ["OnAssay · RT-QuIC (consultant review baked in)"]
+        direction TB
+        R1[1 · Created] --> R2[2 · Assay Setup]
+        R2 --> R3[3 · Instrument Analysis]
+        R3 --> R4[4 · Ready for Review<br/>testStatus → Review]
+        R4 --> R5[5 · In Review]
+        R5 --> R6[6 · Consultant Review<br/>CReview]
+        R6 --> R7[7 · Complete]
+    end
+
+    classDef assay  fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#111111;
+    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:1.5px,color:#111111;
+    classDef done   fill:#e0e0e0,stroke:#616161,stroke-width:1.5px,color:#111111;
+
+    class I1,I2,I3,I4,I5,I6,R1,R2,R3 assay;
+    class I7,I8,I9,I10,R4,R5,R6 review;
+    class I11,R7 done;
+
+    style IFA fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style RTQ fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#111111
+
+    linkStyle default stroke:#808080,stroke-width:2px

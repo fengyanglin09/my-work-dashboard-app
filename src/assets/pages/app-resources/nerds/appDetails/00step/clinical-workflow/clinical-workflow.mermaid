@@ -1,0 +1,70 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    subgraph ORDER["1 · ORDERING"]
+        A[Order placed in Soft LIS] --> B[Specimen received & registered in NERDS<br/>softSpecimenId, Order, Patient, Clinic]
+        B --> C[OrderedTest created<br/>status: New]
+    end
+
+    subgraph TEST["2 · TESTING"]
+        C --> D[Added to a Tasklist<br/>bench worklist]
+        D --> E{Instrument or<br/>automation?}
+        E -->|automation-driven<br/>queued as OnAutomation, runs as OnAssay| F[status: OnAssay<br/>plate layout, pipetting scheme]
+        E -->|manual bench| G[status: OnAssay<br/>incubation, read plate]
+        F --> H[Raw instrument results captured]
+        G --> H
+        H --> I[Clinical rules engine applies<br/>test-family interpretation & overrides]
+    end
+
+    subgraph REVIEW["3 · RESULT REVIEW"]
+        I --> J[status: Review<br/>result ready for a human decision]
+        J --> K{Review decision<br/>ResultDecisionType}
+        K -->|Report| REPORTOK[Approved to report]
+        K -->|Repeat / RepeatFailQC| D
+        K -->|SReview| S[Specialist review<br/>status: SReview]
+        K -->|CReview| CR[Consultant review<br/>status: CReview]
+        K -->|LReview| LR[Lab Director review<br/>status: LReview]
+        K -->|Hold| HOLD[status: Hold]
+        K -->|TNP / QNS| TERM[Terminal:<br/>Test Not Performed /<br/>Quantity Not Sufficient]
+        K -->|Omit| OMIT[Omitted from report]
+
+        S --> ESC{Escalate?}
+        CR --> ESC
+        LR --> ESC
+        ESC -->|needs 2nd review| P2[status: Pending2ndReview]
+        ESC -->|resolved| REPORTOK
+        P2 --> REPORTOK
+        HOLD --> J
+    end
+
+    subgraph REPORT["4 · REPORTING"]
+        REPORTOK --> FR[status: FinalResults<br/>final result + interpretive comments]
+        FR --> Q[status: QueuedForSoft<br/>pushed to Azure queue<br/>nerds-to-soft-test-results-*]
+        Q --> SENT[status: SentToSoft<br/>result back in LIS]
+        Q -.->|delivery failed| NS[status: NotSentToSoft<br/>retry]
+        NS --> Q
+    end
+
+    TERM --> DONE([End])
+    OMIT --> DONE
+    SENT --> DONE
+
+    %% ---- color the NODES (near-black text for high contrast) ----
+    classDef order  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
+    classDef test   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
+    classDef report fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef term   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+
+    class A,B,C order;
+    class D,E,F,G,H,I test;
+    class J,K,S,CR,LR,HOLD,ESC,P2,REPORTOK review;
+    class FR,Q,SENT,NS report;
+    class TERM,OMIT,DONE term;
+
+    style ORDER  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
+    style TEST   fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style REVIEW fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style REPORT fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#111111
+
+    %% mid-gray lines: visible on BOTH a dark canvas and the light boxes
+    linkStyle default stroke:#808080,stroke-width:2.5px

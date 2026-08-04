@@ -1,0 +1,49 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    HANDOFF(["END of Testing: the tasklist's own tech-level<br/>QC/notes 'Review' STEP finishes<br/>— this HANDS OFF to clinical review below"]) --> ROUTE{"Where should the result go?<br/>ResultDecisionType, computed AUTOMATICALLY<br/>by ODM (call #1) or local family rules — no human yet"}
+
+    ROUTE -->|Report| QUEUE1["auto-reportable →<br/>queued for Soft (no human review)"]
+    ROUTE -->|SReview| SPEC["Specialist Review<br/>status: SReview"]
+    ROUTE -->|CReview| CONS["Consultant Review<br/>status: CReview"]
+    ROUTE -->|"Repeat / RepeatFailQC"| REDO["Repeat: status → New<br/>(re-run the assay)"]
+    ROUTE -->|Hold| HOLD["status: Hold<br/>(parked)"]
+    ROUTE -.->|"TNP / QNS<br/>rare — set via import/QA tools,<br/>not this screen"| TERM(["no reportable result"])
+
+    SPEC --> HACT{"Specialist chooses…"}
+    HACT -->|approve the result| VERIFY
+    HACT -->|Repeat| REDO
+    HACT -->|Omit| OMITB["Omit: results → Indeterminate<br/>status → New"]
+    HACT -->|"reassign → 'Consultant Instructions'"| CONS
+
+    CONS --> CACT{"Consultant chooses…"}
+    CACT -->|approve the result| VERIFY
+    CACT -->|Repeat| REDO
+    CACT -->|Omit| OMITB
+    CACT -->|"reassign → 'Specialist Instructions'"| SPEC
+    CACT -.->|"escalate further<br/>(family-specific)"| LDIR["Lab Director Review<br/>status: LReview"]
+
+    LDIR --> LACT{"Lab Director chooses…"}
+    LACT -->|approve the result| VERIFY
+    LACT -->|Repeat| REDO
+    LACT -->|Omit| OMITB
+    LACT -.->|"reassign → 'Specialist Instructions'<br/>shown in UI; backend throws<br/>NotImplementedException (unconfirmed)"| SPEC
+
+    VERIFY["Reviewer types a decision & clicks 'Send to ODM'<br/>ODM call #2: verify / translate → formatted final result"] --> SIGN(["Sign Out<br/>→ FinalResults → Soft queue"])
+
+    classDef route  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef spec   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef cons   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
+    classDef ldir   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef odm    fill:#d1c4e9,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef exit   fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+
+    class HANDOFF,ROUTE route;
+    class SPEC,HACT spec;
+    class CONS,CACT cons;
+    class LDIR,LACT ldir;
+    class VERIFY odm;
+    class QUEUE1,SIGN,OMITB,REDO exit;
+    class HOLD,TERM bad;
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

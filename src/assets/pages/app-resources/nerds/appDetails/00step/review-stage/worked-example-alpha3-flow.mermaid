@@ -1,0 +1,31 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    F["1 · Flow-cytometer FILE (one specimen, 2 replicate wells)<br/>well A1 — alpha3Median 3500, hek293Median 1000<br/>well A2 — alpha3Median 3800, hek293Median 1050<br/>+ viableEventsParent, singleEventsParent, coi…"]
+
+    F -->|"Alpha3FlowScreenParser.loadResultFile"| P["2 · Parsed into Alpha3FlowResult (per specimen)<br/>replicate1 + replicate2 (Alpha3FlowReplicate)<br/>cvPercentage, meanConcentration"]
+
+    P -->|"Alpha3FlowResultModelMapperConfig<br/>family DTO → generic (build)"| M["3 · ODM payload (generic shape)<br/>Specimen with two Measurement (each rawValues carry<br/>alpha3Median + hek293Median + channels)<br/>and one GroupedMeasurement (calcAverage, cv)"]
+
+    M -->|"RulesEngineRepository POST /testruns<br/>(or local Alpha3FlowScreenRules if ODM bypassed)"| ODM["4 · ODM computes per measurement<br/>ratio1 = 3500 / 1000 = 3.50 → firebrick (≥ 3.5)<br/>ratio2 = 3800 / 1050 = 3.62 → firebrick<br/>both replicates firebrick → colors AGREE → not Repeat<br/>grouped avg ≥ 3.5 → firebrick → result 'Reactive'<br/>→ testStatus 'Report'"]
+
+    ODM -->|"same Result shape, computed fields filled"| R["5 · ODM response Specimen<br/>result = 'Reactive', testStatus = 'Report'<br/>each Measurement.calcValue + formattingColor set"]
+
+    R -->|"InstrumentResultService.enhanceResults →<br/>updateSpecimenTasklistSpecimen (+ parser.mapMeasurements reverse)"| E["6 · NERDS entities updated<br/>TestResult.finalResult = 'Reactive'<br/>TasklistSpecimen.decisionType = Report (decisionTypeBy 'NERDS')<br/>TestResult.testResults JSON merges ratios + colors<br/>finalResultColor via ReportingRulesService"]
+
+    ALT["If instead: replicate colors DISAGREE → testStatus 'Repeat'<br/>· interference present → 'SReview' · both black → 'Negative'"] -.- ODM
+
+    classDef file fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#111111;
+    classDef parse fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef pay  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
+    classDef ent  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
+    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+
+    class F file;
+    class P,E ent;
+    class M,R pay;
+    class ODM odm;
+    class ALT note;
+    class P parse;
+
+    linkStyle default stroke:#808080,stroke-width:2.5px
