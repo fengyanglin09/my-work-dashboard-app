@@ -1,0 +1,59 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    REQ([HTTP request<br/>/api/...]) --> FILTERS
+
+    subgraph FILTERS["Cross-cutting filters / security"]
+        SEC[OAuth2 Resource Server<br/>ResourceServerConfig — validate JWT]
+        VER[FrontEndAppVersionFilter<br/>UI version gate]
+        TZ[TimezoneFilter]
+    end
+    FILTERS --> CTRL
+
+    subgraph APP["Application layers"]
+        direction TB
+        CTRL[controllers/<br/>@RestController · request mapping · permission checks]
+        SVC[services/<br/>business logic · clinical rules engine]
+        REPO[repositories/<br/>Spring Data JPA + QueryDSL]
+        MODEL[model/<br/>JPA entities]
+        CTRL -->|DTO in| SVC
+        SVC --> REPO
+        REPO --> MODEL
+    end
+
+    CTRL -.->|entity ↔ DTO| MM[ModelMapper<br/>ModelMapperConfig]
+    SVC -.->|reads clinical config| YAML[application.yaml<br/>test families, scanlists,<br/>tasklist, plate layouts]
+    SVC -.->|scheduled jobs| SCHED[SchedulerConfig<br/>ShedLock distributed lock]
+
+    MODEL --> ROUTER
+
+    subgraph DATA["Persistence"]
+        ROUTER{DataSourceRouter<br/>@ReportingDB?}
+        PRIMARY[(SQL Server<br/>PRIMARY pool)]
+        REPORTING[(SQL Server<br/>REPORTING replica<br/>falls back to PRIMARY)]
+        FLYWAY[Flyway migrations<br/>db/migration]
+        ROUTER -->|default| PRIMARY
+        ROUTER -->|read-only reporting| REPORTING
+        FLYWAY -.->|manages schema| PRIMARY
+    end
+
+    SVC -->|final result| RESP([HTTP response<br/>DTO as JSON])
+
+    %% ---- node fills with near-black text (renders reliably everywhere) ----
+    classDef filters fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+    classDef app     fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef data    fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
+    classDef aux     fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef edge    fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+
+    class SEC,VER,TZ filters;
+    class CTRL,SVC,REPO,MODEL app;
+    class ROUTER,PRIMARY,REPORTING,FLYWAY data;
+    class MM,YAML,SCHED aux;
+    class REQ,RESP edge;
+
+    %% subgraph backgrounds + dark title color (so titles show in dark themes)
+    style FILTERS fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#111111
+    style APP     fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style DATA    fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#111111
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

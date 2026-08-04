@@ -1,0 +1,31 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    START([A service or repository runs a query]) --> ANN{Is the call annotated<br/>@ReportingDB?}
+
+    ANN -->|No annotation<br/>the default| USEP[Route to PRIMARY pool]
+    ANN -->|Yes — heavy & read-only<br/>report / worklist / history| CFG{Is a REPORTING<br/>replica URL configured?}
+
+    CFG -->|Yes · prod| USER[Route to REPORTING pool]
+    CFG -->|No · local dev / small deploy<br/>FALLBACK| USEP
+
+    USEP --> PRIMARY[(PRIMARY · SQL Server<br/>read + write<br/>live bench work)]
+    USER --> REPLICA[(REPORTING · SQL Server<br/>read-only copy)]
+
+    PRIMARY -.->|continuous replication<br/>slight lag ~ms| REPLICA
+
+    WHO[Who uses REPORTING:<br/>ReportsService · PendingAutomationService<br/>History / Tasklist / Lot query impls · Diagnostics] -.-> ANN
+    MECH[How: ReportingDBInterceptor sets a flag,<br/>DataSourceRouter AbstractRoutingDataSource<br/>picks the pool per query] -.-> USER
+
+    classDef start   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef decide  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef primary fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef replica fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
+    classDef note    fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+
+    class START start;
+    class ANN,CFG decide;
+    class USEP,PRIMARY primary;
+    class USER,REPLICA replica;
+    class WHO,MECH note;
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

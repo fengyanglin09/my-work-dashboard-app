@@ -1,0 +1,35 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"linear"}}}%%
+flowchart TB
+    subgraph MANUAL["Manual bench · IPA LDT (runs as OnAssay)"]
+        direction TB
+        M1[1 · Created] --> M2[2 · Sample Addition<br/>Instrument]
+        M2 --> M3[3 · AG Addition<br/>Instrument]
+        M3 --> M4[4 · Incubation AG<br/>480–660 min]
+        M4 --> M5[5 · Ab2 Addition<br/>Instrument]
+        M5 --> M6[6 · Incubation Ab2 RT<br/>30–40 min]
+        M6 --> M7[7 · Incubation Ab2 Fridge<br/>60–420 min]
+        M7 --> M8[8 · Washing]
+        M8 --> M9[9 · Counting]
+        M9 --> M10[12 · Ready for Review<br/>testStatus → Review]
+        M10 --> M11[13 · In Review]
+        M11 --> M12[14 · Complete]
+    end
+
+    subgraph AUTOCBA["Automation-driven · Automated CBA (runs as OnAssay)"]
+        direction TB
+        A1[1 · Created] --> A2[2 · Sample Dilution]
+        A2 --> A3[3 · Stability Timer<br/>0–1440 min]
+        A3 --> A4[4 · Slide Setup]
+        A4 --> A5[5 · Setup Complete]
+        A5 --> A6[6 · In Review<br/>GenericReview · testStatus → Review]
+        A6 --> A7[7 · Complete]
+    end
+
+    classDef stepA fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#111111;
+    classDef stepB fill:#b3e5fc,stroke:#0277bd,stroke-width:1.5px,color:#111111;
+    class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 stepA;
+    class A1,A2,A3,A4,A5,A6,A7 stepB;
+    style MANUAL fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
+    style AUTOCBA fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#111111
+
+    linkStyle default stroke:#808080,stroke-width:2px

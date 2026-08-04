@@ -1,0 +1,35 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    subgraph STOCK["What the lab STOCKS (the catalog)"]
+        direction TB
+        INV["INVENTORY = one product the lab stocks<br/>a reagent / control / consumable<br/>e.g. 'anti-XYZ conjugate'"]
+        INV --> LOT1["LOT #ABC123<br/>exp 2026-12 · approved · in service"]
+        INV --> LOT2["LOT #DEF456<br/>exp 2027-03 · pending approval"]
+    end
+
+    MILK["A LOT = one manufactured BATCH of that product,<br/>with its own lot number, expiry & approval status<br/>— like the batch code on a milk carton"] -.- LOT1
+
+    subgraph RUNTIME["What a TEST RUN uses"]
+        direction TB
+        TEST["A tasklist run of ONE NERDS test"]
+        TEST -->|"uses reagent from"| LOT1
+        TEST -->|"runs on / is read by"| INSTR["INSTRUMENT = the machine<br/>plate reader, washer, flow cytometer,<br/>microscope, gamma counter…"]
+        TEST -->|"includes"| CTRL["CONTROLS = known-answer samples<br/>run alongside patient samples<br/>to prove the test is working (QC)"]
+    end
+
+    CTRL -.->|"a control is a kind of<br/>Inventory too (type = Control)"| INV
+
+    classDef cat  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
+    classDef lot  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef run  fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
+    classDef note fill:#fff9c4,stroke:#f9a825,stroke-width:1px,color:#333333;
+
+    class INV cat;
+    class LOT1,LOT2 lot;
+    class TEST,INSTR,CTRL run;
+    class MILK note;
+
+    style STOCK fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
+    style RUNTIME fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

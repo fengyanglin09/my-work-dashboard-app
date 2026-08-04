@@ -1,0 +1,28 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+flowchart TD
+    START(["New lot received / created<br/>from its Inventory's LotTemplate"]) --> V{"verificationRequired?"}
+    V -->|yes| VER["Verify the lot<br/>verificationComplete + by/date"]
+    V -->|no| A
+    VER --> A{"needs approval?<br/>(lotToLotApproval)"}
+    A -->|yes| APP["Approved<br/>approved = true, approvedBy/date"]
+    A -->|no| SERVICE
+    APP --> SERVICE["Placed IN SERVICE<br/>markedInService → inService = true<br/>datePlacedInService"]
+    SERVICE --> USE["In use — referenced by tasklist runs<br/>(Tasklist.lotId); Lot.latestTasklist tracks the newest"]
+
+    USE -.->|"expirationDate passes"| EXP(["Expired<br/>(daysUntilExpiration ≤ 0)"])
+    USE -.->|"pulled early"| EXT(["Extinguished<br/>extinguished + by/date"])
+    USE -.->|"hidden from lists"| ARC(["Archived<br/>archived = true"])
+
+    classDef start fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef gate  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
+    classDef step  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
+    classDef use   fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
+    classDef terminal fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
+
+    class START start;
+    class V,A gate;
+    class VER,APP,SERVICE step;
+    class USE use;
+    class EXP,EXT,ARC terminal;
+
+    linkStyle default stroke:#808080,stroke-width:2.5px

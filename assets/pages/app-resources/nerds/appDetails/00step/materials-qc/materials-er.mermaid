@@ -1,0 +1,47 @@
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#555555","primaryColor":"#e3f2fd","primaryBorderColor":"#1565c0","primaryTextColor":"#111111","fontSize":"13px"}}}%%
+erDiagram
+    INVENTORY ||--o{ LOT : "has batches"
+    INVENTORY ||--|| LOT_TEMPLATE : "defaults for new lots"
+    INVENTORY }o--o{ CONTROL_TYPE : "InventoryControlTypeMap"
+    INVENTORY }o--o{ TARGET_TYPE : "InventoryTargetTypeMaps"
+
+    LOT ||--o{ CONTROL_BARCODE : "scannable control aliquots"
+    LOT ||--o{ TARGET_VALUE : "expected control values"
+    LOT ||--o{ LOT_DOCUMENT : "attached docs"
+    LOT }o--o{ NERDS_TEST : "LotNerdsTestMap (used for)"
+
+    CONTROL_BARCODE }o--|| CONTROL_TYPE : "via InventoryControlTypeMap"
+    TARGET_VALUE }o--|| TARGET_TYPE : "measurement type"
+
+    INSTRUMENT }o--o{ NERDS_TEST : "InstrumentNerdsTestMap (runs)"
+    NERDS_TEST }o--o{ CONTROL_TYPE : "NerdsTestControlTypeMap (uses)"
+
+    TASKLIST }o--|| LOT : "one run uses"
+    TASKLIST }o--|| INSTRUMENT : "one run on"
+    TASKLIST }o--|| NERDS_TEST : "one run of"
+
+    PLATE_LAYOUT ||--o{ PLATE_LAYOUT_SPOT : "wells"
+    PLATE_LAYOUT_SPOT }o--o| CONTROL_TYPE : "spot may hold a control"
+
+    INVENTORY {
+        string inventoryName
+        enum inventoryType "Reagent|Normal|Control|PrepsAndToxins|TestAssayControl"
+        bool archived
+    }
+    LOT {
+        string lotNumber
+        date expirationDate
+        bool approved
+        bool inService
+        bool extinguished
+    }
+    INSTRUMENT {
+        string instrumentName
+        enum instrumentType "PlateWasher|FlowCytometer|Microscope|..."
+    }
+    TASKLIST {
+        long lotId
+        long instrumentId
+        long nerdsTestId
+        string qcResult "Pass|Fail|Partial Fail"
+    }
