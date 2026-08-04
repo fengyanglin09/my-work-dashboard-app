@@ -33,7 +33,7 @@ So: **button "Send to ODM" → `POST /translate` → `enhanceResults()` → ODM 
 ## The trace
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     F["1 · Flow-cytometer FILE (one specimen, 2 replicate wells)<br/>well A1 — alpha3Median 3500, hek293Median 1000<br/>well A2 — alpha3Median 3800, hek293Median 1050<br/>+ viableEventsParent, singleEventsParent, coi…"]
 
@@ -49,12 +49,12 @@ flowchart TD
 
     ALT["If instead: replicate colors DISAGREE → testStatus 'Repeat'<br/>· interference present → 'SReview' · both black → 'Negative'"] -.- ODM
 
-    classDef file fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#111111;
-    classDef parse fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef pay  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef ent  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef file fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#000000,font-weight:700;
+    classDef parse fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef pay  fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef odm  fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ent  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class F file;
     class P,E ent;
@@ -63,7 +63,7 @@ flowchart TD
     class ALT note;
     class P parse;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ## Step by step

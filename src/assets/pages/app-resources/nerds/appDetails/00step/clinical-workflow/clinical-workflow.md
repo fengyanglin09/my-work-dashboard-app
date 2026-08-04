@@ -43,7 +43,7 @@ Once that path feels obvious, every other arrow is just a *deviation* from it �
 ## The big picture
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     subgraph ORDER["1 · ORDERING"]
         A[Order placed in Soft LIS] --> B[Specimen received & registered in NERDS<br/>softSpecimenId, Order, Patient, Clinic]
@@ -94,11 +94,11 @@ flowchart TD
     SENT --> DONE
 
     %% ---- color the NODES (near-black text for high contrast) ----
-    classDef order  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#111111;
-    classDef test   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef report fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef term   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef order  fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700;
+    classDef test   fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef report fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef term   fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
 
     class A,B,C order;
     class D,E,F,G,H,I test;
@@ -107,13 +107,13 @@ flowchart TD
     class TERM,OMIT,DONE term;
 
     %% subgraph backgrounds + explicit dark label color (so titles show in dark themes)
-    style ORDER  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#111111
-    style TEST   fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style REVIEW fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111111
-    style REPORT fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#111111
+    style ORDER  fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000,font-weight:700
+    style TEST   fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style REVIEW fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
+    style REPORT fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700
 
     %% mid-gray lines: visible on BOTH a dark canvas and the light boxes
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 > **Color legend:** 🔵 **blue** = Ordering · 🟢 **green** = Testing · 🟠 **orange** = Review · 🟣 **purple** = Reporting · ⚪ **grey** = terminal / end. The colors are now applied to each *box* (via `classDef`), not just the band background, so they show even in renderers that ignore subgraph fills. Terminal outcomes (`TNP/QNS`, `Omit`, `End`) are grey because they leave the workflow without producing a normal reported result.
@@ -189,6 +189,7 @@ An approved result becomes **`FinalResults`** (final value + interpretive commen
 A tighter view of just the `WorkflowStatusType` transitions an `OrderedTest` moves through:
 
 ```mermaid
+%%{init: {"theme":"base", "darkMode":false, "themeVariables":{"darkMode":false,"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","textColor":"#000000","nodeTextColor":"#000000","titleColor":"#000000","stateBkg":"#ffffff","stateBorder":"#111827","stateLabelColor":"#000000","transitionColor":"#111827","transitionLabelColor":"#000000","labelBackgroundColor":"#ffffff","edgeLabelBackground":"#ffffff","compositeBackground":"#f8fafc","compositeTitleBackground":"#e5e7eb","compositeBorder":"#111827","fontSize":"15px","fontWeight":"800"}, "themeCSS":"svg{background-color:#ffffff !important;}g.stateGroup text,.stateLabel text,.stateLabel,.transitionLabel,.nodeLabel,.cluster-label,.label,.label span,.edgeLabel,.edgeLabel .label,.edgeLabel .label text,.edgeLabel p,.edgeLabel span,.statediagramTitleText,foreignObject,foreignObject *,text,tspan{fill:#000000 !important;color:#000000 !important;opacity:1 !important;font-weight:800 !important;text-shadow:none !important;}.edgeLabel .label rect,.edgeLabel rect,.stateLabel .box,.transitionLabelBox,.labelBkg{fill:#ffffff !important;background-color:#ffffff !important;opacity:1 !important;}.transition,.relationshipLine,.edgePath path{stroke:#111827 !important;stroke-width:2.5px !important;fill:none !important;}defs [id$='-barbEnd'],[id$='-barbEnd'],[id$='-dependencyStart'],[id$='-dependencyEnd']{fill:#111827 !important;stroke:#111827 !important;}.node rect,.stateGroup rect{fill:#ffffff !important;stroke:#111827 !important;stroke-width:2px !important;}"}}%%
 stateDiagram-v2
     [*] --> New
     New --> OnAssay: manual — tasklist created

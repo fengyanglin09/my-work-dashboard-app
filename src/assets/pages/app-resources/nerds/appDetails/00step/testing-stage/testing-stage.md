@@ -102,7 +102,7 @@ So the dozens of fine bench steps in a family "roll up" into the four or five co
 This is the generic loop that drives *every* assay, manual or automated.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     START([Tasklist created · status → OnAssay<br/>from New if manual, from OnAutomation if queued]) --> DRIVER{Who completes<br/>the steps?}
     DRIVER -->|human · UI wizard| UIW[Driven via the UI<br/>status: OnAssay]
@@ -130,13 +130,13 @@ flowchart TD
     TOREVIEW -.- RNOTE[Review may be several human steps<br/>In Review → Tech Review → Final Review<br/>then Complete · see note below]
     NEXT -.- ONEWAY[One-way only: status flips On Assay → Review<br/>and never back — so all bench steps come<br/>before all review steps, never interleaved<br/>updateWorkflowStatusIfReviewStepIsNext]
 
-    classDef assay  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef auto   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef engine fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#111111;
-    classDef exit   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#111111;
-    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#111111;
-    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#111111;
-    classDef note   fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#333333;
+    classDef assay  fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef auto   fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef engine fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000000,font-weight:700;
+    classDef exit   fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000000,font-weight:700;
+    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700;
+    classDef bad    fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#000000,font-weight:700;
+    classDef note   fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,color:#000000,font-weight:700;
 
     class UIW assay;
     class AUTOW auto;
@@ -146,7 +146,7 @@ flowchart TD
     class FAIL,GATING bad;
     class RNOTE,ONEWAY,DNOTE note;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read this diagram
@@ -211,7 +211,7 @@ flowchart TD
 Each step is itself a tiny state machine. There is **no `StepStatus` enum** in the code — the "state" is *derived* from which timestamp fields are filled in on the step's `subtypeData`. Incubation is the richest example (it has a timing window), so it's shown in full.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"14px"}, "flowchart":{"curve":"basis"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"14px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"basis","htmlLabels":false}}}%%
 flowchart TD
     START([Step created — not active yet]) --> PENDING[Pending<br/>waiting its turn]
     PENDING -->|becomes the current step| DATA["DataEntry — enter lot / instrument / fields,<br/>auto-saved into subtypeData"]
@@ -229,15 +229,15 @@ flowchart TD
     READY -->|"completeStep · completedDate + user"| DONE[Completed]
     DONE --> ENDX([Engine advances to the next step<br/>= the 'next step?' diamond in Diagram 1])
 
-    classDef norm fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#111111;
-    classDef inc  fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#111111;
-    classDef ends fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#111111;
+    classDef norm fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700;
+    classDef inc  fill:#b3e5fc,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700;
+    classDef ends fill:#e0e0e0,stroke:#616161,stroke-width:2px,color:#000000,font-weight:700;
 
     class PENDING,DATA,READY,DONE norm;
     class INCS,WOPEN,OOW,INCC inc;
     class START,ENDX ends;
 
-    linkStyle default stroke:#808080,stroke-width:2.5px
+    linkStyle default stroke:#111827,stroke-width:2.5px
 ```
 
 ### How to read this diagram
@@ -346,7 +346,7 @@ Same engine, different seeded step lists. These two are taken directly from Flyw
 > **Read this correctly:** these are **two different test families (different assays)** — that's why their steps differ, *not* because one test has a "manual list" and an "automation list." (A single family has one list either way; see "The one big idea" above.) They're paired here to contrast a manual-style family with an automation-style one. **Note both still end in a review step** — automation runs the bench work, a human still reviews.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"linear"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"linear","htmlLabels":false}}}%%
 flowchart TB
     subgraph MANUAL["Manual bench · IPA LDT (runs as OnAssay)"]
         direction TB
@@ -373,14 +373,14 @@ flowchart TB
         A6 --> A7[7 · Complete]
     end
 
-    classDef stepA fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#111111;
-    classDef stepB fill:#b3e5fc,stroke:#0277bd,stroke-width:1.5px,color:#111111;
+    classDef stepA fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#000000,font-weight:700;
+    classDef stepB fill:#b3e5fc,stroke:#0277bd,stroke-width:1.5px,color:#000000,font-weight:700;
     class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 stepA;
     class A1,A2,A3,A4,A5,A6,A7 stepB;
-    style MANUAL fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style AUTOCBA fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#111111
+    style MANUAL fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style AUTOCBA fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2px
+    linkStyle default stroke:#111827,stroke-width:2px
 ```
 
 Notice both lanes end the same way: a step whose `testStatus` becomes **Review** (→ hands off to the review stage) followed by a terminal **Complete** step. The manual assay just has many more physical steps (additions, incubations with tight time windows, washing, counting) between start and review.
@@ -395,7 +395,7 @@ The two families above are relatively simple. **IFA** and **RT-QuIC** are the in
 - **RT-QuIC** (`V1_549__Add_RTQuIC_TestFamily.sql`, `V1_575` adds the consultant step): a short assay whose tasklist has a **Consultant Review (`CReview`) step built right in**, before Complete.
 
 ```mermaid
-%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","lineColor":"#808080","edgeLabelBackground":"#ffffff","fontSize":"13px"}, "flowchart":{"curve":"linear"}}}%%
+%%{init: {"theme":"base", "themeVariables":{"background":"#ffffff","mainBkg":"#ffffff","primaryColor":"#f8fafc","primaryTextColor":"#000000","primaryBorderColor":"#111827","secondaryColor":"#f8fafc","secondaryTextColor":"#000000","secondaryBorderColor":"#111827","tertiaryColor":"#f8fafc","tertiaryTextColor":"#000000","tertiaryBorderColor":"#111827","lineColor":"#111827","defaultLinkColor":"#111827","nodeTextColor":"#000000","textColor":"#000000","titleColor":"#000000","edgeLabelBackground":"#ffffff","clusterBkg":"#f8fafc","clusterBorder":"#111827","fontSize":"13px"}, "themeCSS":".nodeLabel,.nodeLabel *,.edgeLabel,.edgeLabel *,.cluster-label,.cluster-label *,.label,.label *,foreignObject,foreignObject *,text,tspan{color:#000000 !important;fill:#000000 !important;font-weight:700 !important;}.edgeLabel rect,.labelBkg{fill:#ffffff !important;opacity:0.96 !important;}", "flowchart":{"curve":"linear","htmlLabels":false}}}%%
 flowchart TB
     subgraph IFA["OnAssay · IFA (multi-tier review)"]
         direction TB
@@ -421,18 +421,18 @@ flowchart TB
         R6 --> R7[7 · Complete]
     end
 
-    classDef assay  fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#111111;
-    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:1.5px,color:#111111;
-    classDef done   fill:#e0e0e0,stroke:#616161,stroke-width:1.5px,color:#111111;
+    classDef assay  fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px,color:#000000,font-weight:700;
+    classDef review fill:#ffe0b2,stroke:#ef6c00,stroke-width:1.5px,color:#000000,font-weight:700;
+    classDef done   fill:#e0e0e0,stroke:#616161,stroke-width:1.5px,color:#000000,font-weight:700;
 
     class I1,I2,I3,I4,I5,I6,R1,R2,R3 assay;
     class I7,I8,I9,I10,R4,R5,R6 review;
     class I11,R7 done;
 
-    style IFA fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#111111
-    style RTQ fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#111111
+    style IFA fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px,color:#000000,font-weight:700
+    style RTQ fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#000000,font-weight:700
 
-    linkStyle default stroke:#808080,stroke-width:2px
+    linkStyle default stroke:#111827,stroke-width:2px
 ```
 
 **Why these matter:** they show the boundary between the two stages isn't a clean wall. `RT-QuIC` carries its consultant review as **step 6 of the tasklist** (`testStatus = CReview`), and `IFA` runs In/Tech/Final review as tasklist steps. So for these families, some of what [`clinical-workflow.md`](../clinical-workflow/clinical-workflow.md) draws as the orange "Review" band is actually executed *inside* the green "Testing" step engine. The orange boxes above are the review-phase steps.
@@ -463,4 +463,4 @@ flowchart TB
 2. **No typed sub-state enums.** There is no `PlateStatus`, `IncubationStatus`, `StepStatus`, or `AutomationStatus` enum. The step-lifecycle states in Diagram 2 are **derived** from `subtypeData` timestamps and the `completedDate`/`currentStep` flags — accurate, but not something you can read off a single enum.
 3. **Automation is a worklist + error-log model, not a job-state machine.** `OnAutomation` is one `WorkflowStatusType`; the "pipeline" is a pending-specimen/control worklist plus `AutomationErrorLog` (`AutomationErrorLogActionType` = `PendingSpecimenList, PendingControlList, TaskList, SettingWorkflowStatus, PurgeReport, TasklistIssueNotes, Other`). So the automation path reuses the step engine rather than having its own distinct states.
 
-> The diagrams above are exported as standalone `.mermaid` files in this folder: `testing-step-engine.mermaid`, `testing-step-lifecycle.mermaid`, `testing-example-lanes.mermaid`, `testing-example-lanes-review-heavy.mermaid`.
+> The diagrams above are embedded directly in this Markdown file, which is the source of truth for this section.
