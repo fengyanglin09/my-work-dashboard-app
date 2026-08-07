@@ -44,6 +44,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
             {
                 label: 'LocalSetup',
                 items: [
+                    doc('NERDS Local Run Guide', 'assets/pages/app-resources/nerds/nerds-local-run.md'),
                     doc('NERDS Local Setup', 'assets/pages/app-resources/nerds/nerds-steup.md'),
                     doc('SQL Server BACPAC Import - Podman macOS', 'assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md'),
                     doc('Java cacerts Import Reference', 'assets/pages/app-resources/nerds/Java_cacerts_Import_Reference.md'),
