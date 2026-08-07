@@ -38,7 +38,7 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                             link('Cloud App Factory (CAF)', 'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/Cloud-App-Factory.aspx'),
                             link('CAF Documents', 'https://mctools.sharepoint.com/teams/cloudappfactory/Shared%20Documents/Forms/AllItems.aspx'),
                             doc('CAF Pipeline Info', 'assets/pages/development-resources/cloud/caf-pipeline.md'),
-                            doc('CAF Docs', 'assets/pages/development-resources/cloud/caf-docs.md'),
+                            doc('CAF Reference Links', 'assets/pages/development-resources/cloud/caf-docs.md'),
                             link('CAF Best Practices', 'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/CAF-Best-Practices.aspx'),
                             link('SDE ADL/LPR', 'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/SDE-ADL-LPR-How-To.aspx?web=1'),
                             link('MCC Live & MCC Solution', 'https://mctools.sharepoint.com/teams/cloudappfactory/SitePages/SDE-MCC-Live-App-Tenant-How-To.aspx?web=1'),
