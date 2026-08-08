@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
 import { Button } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
@@ -19,9 +20,12 @@ export class ResourceDashboardComponent implements OnChanges {
     active: number | string = '';
 
     protected showDialog = false;
-    protected dialogContent: string = '';
+    protected dialogContent: SafeHtml | string = '';
 
-    constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient,
+        private sanitizer: DomSanitizer
+    ) {}
 
     ngOnChanges(): void {
         const hasActiveResource = this.resources.some((resource) => resource.activeItemId === this.active);
@@ -64,7 +68,8 @@ export class ResourceDashboardComponent implements OnChanges {
     protected displayMarkdownDialog(mdFilePath: string) {
         this.http.get(mdFilePath, { responseType: 'text' }).subscribe((md) => {
             Promise.resolve(marked.parse(md)).then((html) => {
-                this.dialogContent = html;
+                // Markdown files are trusted app assets; preserve internal protocols such as smb://.
+                this.dialogContent = this.sanitizer.bypassSecurityTrustHtml(html);
                 this.showDialog = true;
             });
         });

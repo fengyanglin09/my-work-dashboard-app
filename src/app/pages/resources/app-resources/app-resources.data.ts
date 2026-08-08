@@ -53,6 +53,12 @@ export const APP_RESOURCES: ResourceCategory[] = [
                     download('Zscaler Certificate PEM', 'assets/pages/app-resources/nerds/zscalercert.pem'),
                     link('Mayo Zscaler Knowledge Page', 'https://mcsm.service-now.com/now/nav/ui/classic/params/target/kb_view.do%3Fsysparm_article%3DKB0231309')
                 ]
+            },
+            {
+                label: 'Integration',
+                items: [
+                    doc('NERDS LAN Shares And Excel Files', 'assets/pages/app-resources/nerds/nerds-lan-shares.md')
+                ]
             }
         ]
     }
