@@ -31,3 +31,39 @@
 :host ::ng-deep .p-dialog-content li {
     display: list-item !important;
 }
+
+:host ::ng-deep .markdown-body {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+:host ::ng-deep .markdown-body table {
+    width: max-content;
+    min-width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+}
+
+:host ::ng-deep .markdown-body th,
+:host ::ng-deep .markdown-body td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--surface-border);
+    vertical-align: top;
+    text-align: left;
+}
+
+:host ::ng-deep .markdown-body th {
+    font-weight: 700;
+    background: var(--surface-100);
+}
+
+:host ::ng-deep .markdown-body td:first-child,
+:host ::ng-deep .markdown-body th:first-child {
+    width: 1%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+:host ::ng-deep .markdown-body code {
+    white-space: nowrap;
+}

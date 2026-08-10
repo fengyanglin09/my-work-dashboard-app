@@ -6,7 +6,7 @@ import { ResourceDashboardComponent } from '../../../shared/components/resource-
 @Component({
     selector: 'app-app-resources',
     imports: [ResourceDashboardComponent],
-    template: `<app-resource-dashboard [resources]="resources" />`
+    template: `<app-resource-dashboard [resources]="resources" [dialogStyle]="{ width: '90vw', maxWidth: '95vw' }" />`
 })
 export class AppResourcesComponent implements OnInit {
     resources: ResourceCategory[] = [];
