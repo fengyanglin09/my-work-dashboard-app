@@ -140,18 +140,31 @@ Start Azurite again after cleanup.
 - [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/)
 
 
-### Environment Variables for local Development (backend)
-APPLICATIONINSIGHTS_CONNECTION_STRING -> InstrumentationKey=f6390ebd-bd75-4532-ab84-14808fbe8f79
-azure.activedirectory.allow-telemetry -> true
-AzureKeyVaultBaseUrl -> https://cad-dev-napi-v3nc-kv.vault.azure.net
-AzureWebJobsStorage. -> UseDevelopmentStorage=true
-databaseName -> mydb
-encrypt -> true
-NerdsToSoftTestResultsQueueName -> nerds-local
-password -> NerdsLocalRun01
-SPRING_DATASOURCE_REPORTING_URL -> jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01
-SPRING_DATASOURCE_URL -> jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01
-SPRING_PROFILES_ACTIVE -> localdb
-trustServerCertificate -> true
-useIntelliJAzureCredentials -> CLI
-user -> sa
+## Environment Variables For Local Development
+
+These backend environment variables are needed for local NERDS startup.
+
+The database name and password can change depending on how the local SQL Server database was restored. If they change, update both datasource URLs to match the actual local database name and `sa` password.
+
+| # | Environment variable | Value |
+|---:|---|---|
+| 1 | `APPLICATIONINSIGHTS_CONNECTION_STRING` | `InstrumentationKey=f6390ebd-bd75-4532-ab84-14808fbe8f79` |
+| 2 | `azure.activedirectory.allow-telemetry` | `true` |
+| 3 | `AzureKeyVaultBaseUrl` | `https://cad-dev-napi-v3nc-kv.vault.azure.net` |
+| 4 | `AzureWebJobsStorage` | `UseDevelopmentStorage=true` |
+| 5 | `NerdsToSoftTestResultsQueueName` | `nerds-local` |
+| 6 | `password` | `NerdsLocalRun01` |
+| 7 | `SPRING_DATASOURCE_REPORTING_URL` | `jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01` |
+| 8 | `SPRING_DATASOURCE_URL` | `jdbc:sqlserver://localhost:1433;databaseName=nerds-local;encrypt=true;trustServerCertificate=true;user=sa;password=NerdsLocalRun01` |
+| 9 | `SPRING_PROFILES_ACTIVE` | `localdb` |
+| 10 | `useIntelliJAzureCredentials` | `CLI` |
+
+Useful pieces inside the datasource URLs:
+
+| Setting | Example value | Note |
+| --- | --- | --- |
+| `databaseName` | `nerds-local` | Change this if your restored local database uses a different name. |
+| `user` | `sa` | Local SQL Server admin user. |
+| `password` | `NerdsLocalRun01` | Change this if your local SQL Server container uses a different password. |
+| `encrypt` | `true` | Keep this aligned with local SQL Server settings. |
+| `trustServerCertificate` | `true` | Commonly needed for local SQL Server TLS trust. |
