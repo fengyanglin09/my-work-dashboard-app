@@ -523,7 +523,7 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
                     }
                 ],
                 updatedOn: '2026-01-08',
-                appSpecs: undefined,
+                appSpecsMdFilePath: 'assets/pages/supporting-apps/specs/rtu-rtuse.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
@@ -557,7 +557,7 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
                         appWebUri: undefined,
                         appSwaggerUri: '',
                         apigeeUri: '',
-                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN930Q/dlmp_listit_int;domain=MFAD;useNTLMv2=truee',
+                        appDbConnectionString: 'jdbc:jtds:sqlserver://ROEFDN930Q/dlmp_listit_int;domain=MFAD;useNTLMv2=true',
                         appAzureId: 'ede386e2-9f2c-4b66-a8bf-c1570d7dd053'
                     },
                     {
@@ -604,7 +604,7 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
                     }
                 ],
                 updatedOn: '2026-01-08',
-                appSpecs: undefined,
+                appSpecsMdFilePath: 'assets/pages/supporting-apps/specs/listit-plus.md',
                 appCategory: {
                     id: 1,
                     name: 'Java Apps'
