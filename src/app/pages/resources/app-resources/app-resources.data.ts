@@ -59,6 +59,12 @@ export const APP_RESOURCES: ResourceCategory[] = [
                 items: [
                     doc('NERDS LAN Shares And Excel Files', 'assets/pages/app-resources/nerds/nerds-lan-shares.md')
                 ]
+            },
+            {
+                label: 'App Specs',
+                items: [
+                    doc('Swagger', 'assets/pages/app-resources/nerds/nerds-swagger.md')
+                ]
             }
         ]
     }
