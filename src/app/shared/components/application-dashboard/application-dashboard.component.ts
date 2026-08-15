@@ -1,6 +1,7 @@
 import { DatePipe, NgForOf, NgIf, NgStyle } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ButtonDirective } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
 import { InputGroup } from 'primeng/inputgroup';
@@ -12,8 +13,8 @@ import { SpeedDial } from 'primeng/speeddial';
 import { TableModule } from 'primeng/table';
 import { Tag } from 'primeng/tag';
 import { Tooltip } from 'primeng/tooltip';
-import { marked } from 'marked';
 import { AppHeader, AppHostIcon, AppItemIcon, ApplicationDashboardApp } from '../../../core/model/application-dashboard.model';
+import { copyMarkdownCodeBlock, renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
 
 @Component({
     selector: 'app-application-dashboard',
@@ -31,9 +32,12 @@ export class ApplicationDashboardComponent implements OnChanges {
 
     protected readonly AppItemIcon = AppItemIcon;
     protected showDialog = false;
-    protected dialogContent = '';
+    protected dialogContent: SafeHtml | string = '';
 
-    constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient,
+        private sanitizer: DomSanitizer
+    ) {}
 
     ngOnChanges(): void {
         this.expandedRowGroupKeys = {};
@@ -64,6 +68,11 @@ export class ApplicationDashboardComponent implements OnChanges {
         if (text) {
             navigator.clipboard.writeText(text);
         }
+    }
+
+    protected copyCodeBlock(event: Event) {
+        // Handles clicks from copy buttons that were injected into the rendered markdown HTML.
+        copyMarkdownCodeBlock(event);
     }
 
     protected getAppHeader(app: ApplicationDashboardApp): AppHeader | undefined {
@@ -108,8 +117,10 @@ export class ApplicationDashboardComponent implements OnChanges {
 
     private displayMarkdownDialog(mdFilePath: string) {
         this.http.get(mdFilePath, { responseType: 'text' }).subscribe((md) => {
-            Promise.resolve(marked.parse(md)).then((html) => {
-                this.dialogContent = html;
+            renderMarkdownWithCopyButtons(md).then((html) => {
+                // These markdown files are bundled app assets, not user-submitted HTML.
+                // Trusting the rendered HTML keeps app-spec links and command copy buttons intact.
+                this.dialogContent = this.sanitizer.bypassSecurityTrustHtml(html);
                 this.showDialog = true;
             });
         });

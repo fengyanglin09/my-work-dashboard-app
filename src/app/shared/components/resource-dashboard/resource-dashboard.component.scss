@@ -67,3 +67,40 @@
 :host ::ng-deep .markdown-body code {
     white-space: nowrap;
 }
+
+:host ::ng-deep .markdown-code-block {
+    position: relative;
+    margin: 1rem 0;
+}
+
+:host ::ng-deep .markdown-code-block pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--surface-border);
+    border-radius: 6px;
+    background: var(--surface-100);
+}
+
+:host ::ng-deep .markdown-code-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--surface-border);
+    border-radius: 4px;
+    color: var(--text-color);
+    background: var(--surface-card);
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+:host ::ng-deep .markdown-code-copy:hover,
+:host ::ng-deep .markdown-code-copy.copied {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color-text);
+}

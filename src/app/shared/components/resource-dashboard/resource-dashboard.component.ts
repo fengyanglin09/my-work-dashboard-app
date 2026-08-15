@@ -4,8 +4,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
 import { Button } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
-import { marked } from 'marked';
 import { CheatCategory, CheatItem, ResourceCategory } from '../../../core/model/cheatsheet.model';
+import { copyMarkdownCodeBlock, renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
 
 @Component({
     selector: 'app-resource-dashboard',
@@ -60,6 +60,11 @@ export class ResourceDashboardComponent implements OnChanges {
         this.showDialog = false;
     }
 
+    protected copyCodeBlock(event: Event) {
+        // Handles clicks from copy buttons that were injected into the rendered markdown HTML.
+        copyMarkdownCodeBlock(event);
+    }
+
     protected displayDialog(text: string) {
         this.dialogContent = text;
         this.showDialog = true;
@@ -67,8 +72,9 @@ export class ResourceDashboardComponent implements OnChanges {
 
     protected displayMarkdownDialog(mdFilePath: string) {
         this.http.get(mdFilePath, { responseType: 'text' }).subscribe((md) => {
-            Promise.resolve(marked.parse(md)).then((html) => {
-                // Markdown files are trusted app assets; preserve internal protocols such as smb://.
+            renderMarkdownWithCopyButtons(md).then((html) => {
+                // These markdown files are bundled app assets, not user-submitted HTML.
+                // Trusting the rendered HTML preserves internal links such as smb:// Finder paths.
                 this.dialogContent = this.sanitizer.bypassSecurityTrustHtml(html);
                 this.showDialog = true;
             });

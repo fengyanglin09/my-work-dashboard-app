@@ -24,7 +24,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
                     doc('Claude Code Local Setup', 'assets/pages/development-resources/ai-resources/claude-code-llm-gateway.md'),
                     doc('Claude Code CLI Commands', 'assets/pages/development-resources/ai-resources/claude-code-cli-commands.md'),
                     doc('Client Credential API Tool Setup', 'assets/pages/development-resources/security/oauth-setup-keyrunner.md'),
-                    doc('NERDS Local Setup', 'assets/pages/app-resources/nerds/nerds-steup.md'),
+                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md'),
                     doc('Java cacerts Import Reference', 'assets/pages/app-resources/nerds/Java_cacerts_Import_Reference.md'),
                     doc('Understanding Java Keystores and Truststores', 'assets/pages/app-resources/nerds/understanding_java_keystores_truststores.md'),
                     download('Zscaler Certificate DER', 'assets/pages/app-resources/nerds/zscalercert.der'),
@@ -44,8 +44,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
             {
                 label: 'LocalSetup',
                 items: [
-                    doc('NERDS Local Run Guide', 'assets/pages/app-resources/nerds/nerds-local-run.md'),
-                    doc('NERDS Local Setup', 'assets/pages/app-resources/nerds/nerds-steup.md'),
+                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md'),
                     doc('SQL Server BACPAC Import - Podman macOS', 'assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md'),
                     doc('Java cacerts Import Reference', 'assets/pages/app-resources/nerds/Java_cacerts_Import_Reference.md'),
                     doc('Understanding Java Keystores and Truststores', 'assets/pages/app-resources/nerds/understanding_java_keystores_truststores.md'),
@@ -63,6 +62,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
             {
                 label: 'App Specs',
                 items: [
+                    doc('NERDS Enums And Statuses', 'assets/pages/app-resources/nerds/nerds-enums-and-statuses.md'),
                     doc('Swagger', 'assets/pages/app-resources/nerds/nerds-swagger.md')
                 ]
             }
