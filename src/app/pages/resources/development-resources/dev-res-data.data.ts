@@ -333,6 +333,7 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                             link('Git Workflows', 'https://nvie.com/posts/a-successful-git-branching-model/'),
                             link('Git Workflows (Atlassian)', 'https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow'),
                             download('Git Workflows (Team)', 'assets/pages/development-resources/downloads/gitflow.pdf'),
+                            doc('Frequently Used Git Commands', 'assets/pages/development-resources/git/frequently-used-git-commands.md'),
                             doc('Git Removing File From History', 'assets/pages/development-resources/git/git-cleanup-guide.md')
                         ]
                     },
