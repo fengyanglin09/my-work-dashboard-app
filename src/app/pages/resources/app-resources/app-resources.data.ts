@@ -63,7 +63,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
                 label: 'App Specs',
                 items: [
                     doc('NERDS Enums And Statuses', 'assets/pages/app-resources/nerds/nerds-enums-and-statuses.md'),
-                    doc('Swagger', 'assets/pages/app-resources/nerds/nerds-swagger.md')
+                    doc('Swagger Manual Endpoints', 'assets/pages/app-resources/nerds/nerds-swagger.md')
                 ]
             }
         ]
