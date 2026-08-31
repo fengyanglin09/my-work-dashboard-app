@@ -612,6 +612,87 @@ export const SUPPORTING_APPS: SpecialtyApp[] = [
             },
 
             {
+                id: 18,
+                name: 'SAA-Dashboard',
+                appHost: 'google',
+                configurationItem: undefined,
+                wikiLink: undefined,
+                orgLink: undefined,
+                onCallLink: undefined,
+
+                environments: [
+                    {
+                        id: 1,
+                        name: 'Dev Environment',
+                        available: true,
+                        appWebUri: 'https://lt-saa-dashboard-d.dlmp-lt-saa-n.caf.mccapp.com/app-list/unit/spaa',
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 2,
+                        name: 'Int/Test Environment',
+                        available: true,
+                        appWebUri: 'https://lt-saa-dashboard-t.dlmp-lt-saa-n.caf.mccapp.com/app-list/unit/spaa',
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 3,
+                        name: 'Stg Environment',
+                        available: false,
+                        appWebUri: undefined,
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    },
+                    {
+                        id: 4,
+                        name: 'Prod Environment',
+                        available: false,
+                        appWebUri: undefined,
+                        appSwaggerUri: undefined,
+                        apigeeUri: undefined,
+                        appDbConnectionString: undefined,
+                        appAzureId: undefined
+                    }
+                ],
+                repos: [
+                    {
+                        id: 1,
+                        repoName: 'App',
+                        repoUri: 'https://dev.azure.com/mclm/LT%20SAA/_git/SAA-DASHBOARD-APP'
+                    },
+                    {
+                        id: 2,
+                        repoName: 'IAC',
+                        repoUri: 'https://dev.azure.com/mclm/LT%20SAA/_git/SAA-DASHBOARD-IAC'
+                    },
+                    {
+                        id: 3,
+                        repoName: 'Api',
+                        repoUri: undefined
+                    },
+                    {
+                        id: 4,
+                        repoName: 'Apigee',
+                        repoUri: undefined
+                    }
+                ],
+                updatedOn: '2026-08-31',
+                appSpecs: undefined,
+                appCategory: {
+                    id: 1,
+                    name: 'Java Apps'
+                }
+            },
+
+            {
                 id: 21,
                 name: 'Hist Vwr API',
                 appHost: 'google',
