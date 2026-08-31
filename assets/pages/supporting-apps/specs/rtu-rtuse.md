@@ -12,10 +12,28 @@
 
 RTU/RTUSE has more than one SFTP directory integration. The directory path and work account are specific to the integration being used.
 
+### Non-Prod
+
+These are the known non-prod directory work accounts.
+
 | Integration area | Work account | Note |
 | --- | --- | --- |
-| RTU form directory | `TU06370` | Use for RTU form file transfer directory access. |
-| Liaison directory | `WA32005` | Use for Liaison file transfer directory access. |
+| RTU form directory | `WA32938` | Use for non-prod RTU form file transfer directory access. |
+| Liaison directory | `WA32005` | Use for non-prod Liaison file transfer directory access. |
+
+### Prod
+
+| Integration area | Work account | Note |
+| --- | --- | --- |
+| RTU form directory | `TU06370` | Use for prod RTU form file transfer directory access. |
+| Liaison directory | `TU06787` | Use for prod Liaison file transfer directory access. |
+
+## Database Accounts
+
+| Environment | Work account | Note |
+| --- | --- | --- |
+| Non-prod | `WA06693` | Use for non-prod database access/configuration. |
+| Prod | `WA06693` | Use for prod database access/configuration. |
 
 ## Important Notes
 
@@ -37,6 +55,8 @@ Prod host -> imftportal.mayo.edu
 The directory and work account choose the room inside that building:
 
 ```text
-RTU form directory -> TU06370
-Liaison directory  -> WA32005
+Non-prod RTU form directory -> WA32938
+Non-prod Liaison directory  -> WA32005
+Prod RTU form directory     -> TU06370
+Prod Liaison directory      -> TU06787
 ```
