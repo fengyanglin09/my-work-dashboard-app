@@ -8,9 +8,9 @@ export const SUPPORTING_APP_HEADERS: AppHeader[] = [
         backlogUrl: [
             {
                 icon: 'fa fa-tasks',
-                label: 'NERDS',
+                label: 'NERDS-DSS',
                 target: '_blank',
-                command: () => window.open('https://dev.azure.com/mclm/LT%20SAA/_backlogs/backlog/NERDS/Stories', '_blank')
+                command: () => window.open('https://dev.azure.com/mclm/DSS/_backlogs/backlog/All%20My%20Circuits/Stories', '_blank')
             },
 
             {
@@ -24,7 +24,7 @@ export const SUPPORTING_APP_HEADERS: AppHeader[] = [
                 label: 'Gattaca',
                 target: '_blank',
                 command: () => window.open('https://dev.azure.com/mclm/GBS%20CAD/_backlogs/backlog/NGS%20Gattaca/Features?showParents=true', '_blank')
-            },
+            }
         ]
     },
 
