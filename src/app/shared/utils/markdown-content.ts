@@ -1,10 +1,66 @@
 import { marked } from 'marked';
+import mermaid from 'mermaid';
+
+let mermaidInitialized = false;
 
 export async function renderMarkdownWithCopyButtons(markdown: string): Promise<string> {
     // marked turns the raw .md file into regular HTML.
-    // After that, we do one app-specific enhancement: add copy buttons to terminal command blocks.
+    // After that, we do app-specific enhancements:
+    // 1. Render Mermaid diagram code blocks into SVG diagrams.
+    // 2. Add copy buttons to terminal command blocks.
     const html = await Promise.resolve(marked.parse(markdown));
-    return addCodeCopyButtons(html);
+    const htmlWithMermaid = await renderMermaidDiagrams(html);
+    return addCodeCopyButtons(htmlWithMermaid);
+}
+
+async function renderMermaidDiagrams(html: string): Promise<string> {
+    initializeMermaid();
+
+    // Use a <template> as a temporary DOM container so we can replace only
+    // markdown code blocks that were explicitly fenced as ```mermaid.
+    const template = document.createElement('template');
+    template.innerHTML = html;
+
+    const mermaidCodeBlocks = Array.from(template.content.querySelectorAll('pre > code.language-mermaid'));
+
+    for (const [index, codeElement] of mermaidCodeBlocks.entries()) {
+        const preElement = codeElement.parentElement;
+        const diagramDefinition = codeElement.textContent?.trim();
+
+        if (!preElement || !diagramDefinition) {
+            continue;
+        }
+
+        try {
+            const diagramId = `markdown-mermaid-${Date.now()}-${index}`;
+            const { svg } = await mermaid.render(diagramId, diagramDefinition);
+            const diagramWrapper = document.createElement('div');
+            diagramWrapper.className = 'markdown-mermaid';
+            diagramWrapper.innerHTML = svg;
+            preElement.replaceWith(diagramWrapper);
+        } catch (error) {
+            // Keep the original Mermaid source visible if rendering fails.
+            // A broken diagram as readable text is more useful than a blank modal.
+            preElement.classList.add('markdown-mermaid-error');
+            preElement.insertAdjacentHTML('beforebegin', '<p class="markdown-mermaid-error-message">Mermaid diagram could not be rendered.</p>');
+            console.error('Failed to render Mermaid diagram from markdown.', error);
+        }
+    }
+
+    return template.innerHTML;
+}
+
+function initializeMermaid(): void {
+    if (mermaidInitialized) {
+        return;
+    }
+
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: 'default'
+    });
+    mermaidInitialized = true;
 }
 
 export function addCodeCopyButtons(html: string): string {

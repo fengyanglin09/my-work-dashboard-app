@@ -191,7 +191,8 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                             link('Spring Guides', 'https://spring.io/guides'),
                             link('Spring Blog', 'https://spring.io/blog'),
                             link('Spring Data Docs', 'https://docs.spring.io/spring-data/jpa/docs/current/reference/html/'),
-                            link('Spring GitHub', 'https://github.com/spring-projects/spring-framework')
+                            link('Spring GitHub', 'https://github.com/spring-projects/spring-framework'),
+                            doc('Spring And Angular MVC Flow', 'assets/pages/development-resources/backend/spring-angular-mvc-flow.md')
                         ]
                     },
                     {

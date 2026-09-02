@@ -64,8 +64,12 @@
     white-space: nowrap;
 }
 
-:host ::ng-deep .markdown-body code {
+:host ::ng-deep .markdown-body :not(pre) > code {
     white-space: nowrap;
+}
+
+:host ::ng-deep .markdown-body pre code {
+    white-space: pre;
 }
 
 :host ::ng-deep .markdown-code-block {
