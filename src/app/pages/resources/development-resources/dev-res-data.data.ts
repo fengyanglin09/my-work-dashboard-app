@@ -137,13 +137,7 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                     {
                         label: 'UI Frameworks',
                         items: [
-                            link('Angular Material', 'https://material.angular.io/'),
-                            link('PrimeNG', 'https://www.primefaces.org/primeng/'),
-                            link('Tailwind CSS', 'https://tailwindcss.com/docs/guides/angular'),
-                            link('Bootstrap', 'https://getbootstrap.com/docs/5.0/getting-started/introduction/'),
-                            link('NG Bootstrap', 'https://ng-bootstrap.github.io/#/home'),
-                            link('ngx-bootstrap', 'https://valor-software.com/ngx-bootstrap/#/'),
-                            link('FontAwesome', 'https://fontawesome.com/')
+                            doc('UI Frameworks And Frontend Libraries', 'assets/pages/development-resources/frontend/ui-frameworks-and-libraries.md')
                         ]
                     },
                     {
@@ -153,13 +147,6 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                             link('Highcharts Angular', 'https://github.com/highcharts/highcharts-angular'),
                             link('D3.js', 'https://d3js.org/'),
                             link('D3.js with Angular Guide', 'https://blog.angular-university.io/angular-d3/')
-                        ]
-                    },
-                    {
-                        label: 'Rich Text Editors',
-                        items: [
-                            link('TinyMCE', 'https://www.tiny.cloud/docs/integrations/angular/'),
-                            doc('NGX-Quill', 'assets/pages/development-resources/frontend/ngx-quill.md')
                         ]
                     }
                 ]
