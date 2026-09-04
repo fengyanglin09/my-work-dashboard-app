@@ -64,6 +64,7 @@ export const APP_RESOURCES: ResourceCategory[] = [
                 items: [
                     doc('NERDS Enums And Statuses', 'assets/pages/app-resources/nerds/nerds-enums-and-statuses.md'),
                     doc('Lot, Plate, And Slide Lab Process', 'assets/pages/app-resources/nerds/lot-plate-slide-lab-process.md'),
+                    doc('NERDS Task List Creation Steps', 'assets/pages/app-resources/nerds/nerds-tasklist-creation-steps.md'),
                     doc('Swagger Manual Endpoints', 'assets/pages/app-resources/nerds/nerds-swagger.md')
                 ]
             }
