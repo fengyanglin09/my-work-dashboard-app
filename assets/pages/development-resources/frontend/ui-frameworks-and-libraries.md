@@ -145,3 +145,27 @@ Quick install:
 ```bash
 npm install @tinymce/tinymce-angular tinymce
 ```
+
+## ngx-quill - Rich Text Editor
+
+ngx-quill is an Angular wrapper around the Quill rich text editor. It is useful when an Angular app needs an embeddable WYSIWYG editor with reactive forms support, custom toolbars, HTML/content model options, and Quill modules.
+
+| Link type | Link |
+|---|---|
+| Main page | [ngx-quill on npm](https://www.npmjs.com/package/ngx-quill) |
+| Docs | [ngx-quill GitHub docs](https://github.com/KillerCodeMonkey/ngx-quill) |
+| Install docs | [ngx-quill npm installation](https://www.npmjs.com/package/ngx-quill) |
+| Demo / examples | [ngx-quill example app](https://github.com/KillerCodeMonkey/ngx-quill-example) |
+| Repo | [KillerCodeMonkey/ngx-quill](https://github.com/KillerCodeMonkey/ngx-quill) |
+
+Quick install:
+
+```bash
+npm install ngx-quill quill
+```
+
+Notes:
+
+- Include a Quill theme stylesheet such as `quill.snow.css` or `quill.bubble.css`.
+- If storing HTML content, review the `sanitize` option and make an intentional decision. Rich text editors are very handy, but pasted HTML deserves respect.
+- Check the npm compatibility table before upgrading Angular, because ngx-quill versions track Angular major versions.
