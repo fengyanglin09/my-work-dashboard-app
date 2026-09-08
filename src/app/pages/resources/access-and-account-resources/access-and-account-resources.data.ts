@@ -14,6 +14,7 @@ export const ACCESS_AND_ACCOUNT_RESOURCES: ResourceCategory[] = [
                         items: [
                             link('Electronic Access Page', 'https://insideit.mayo.edu/electronic-access/'),
                             link('SailPoint', 'https://electronicaccess.mayo.edu/identityiq/home.jsf'),
+                            link('Request Entitlements', 'https://mcsm.service-now.com/employeeconnect?id=sc_cat_item&sys_id=5c39045d4fe81b04aacff6e01310c781&sysparm_category=b98b8ba04f337a406b1361101310c792'),
                             link('App Onboarding With IDM', 'https://mcsm.service-now.com/kb_view.do?sysparm_article=KB0084207'),
                             link('Software Subscription', 'https://mcsm.service-now.com/employeeconnect?id=nr_it_topic&topic_id=692c9895c3e4a2d0b1b935001501314f&in_context=true'),
                             link('Mayo Clinic IT Subscriptions', 'https://mcsubs.mayo.edu/'),
