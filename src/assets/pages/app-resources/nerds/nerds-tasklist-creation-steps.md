@@ -41,7 +41,7 @@ There are two ways NERDS gets the scan list, depending on the Cleo setting:
 1. Open the admin page.
 2. Go to **Soft Tests**.
 3. Search for the applicable test (e.g. **AEM CBA**).
-4. Note one of the Soft test codes associated with that NERDS test.
+4. Note one of the Soft test codes (e.g. **AMPCS**) associated with that NERDS test.
 
 ### 2. Find eligible specimens
 
