@@ -1,20 +1,27 @@
+// Layout design tokens. Formerly aliased PrimeNG `--p-*` variables; now mapped
+// to Angular Material's M3 system tokens (emitted by mat.theme() in
+// material-theme.scss) so light/dark switching keeps working automatically.
 :root {
-    --primary-color: var(--p-primary-color);
-    --primary-contrast-color: var(--p-primary-contrast-color);
-    --text-color: var(--p-text-color);
-    --text-color-secondary: var(--p-text-muted-color);
-    --surface-border: var(--p-content-border-color);
-    --surface-card: var(--p-content-background);
-    --surface-hover: var(--p-content-hover-background);
-    --surface-overlay: var(--p-overlay-popover-background);
-    --transition-duration: var(--p-transition-duration);
-    --maskbg: var(--p-mask-background);
-    --content-border-radius: var(--p-content-border-radius);
+    --primary-color: var(--app-primary, var(--mat-sys-primary));
+    --primary-contrast-color: var(--app-on-primary, var(--mat-sys-on-primary));
+    --text-color: var(--app-text, var(--mat-sys-on-surface));
+    --text-color-secondary: var(--app-text-muted, var(--mat-sys-on-surface-variant));
+    --surface-border: var(--app-border, var(--mat-sys-outline-variant));
+    --surface-card: var(--app-surface, var(--mat-sys-surface));
+    --surface-hover: var(--app-surface-hover, color-mix(in srgb, var(--mat-sys-on-surface) 5%, transparent));
+    --surface-overlay: var(--app-surface-overlay, var(--mat-sys-surface-container-low));
+    --transition-duration: 0.2s;
+    --maskbg: rgba(15, 23, 42, 0.32);
+    --content-border-radius: 8px;
     --layout-section-transition-duration: 0.2s;
-    --element-transition-duration: var(--p-transition-duration);
-    --focus-ring-width: var(--p-focus-ring-width);
-    --focus-ring-style: var(--p-focus-ring-style);
-    --focus-ring-color: var(--p-focus-ring-color);
-    --focus-ring-offset: var(--p-focus-ring-offset);
-    --focus-ring-shadow: var(--p-focus-ring-shadow);
+    --element-transition-duration: 0.2s;
+    --focus-ring-width: 2px;
+    --focus-ring-style: solid;
+    --focus-ring-color: var(--mat-sys-primary);
+    --focus-ring-offset: 2px;
+    --focus-ring-shadow: none;
+
+    // Low-contrast shadows keep surfaces separated without feeling heavy.
+    --layout-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --layout-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
 }

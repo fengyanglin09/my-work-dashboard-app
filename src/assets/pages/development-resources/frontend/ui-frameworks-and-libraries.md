@@ -69,7 +69,7 @@ npm install @fortawesome/angular-fontawesome @fortawesome/free-solid-svg-icons
 
 ## PrimeNG
 
-PrimeNG is useful when you want a large Angular component suite with data tables, dialogs, menus, form controls, themes, and many ready-made widgets.
+PrimeNG is useful when you want a large Angular component suite with data tables, dialogs, menus, form controls, themes, and many ready-made widgets. This dashboard no longer uses it; the current implementation uses Angular Material and Tailwind CSS instead.
 
 | Link type | Link |
 |---|---|

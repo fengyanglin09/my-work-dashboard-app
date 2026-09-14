@@ -2,12 +2,11 @@
 
     <!-- Avatar + Name -->
     <div class="flex flex-col items-center text-center gap-2">
-        <p-avatar
+        <app-avatar
             [image]="photo"
-            [label]="photo ? undefined : user?.fullName?.charAt(0)"
-            shape="circle"
+            [label]="user?.fullName"
             size="xlarge">
-        </p-avatar>
+        </app-avatar>
 
         <div class="text-lg font-semibold">
             {{ user?.fullName ?? "Unknown User" }}
@@ -22,7 +21,7 @@
         </div>
     </div>
 
-    <p-divider></p-divider>
+    <mat-divider></mat-divider>
 
     <!-- ROLES -->
     <div class="flex flex-col gap-2">
@@ -30,23 +29,21 @@
 
         <div class="flex flex-wrap gap-2">
             @for (role of user?.roles; track role) {
-                <p-tag
+                <app-tag
                     severity="info"
                     [value]="role"
-                    styleClass="text-xs px-2 py-1"
-                ></p-tag>
+                    class="text-xs px-2 py-1"
+                ></app-tag>
             }
         </div>
     </div>
 
     <button
-        pButton
+        mat-stroked-button
         type="button"
-        severity="secondary"
-        outlined
-        label="Sign out"
-        icon="pi pi-sign-out"
         class="w-full"
         (click)="logout.emit()"
-    ></button>
+    >
+        <i class="fa fa-sign-out-alt mr-2"></i>Sign out
+    </button>
 </div>

@@ -1,15 +1,16 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
-import { Button } from 'primeng/button';
-import { Dialog } from 'primeng/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { CheatCategory, CheatItem, ResourceCategory } from '../../../core/model/cheatsheet.model';
-import { copyMarkdownCodeBlock, renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
+import { MarkdownDialogComponent } from '../../ui/markdown-dialog/markdown-dialog.component';
+import { renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
 
 @Component({
     selector: 'app-resource-dashboard',
-    imports: [Accordion, AccordionContent, AccordionHeader, AccordionPanel, Button, Dialog],
+    imports: [MatExpansionModule, MatButtonModule],
     templateUrl: './resource-dashboard.component.html',
     styleUrl: './resource-dashboard.component.scss'
 })
@@ -19,12 +20,10 @@ export class ResourceDashboardComponent implements OnChanges {
 
     active: number | string = '';
 
-    protected showDialog = false;
-    protected dialogContent: SafeHtml | string = '';
-
     constructor(
         private http: HttpClient,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private dialog: MatDialog
     ) {}
 
     ngOnChanges(): void {
@@ -56,18 +55,8 @@ export class ResourceDashboardComponent implements OnChanges {
         item.action?.();
     }
 
-    protected hideDialog() {
-        this.showDialog = false;
-    }
-
-    protected copyCodeBlock(event: Event) {
-        // Handles clicks from copy buttons that were injected into the rendered markdown HTML.
-        copyMarkdownCodeBlock(event);
-    }
-
     protected displayDialog(text: string) {
-        this.dialogContent = text;
-        this.showDialog = true;
+        this.openDialog(text);
     }
 
     protected displayMarkdownDialog(mdFilePath: string) {
@@ -75,9 +64,18 @@ export class ResourceDashboardComponent implements OnChanges {
             renderMarkdownWithCopyButtons(md).then((html) => {
                 // These markdown files are bundled app assets, not user-submitted HTML.
                 // Trusting the rendered HTML preserves internal links such as smb:// Finder paths.
-                this.dialogContent = this.sanitizer.bypassSecurityTrustHtml(html);
-                this.showDialog = true;
+                this.openDialog(this.sanitizer.bypassSecurityTrustHtml(html));
             });
+        });
+    }
+
+    private openDialog(content: SafeHtml | string) {
+        this.dialog.open(MarkdownDialogComponent, {
+            data: { header: 'Text Resource', content },
+            width: this.dialogStyle['width'] ?? 'auto',
+            maxWidth: this.dialogStyle['maxWidth'] ?? '70vw',
+            autoFocus: false,
+            panelClass: 'app-dialog-panel'
         });
     }
 }

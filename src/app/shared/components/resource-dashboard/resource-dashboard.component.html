@@ -1,69 +1,62 @@
-<div class="card">
-    <div class="flex mb-4 gap-2 justify-end">
+<div class="card resource-dashboard-card">
+    <div class="resource-category-switcher">
         @for (resource of resources; track resource.id) {
-            <p-button (onClick)="active = resource?.activeItemId ?? ''" [rounded]="true" [label]="resource.label" styleClass="w-auto h-8 p-0" [outlined]="active !== resource.activeItemId" />
+            <button
+                type="button"
+                [class.resource-category-switcher-active]="active === resource.activeItemId"
+                (click)="active = resource.activeItemId ?? ''"
+            >{{ resource.label }}</button>
         }
     </div>
 
-    <p-accordion [(value)]="active">
+    <mat-accordion [multi]="false">
         @for (resource of resources; track resource.id) {
-            <p-accordion-panel [value]="resource?.activeItemId ?? ''">
-                <p-accordion-header>
-                    <span class="uppercase font-bold">{{ resource.name }}</span>
-                </p-accordion-header>
+            <mat-expansion-panel [expanded]="active === resource.activeItemId" (opened)="active = resource.activeItemId ?? ''">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="resource-category-title">{{ resource.name }}</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                <p-accordion-content>
-                    <div class="flex flex-col flex-wrap" style="height: 30em">
-                        @for (resourceItem of getResourceGroups(resource); track resourceItem.label) {
-                            <button class="p-button-text text-left rounded" disabled>
-                                <span style="color: gray; font-weight: bolder; padding-left: 1rem">{{ resourceItem.label }} </span>
-                            </button>
-
-                            @for (item of resourceItem.items; track item.label) {
-                                @switch (item.type) {
-                                    @case ('link') {
-                                        <a class="p-button-text text-left rounded" [href]="item.url" target="_blank" rel="noopener noreferrer">
-                                            <span style="padding-left: 1rem">{{ item.label }}</span>
-                                            <i [class]="getItemIcon(item)" style="margin-left: 0.5rem"></i>
-                                        </a>
-                                    }
-
-                                    @case ('email') {
-                                        <a class="p-button-text text-left rounded" [href]="'mailto:' + item.emailItem?.emailAddress + '?subject=' + (item.emailItem?.subject || '') + '&body=' + (item.emailItem?.body || '')">
-                                            <span style="padding-left: 1rem">{{ item.label }}</span>
-                                            <i [class]="getItemIcon(item)" style="margin-left: 0.5rem"></i>
-                                        </a>
-                                    }
-
-                                    @case ('doc') {
-                                        <button class="p-button-text text-left rounded" (click)="openDocument(item)">
-                                            <span style="padding-left: 1rem">{{ item.label }}</span>
-                                            <i [class]="getItemIcon(item)" style="margin-left: 0.5rem"></i>
-                                        </button>
-                                    }
-
-                                    @case ('download') {
-                                        <a class="p-button-text text-left rounded" [href]="item.filePath" download>
-                                            <span style="padding-left: 1rem">{{ item.label }}</span>
-                                            <i [class]="getItemIcon(item)" style="margin-left: 0.5rem"></i>
-                                        </a>
-                                    }
-
-                                    @default {
-                                        <button class="p-button-text text-left rounded" (click)="runAction(item)">
-                                            <span style="padding-left: 1rem">{{ item.label }}</span>
-                                        </button>
+                <div class="resource-category-grid">
+                    @for (resourceItem of getResourceGroups(resource); track resourceItem.label) {
+                        <section class="resource-section">
+                            <h3>{{ resourceItem.label }}</h3>
+                            <div class="resource-item-list">
+                                @for (item of resourceItem.items; track item.label) {
+                                    @switch (item.type) {
+                                        @case ('link') {
+                                            <a class="resource-item-link" [href]="item.url" target="_blank" rel="noopener noreferrer">
+                                                <span>{{ item.label }}</span><i [class]="getItemIcon(item)"></i>
+                                            </a>
+                                        }
+                                        @case ('email') {
+                                            <a class="resource-item-link" [href]="'mailto:' + item.emailItem?.emailAddress + '?subject=' + (item.emailItem?.subject || '') + '&body=' + (item.emailItem?.body || '')">
+                                                <span>{{ item.label }}</span><i [class]="getItemIcon(item)"></i>
+                                            </a>
+                                        }
+                                        @case ('doc') {
+                                            <button type="button" class="resource-item-link" (click)="openDocument(item)">
+                                                <span>{{ item.label }}</span><i [class]="getItemIcon(item)"></i>
+                                            </button>
+                                        }
+                                        @case ('download') {
+                                            <a class="resource-item-link" [href]="item.filePath" download>
+                                                <span>{{ item.label }}</span><i [class]="getItemIcon(item)"></i>
+                                            </a>
+                                        }
+                                        @default {
+                                            <button type="button" class="resource-item-link" (click)="runAction(item)">
+                                                <span>{{ item.label }}</span><i [class]="getItemIcon(item)"></i>
+                                            </button>
+                                        }
                                     }
                                 }
-                            }
-                        }
-                    </div>
-                </p-accordion-content>
-            </p-accordion-panel>
+                            </div>
+                        </section>
+                    }
+                </div>
+            </mat-expansion-panel>
         }
-    </p-accordion>
+    </mat-accordion>
 </div>
-
-<p-dialog header="Text Resource" [(visible)]="showDialog" (onHide)="hideDialog()" [style]="dialogStyle">
-    <div class="markdown-body" [innerHTML]="dialogContent" (click)="copyCodeBlock($event)"></div>
-</p-dialog>

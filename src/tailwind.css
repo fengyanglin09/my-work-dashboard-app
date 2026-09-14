@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* Left-aligned text link/button used in the resource dashboard lists
+       (replacement for the former PrimeNG .p-button-text styling). */
+    .app-res-link {
+        @apply block w-full cursor-pointer rounded border-0 bg-transparent px-1 py-1 text-left text-sm text-surface-700 transition-colors hover:bg-surface-100 hover:text-primary-700 dark:text-surface-200 dark:hover:bg-surface-800 dark:hover:text-primary-300;
+    }
+
+    /* Material menu panel styling. Menus render in the overlay container, so
+       these classes are attached to mat-menu and styled globally here. */
+    .app-popup-menu.mat-mdc-menu-panel {
+        @apply rounded-xl border border-surface-200 bg-surface-0 shadow-xl dark:border-surface-700 dark:bg-surface-900;
+    }
+
+    /* Copyable-value popover shown from dashboard icons (replaces p-popover). */
+    .app-copy-menu.mat-mdc-menu-panel {
+        @apply max-w-none rounded-xl border border-surface-200 bg-surface-0 p-3 shadow-xl dark:border-surface-700 dark:bg-surface-900;
+    }
+
+    .app-copy-input {
+        @apply w-[25rem] max-w-full rounded-md border border-surface-300 bg-surface-0 px-3 py-2 text-sm text-surface-900 dark:border-surface-600 dark:bg-surface-950 dark:text-surface-0;
+    }
+
+    .app-copy-btn {
+        @apply inline-flex items-center justify-center rounded-md border border-surface-300 bg-surface-50 px-3 py-2 text-surface-700 transition-colors hover:bg-surface-100 dark:border-surface-600 dark:bg-surface-800 dark:text-surface-200;
+    }
+
+    /* Backlog quick-links are displayed as a compact horizontal strip. */
+    .app-backlog-menu.mat-mdc-menu-panel {
+        @apply max-w-none overflow-visible rounded-none bg-transparent p-0 shadow-none;
+    }
+
+    .app-backlog-menu .mat-mdc-menu-content {
+        @apply p-0;
+    }
+
+    .app-backlog-strip {
+        @apply flex max-w-[min(30rem,calc(100vw-2rem))] flex-nowrap items-center gap-1.5 overflow-x-auto rounded-xl border border-surface-200 bg-surface-50 p-1.5 shadow-xl dark:border-surface-700 dark:bg-surface-900;
+    }
+
+    .app-backlog-item {
+        @apply inline-flex h-10 min-w-[6.25rem] shrink-0 items-center justify-center gap-2 rounded-lg border border-surface-200 bg-surface-0 px-3 text-sm font-semibold text-surface-900 shadow-sm transition-colors hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-surface-700 dark:bg-surface-950 dark:text-surface-100 dark:hover:border-primary-700 dark:hover:bg-primary-950 dark:hover:text-primary-200;
+    }
+
+    .app-backlog-item i {
+        @apply text-base text-surface-700 dark:text-surface-200;
+    }
+}

@@ -1,102 +1,105 @@
-:host ::ng-deep .p-rowgroup-footer td {
-    font-weight: 700;
+:host {
+    display: block;
 }
 
-:host ::ng-deep .p-rowgroup-header {
-    span {
+.app-dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+
+    thead th {
+        padding: 0.75rem;
+        font-weight: 700;
+        color: var(--text-color-secondary);
+        border-bottom: 1px solid var(--surface-border);
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    tbody td {
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid var(--surface-border);
+        vertical-align: middle;
+    }
+
+    .app-rowgroup-header td {
+        background: var(--surface-hover);
+        border-top: 1px solid var(--surface-border);
+    }
+
+    .app-rowgroup-header span {
         font-weight: 700;
     }
 
-    .p-row-toggler {
-        margin-right: 0.25rem;
-        vertical-align: middle;
+    .app-rowgroup-footer td {
+        font-weight: 700;
+    }
+
+    tbody tr:hover td {
+        background: var(--surface-hover);
     }
 }
 
-:host ::ng-deep .p-dialog-content ol {
-    padding-left: 1.5rem !important;
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
-    list-style-type: decimal !important;
-}
-
-:host ::ng-deep .p-dialog-content li {
-    display: list-item !important;
-}
-
-:host ::ng-deep .markdown-body {
-    max-width: 100%;
+.app-dashboard-table-wrapper {
+    width: 100%;
     overflow-x: auto;
 }
 
-:host ::ng-deep .markdown-body table {
-    width: max-content;
-    min-width: 100%;
-    margin: 1rem 0;
-    border-collapse: collapse;
-}
-
-:host ::ng-deep .markdown-body th,
-:host ::ng-deep .markdown-body td {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--surface-border);
-    vertical-align: top;
-    text-align: left;
-}
-
-:host ::ng-deep .markdown-body th {
-    font-weight: 700;
-    background: var(--surface-100);
-}
-
-:host ::ng-deep .markdown-body td:first-child,
-:host ::ng-deep .markdown-body th:first-child {
-    width: 1%;
-    text-align: right;
-    white-space: nowrap;
-}
-
-:host ::ng-deep .markdown-body :not(pre) > code {
-    white-space: nowrap;
-}
-
-:host ::ng-deep .markdown-body pre code {
-    white-space: pre;
-}
-
-:host ::ng-deep .markdown-code-block {
-    position: relative;
-    margin: 1rem 0;
-}
-
-:host ::ng-deep .markdown-code-block pre {
-    margin: 0;
-    padding: 1rem;
-    overflow-x: auto;
-    border: 1px solid var(--surface-border);
-    border-radius: 6px;
-    background: var(--surface-100);
-}
-
-:host ::ng-deep .markdown-code-copy {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+.app-category-icon {
     display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--surface-border);
-    border-radius: 4px;
-    color: var(--text-color);
-    background: var(--surface-card);
-    cursor: pointer;
-    font-size: 0.75rem;
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    vertical-align: middle;
 }
 
-:host ::ng-deep .markdown-code-copy:hover,
-:host ::ng-deep .markdown-code-copy.copied {
-    background: var(--primary-color);
+.app-category-toggle.mat-mdc-icon-button {
+    --mat-icon-button-state-layer-size: 2rem;
+    --mdc-icon-button-state-layer-size: 2rem;
+
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+}
+
+.app-category-toggle.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    width: 2rem;
+    height: 2rem;
+}
+
+.app-backlog-trigger {
+    display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 0.625rem;
+    background: transparent;
+    color: var(--text-color-secondary);
+    cursor: pointer;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.app-backlog-trigger:hover:not(:disabled) {
+    border-color: var(--surface-border);
+    background: var(--surface-card);
+    color: var(--primary-color);
+}
+
+.app-backlog-trigger-has-items {
+    color: var(--primary-color);
+}
+
+.app-backlog-trigger-active {
     border-color: var(--primary-color);
-    color: var(--primary-color-text);
+    background: var(--surface-card);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color) 18%, transparent);
+}
+
+.app-backlog-trigger:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
 }

@@ -89,7 +89,7 @@ export function addCodeCopyButtons(html: string): string {
         button.setAttribute('data-copy-code', '');
         button.setAttribute('aria-label', 'Copy code');
         button.title = 'Copy code';
-        button.innerHTML = '<i class="pi pi-copy" aria-hidden="true"></i><span>Copy</span>';
+        button.innerHTML = '<i class="fa fa-copy" aria-hidden="true"></i><span>Copy</span>';
 
         preElement.replaceWith(wrapper);
         wrapper.append(button, preElement);

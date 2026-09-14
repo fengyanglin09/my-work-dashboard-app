@@ -1,0 +1,89 @@
+// Angular Material M3 theme.
+//
+// Defines the global Material design tokens (color, typography, density) that
+// Material components read at runtime. Loaded from styles.scss, so app-wide.
+//
+// Light theme is applied to the html selector; dark theme is scoped to the
+// `.app-dark` class. LayoutService toggles `.app-dark` on the document element.
+@use '@angular/material' as mat;
+
+$app-font-family: ('Lato', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif);
+
+html {
+    color-scheme: light;
+
+    @include mat.theme(
+        (
+            color: (
+                theme-type: light,
+                primary: mat.$green-palette,
+                tertiary: mat.$azure-palette
+            ),
+            typography: (
+                plain-family: $app-font-family,
+                brand-family: $app-font-family
+            ),
+            density: 0
+        )
+    );
+}
+
+.app-dark {
+    color-scheme: dark;
+
+    @include mat.theme(
+        (
+            color: (
+                theme-type: dark,
+                primary: mat.$green-palette,
+                tertiary: mat.$azure-palette
+            )
+        )
+    );
+}
+
+// Keep Material controls visually aligned with the dashboard shell: softly
+// rounded corners and app-level tokens for surfaces/borders.
+:root,
+.app-dark {
+    --mat-button-filled-container-shape: 0.5rem;
+    --mat-button-outlined-container-shape: 0.5rem;
+    --mat-button-protected-container-shape: 0.5rem;
+    --mat-button-text-container-shape: 0.5rem;
+    --mat-dialog-container-shape: 1rem;
+    --mat-menu-container-shape: 0.5rem;
+    --mat-expansion-container-shape: 0.5rem;
+}
+
+// Menus/dialogs render in the CDK overlay container (outside component DOM),
+// so these are styled with global selectors.
+.mat-mdc-menu-panel,
+.mat-mdc-dialog-surface {
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--layout-shadow-md) !important;
+}
+
+.mat-mdc-icon-button {
+    color: var(--text-color-secondary);
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(2px);
+}
+
+.app-dark .cdk-overlay-dark-backdrop {
+    background: rgba(2, 6, 23, 0.62);
+}
+
+// Applied through MatDialog panelClass so the markdown dialog gets the shell.
+.app-dialog-panel .mat-mdc-dialog-surface {
+    overflow: hidden;
+    background: var(--surface-card);
+    border-radius: 1rem !important;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.2) !important;
+}
+
+.app-dialog-panel .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: var(--surface-card);
+}

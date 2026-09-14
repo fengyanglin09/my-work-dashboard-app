@@ -1,5 +1,14 @@
 :root {
-    --surface-ground: var(--p-surface-100);
-    --code-background: var(--p-surface-900);
-    --code-color: var(--p-surface-200);
+    --app-page-bg: #f7fafc;
+    --app-surface: #ffffff;
+    --app-surface-overlay: #ffffff;
+    --app-surface-hover: #edf7f3;
+    --app-border: #e2ebf3;
+    --app-text: #172033;
+    --app-text-muted: #64748b;
+    --app-primary: #16845f;
+    --app-on-primary: #ffffff;
+    --surface-ground: var(--app-page-bg);
+    --code-background: #0f172a;
+    --code-color: #e2e8f0;
 }

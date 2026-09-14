@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { AppMenuItem } from '../../core/model/menu-item.model';
 import { AppMenuitem } from './app.menuitem';
 
 @Component({
@@ -16,7 +16,7 @@ import { AppMenuitem } from './app.menuitem';
     </ul> `
 })
 export class AppMenu {
-    model: MenuItem[] = [];
+    model: AppMenuItem[] = [];
 
     ngOnInit() {
         this.model = [

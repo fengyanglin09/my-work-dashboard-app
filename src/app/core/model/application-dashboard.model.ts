@@ -1,4 +1,4 @@
-import { MenuItem } from 'primeng/api';
+import { AppMenuItem } from './menu-item.model';
 
 export const AppItemIcon = {
     wikiLink: 'fa fa-book',
@@ -28,7 +28,7 @@ export interface AppHeader {
     id?: number;
     name?: string;
     image?: string;
-    backlogUrl?: MenuItem[];
+    backlogUrl?: AppMenuItem[];
 }
 
 export interface AppRepo {

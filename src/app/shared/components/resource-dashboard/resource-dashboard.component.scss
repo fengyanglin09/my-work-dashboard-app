@@ -1,110 +1,178 @@
-:host ::ng-deep .p-rowgroup-footer td {
+:host {
+    display: block;
+}
+
+.resource-dashboard-card {
+    background: #ffffff;
+}
+
+.resource-category-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.resource-category-switcher button {
+    min-height: 2rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid #d8e5df;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #4d685d;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.resource-category-switcher button:hover {
+    border-color: #9dcdb9;
+    background: #f4fbf7;
+    color: #137b56;
+}
+
+.resource-category-switcher button.resource-category-switcher-active {
+    border-color: #19865f;
+    background: #19865f;
+    color: #ffffff;
+}
+
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel {
+    margin-bottom: 0.5rem;
+    border: 1px solid #dfeae5;
+    border-radius: 0.625rem;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel-header,
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel-header.mat-expanded {
+    min-height: 2.9rem;
+    height: 2.9rem;
+    padding: 0 0.9rem;
+    background: #fbfdfc;
+}
+
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel-header:hover,
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel-header.mat-expanded:hover {
+    background: #f4fbf7;
+}
+
+:host ::ng-deep .resource-dashboard-card .mat-expansion-panel-body {
+    padding: 0.5rem 0.9rem 0.9rem;
+    background: #ffffff;
+}
+
+.resource-category-title {
+    color: #1b8a64;
+    font-size: 0.95rem;
     font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
 }
 
-:host ::ng-deep .p-rowgroup-header {
-    span {
-        font-weight: 700;
-    }
-
-    .p-row-toggler {
-        margin-right: 0.25rem;
-        vertical-align: middle;
-    }
+.resource-category-title::before {
+    content: '';
+    display: inline-block;
+    width: 0.38rem;
+    height: 0.38rem;
+    margin-right: 0.55rem;
+    border-radius: 50%;
+    background: #bfe8d5;
+    vertical-align: middle;
 }
 
-:host ::ng-deep .p-dialog-content ol,
-:host ::ng-deep .p-dialog-content ul {
-    padding-left: 1.5rem !important;
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+.resource-category-grid {
+    height: 34rem;
+    column-count: 4;
+    column-gap: 1.5rem;
+    column-fill: auto;
 }
 
-:host ::ng-deep .p-dialog-content ol {
-    list-style-type: decimal !important;
+.resource-section {
+    width: 100%;
+    margin: 0 0 0.9rem;
+    padding: 0.2rem 0.15rem;
 }
 
-:host ::ng-deep .p-dialog-content ul {
-    list-style-type: disc !important;
-}
-
-:host ::ng-deep .p-dialog-content li {
-    display: list-item !important;
-}
-
-:host ::ng-deep .markdown-body {
-    max-width: 100%;
-    overflow-x: auto;
-}
-
-:host ::ng-deep .markdown-body table {
-    width: max-content;
-    min-width: 100%;
-    margin: 1rem 0;
-    border-collapse: collapse;
-}
-
-:host ::ng-deep .markdown-body th,
-:host ::ng-deep .markdown-body td {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--surface-border);
-    vertical-align: top;
-    text-align: left;
-}
-
-:host ::ng-deep .markdown-body th {
+.resource-section h3 {
+    margin: 0 0 0.3rem;
+    color: #60756c;
+    font-size: 0.92rem;
     font-weight: 700;
-    background: var(--surface-100);
+    letter-spacing: 0;
+    line-height: 1.4;
+    text-transform: none;
+    break-after: avoid-column;
 }
 
-:host ::ng-deep .markdown-body td:first-child,
-:host ::ng-deep .markdown-body th:first-child {
-    width: 1%;
-    text-align: right;
-    white-space: nowrap;
+.resource-section h3::before {
+    content: '\2022';
+    margin-right: 0.45rem;
+    color: #77c9a6;
 }
 
-:host ::ng-deep .markdown-body :not(pre) > code {
-    white-space: nowrap;
+.resource-item-list {
+    padding-left: 0.75rem;
+    border-left: 1px solid #e3eee9;
 }
 
-:host ::ng-deep .markdown-body pre code {
-    white-space: pre;
-}
-
-:host ::ng-deep .markdown-code-block {
-    position: relative;
-    margin: 1rem 0;
-}
-
-:host ::ng-deep .markdown-code-block pre {
-    margin: 0;
-    padding: 1rem;
-    overflow-x: auto;
-    border: 1px solid var(--surface-border);
-    border-radius: 6px;
-    background: var(--surface-100);
-}
-
-:host ::ng-deep .markdown-code-copy {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+.resource-item-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--surface-border);
-    border-radius: 4px;
-    color: var(--text-color);
-    background: var(--surface-card);
+    gap: 0.45rem;
+    width: 100%;
+    min-height: 1.75rem;
+    padding: 0.1rem 0;
+    border: 0;
+    background: transparent;
+    color: #536a61;
+    font: inherit;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    text-align: left;
+    overflow-wrap: anywhere;
     cursor: pointer;
-    font-size: 0.75rem;
+    transition: color 120ms ease;
 }
 
-:host ::ng-deep .markdown-code-copy:hover,
-:host ::ng-deep .markdown-code-copy.copied {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--primary-color-text);
+.resource-item-link span {
+    min-width: 0;
+}
+
+.resource-item-link:hover {
+    color: #137b56;
+}
+
+.resource-item-link i {
+    flex: 0 0 auto;
+    color: currentColor;
+    font-size: 0.84rem;
+}
+
+@media (max-width: 1440px) {
+    .resource-category-grid {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 1050px) {
+    .resource-category-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 700px) {
+    .resource-category-switcher {
+        justify-content: flex-start;
+    }
+
+    .resource-category-grid {
+        height: auto;
+        column-count: 1;
+    }
 }

@@ -1,67 +1,98 @@
-import { DatePipe, NgForOf, NgIf, NgStyle } from '@angular/common';
+import { DatePipe, NgForOf, NgStyle } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Overlay, OverlayModule, OverlayRef } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ButtonDirective } from 'primeng/button';
-import { Dialog } from 'primeng/dialog';
-import { InputGroup } from 'primeng/inputgroup';
-import { InputGroupAddon } from 'primeng/inputgroupaddon';
-import { InputText } from 'primeng/inputtext';
-import { Popover } from 'primeng/popover';
-import { Ripple } from 'primeng/ripple';
-import { SpeedDial } from 'primeng/speeddial';
-import { TableModule } from 'primeng/table';
-import { Tag } from 'primeng/tag';
-import { Tooltip } from 'primeng/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppHeader, AppHostIcon, AppItemIcon, ApplicationDashboardApp } from '../../../core/model/application-dashboard.model';
-import { copyMarkdownCodeBlock, renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
+import { AppMenuItem } from '../../../core/model/menu-item.model';
+import { MarkdownDialogComponent } from '../../ui/markdown-dialog/markdown-dialog.component';
+import { TagComponent } from '../../ui/tag/tag.component';
+import { renderMarkdownWithCopyButtons } from '../../utils/markdown-content';
+
+interface AppCategoryGroup {
+    id: number;
+    name: string;
+    image?: string;
+    backlog: AppMenuItem[] | null;
+    apps: ApplicationDashboardApp[];
+}
 
 @Component({
     selector: 'app-application-dashboard',
-    imports: [TableModule, ButtonDirective, Tag, Ripple, NgStyle, DatePipe, NgForOf, Tooltip, Popover, InputGroup, InputGroupAddon, NgIf, InputText, SpeedDial, Dialog],
+    imports: [NgStyle, DatePipe, NgForOf, TagComponent, MatButtonModule, MatMenuModule, MatTooltipModule, OverlayModule],
     templateUrl: './application-dashboard.component.html',
     styleUrl: './application-dashboard.component.scss'
 })
-export class ApplicationDashboardComponent implements OnChanges {
+export class ApplicationDashboardComponent implements OnChanges, OnDestroy {
     @Input() apps: ApplicationDashboardApp[] = [];
     @Input() appHeaderInfo: AppHeader[] = [];
     @Input() emptyMessage = 'No apps available.';
 
-    popoverText: { title?: string; content?: string } | undefined = undefined;
-    expandedRowGroupKeys: { [s: number]: boolean } = {};
-
     protected readonly AppItemIcon = AppItemIcon;
-    protected showDialog = false;
-    protected dialogContent: SafeHtml | string = '';
+    protected groups: AppCategoryGroup[] = [];
+    protected expandedRowGroupKeys: { [s: number]: boolean } = {};
+    protected activeBacklogGroupId: number | null = null;
+
+    @ViewChild('backlogTpl') private backlogTpl!: TemplateRef<{ $implicit: AppCategoryGroup }>;
+    private backlogOverlayRef?: OverlayRef;
 
     constructor(
         private http: HttpClient,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private dialog: MatDialog,
+        private overlay: Overlay,
+        private viewContainerRef: ViewContainerRef
     ) {}
 
     ngOnChanges(): void {
+        this.groups = this.buildGroups();
+
         this.expandedRowGroupKeys = {};
-
-        this.apps.forEach((app) => {
-            const categoryId = app.appCategory?.id;
-
-            if (categoryId) {
-                this.expandedRowGroupKeys[categoryId] = true;
-            }
+        this.groups.forEach((group) => {
+            this.expandedRowGroupKeys[group.id] = true;
         });
     }
 
-    protected calculateAppTotal(name: string | undefined) {
-        return this.apps.filter((app) => app.appCategory?.name === name).length;
+    private buildGroups(): AppCategoryGroup[] {
+        const groupsById = new Map<number, AppCategoryGroup>();
+        const order: number[] = [];
+
+        for (const app of this.apps) {
+            const id = app.appCategory?.id ?? -1;
+
+            if (!groupsById.has(id)) {
+                const header = this.appHeaderInfo.find((h) => h.id === id);
+                groupsById.set(id, {
+                    id,
+                    name: header?.name ?? app.appCategory?.name ?? '',
+                    image: header?.image,
+                    backlog: header?.backlogUrl ?? null,
+                    apps: []
+                });
+                order.push(id);
+            }
+
+            groupsById.get(id)!.apps.push(app);
+        }
+
+        return order.map((id) => groupsById.get(id)!);
     }
 
-    protected displayPopover(title: string, content: string | undefined, op: Popover, $event: MouseEvent) {
-        this.popoverText = { title, content };
-        op.show($event);
+    protected toggleGroup(id: number): void {
+        this.expandedRowGroupKeys[id] = !this.expandedRowGroupKeys[id];
+    }
 
-        if (op.container) {
-            op.align();
-        }
+    protected isExpanded(id: number): boolean {
+        return !!this.expandedRowGroupKeys[id];
+    }
+
+    protected calculateAppTotal(group: AppCategoryGroup): number {
+        return group.apps.length;
     }
 
     protected copyToClipboard(text: string | undefined) {
@@ -70,29 +101,52 @@ export class ApplicationDashboardComponent implements OnChanges {
         }
     }
 
-    protected copyCodeBlock(event: Event) {
-        // Handles clicks from copy buttons that were injected into the rendered markdown HTML.
-        copyMarkdownCodeBlock(event);
+    protected toggleBacklogStrip(group: AppCategoryGroup, event: MouseEvent): void {
+        event.stopPropagation();
+
+        if (!group.backlog?.length) {
+            return;
+        }
+
+        if (this.activeBacklogGroupId === group.id) {
+            this.closeBacklogOverlay();
+            return;
+        }
+
+        this.closeBacklogOverlay();
+
+        const origin = event.currentTarget as HTMLElement;
+        const positionStrategy = this.overlay
+            .position()
+            .flexibleConnectedTo(origin)
+            .withFlexibleDimensions(false)
+            .withPush(true)
+            .withPositions([
+                { originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center', offsetX: 10 },
+                { originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top', offsetY: 8 },
+                { originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center', offsetX: -10 }
+            ]);
+
+        this.backlogOverlayRef = this.overlay.create({
+            positionStrategy,
+            hasBackdrop: true,
+            backdropClass: 'cdk-overlay-transparent-backdrop',
+            scrollStrategy: this.overlay.scrollStrategies.reposition()
+        });
+
+        this.activeBacklogGroupId = group.id;
+        this.backlogOverlayRef.backdropClick().subscribe(() => this.closeBacklogOverlay());
+        this.backlogOverlayRef.attach(new TemplatePortal(this.backlogTpl, this.viewContainerRef, { $implicit: group }));
     }
 
-    protected getAppHeader(app: ApplicationDashboardApp): AppHeader | undefined {
-        return this.appHeaderInfo.find((header) => header.id === app.appCategory?.id);
+    protected isBacklogOpen(groupId: number): boolean {
+        return this.activeBacklogGroupId === groupId;
     }
 
-    protected getAppHeaderName(app: ApplicationDashboardApp): string {
-        return this.getAppHeader(app)?.name ?? app.appCategory?.name ?? '';
-    }
-
-    protected getAppHeaderImage(app: ApplicationDashboardApp): string | undefined {
-        return this.getAppHeader(app)?.image;
-    }
-
-    protected getAppHeaderBacklogItems(app: ApplicationDashboardApp) {
-        return this.getAppHeader(app)?.backlogUrl ?? null;
-    }
-
-    protected hideDialog() {
-        this.showDialog = false;
+    protected runBacklog(item: AppMenuItem, event: MouseEvent): void {
+        event.stopPropagation();
+        item.command?.(event);
+        this.closeBacklogOverlay();
     }
 
     protected hasAppSpecs(app: ApplicationDashboardApp): boolean {
@@ -111,8 +165,7 @@ export class ApplicationDashboardComponent implements OnChanges {
     }
 
     private displayDialog(appSpecs: string) {
-        this.dialogContent = appSpecs;
-        this.showDialog = true;
+        this.openDialog(appSpecs);
     }
 
     private displayMarkdownDialog(mdFilePath: string) {
@@ -120,13 +173,32 @@ export class ApplicationDashboardComponent implements OnChanges {
             renderMarkdownWithCopyButtons(md).then((html) => {
                 // These markdown files are bundled app assets, not user-submitted HTML.
                 // Trusting the rendered HTML keeps app-spec links and command copy buttons intact.
-                this.dialogContent = this.sanitizer.bypassSecurityTrustHtml(html);
-                this.showDialog = true;
+                this.openDialog(this.sanitizer.bypassSecurityTrustHtml(html));
             });
+        });
+    }
+
+    private openDialog(content: SafeHtml | string) {
+        this.dialog.open(MarkdownDialogComponent, {
+            data: { header: 'App Specifics', content },
+            width: '50vw',
+            maxWidth: '90vw',
+            autoFocus: false,
+            panelClass: 'app-dialog-panel'
         });
     }
 
     protected getAppHostIcon(appHost: ApplicationDashboardApp['appHost']): string {
         return AppHostIcon[appHost ?? 'azure'] || 'default-icon-class';
+    }
+
+    ngOnDestroy(): void {
+        this.closeBacklogOverlay();
+    }
+
+    private closeBacklogOverlay(): void {
+        this.backlogOverlayRef?.dispose();
+        this.backlogOverlayRef = undefined;
+        this.activeBacklogGroupId = null;
     }
 }

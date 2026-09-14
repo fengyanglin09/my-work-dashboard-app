@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@use './material-theme.scss';
 @use './tailwind.css';
 @use './assets/layout/layout.scss';
-@use 'primeicons/primeicons.css';
 @use './assets/demo/demo.scss';
 
 .markdown-body {
@@ -72,4 +72,62 @@
   margin: 1rem 0 0.25rem;
   color: #b42318;
   font-weight: 600;
+}
+
+/* Markdown dialog content enhancements. The markdown dialog renders in the CDK
+   overlay (outside any component), so these are global rather than component-scoped. */
+.markdown-body { max-width: 100%; overflow-x: auto; }
+.markdown-body ol { list-style-type: decimal; }
+.markdown-body ul { list-style-type: disc; }
+.markdown-body li { display: list-item; }
+.markdown-body table {
+  width: max-content;
+  min-width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+}
+.markdown-body th,
+.markdown-body td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--surface-border);
+  vertical-align: top;
+  text-align: left;
+}
+.markdown-body th { font-weight: 700; background: var(--surface-card); }
+.markdown-body td:first-child,
+.markdown-body th:first-child {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+.markdown-code-block { position: relative; margin: 1rem 0; }
+.markdown-code-block pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  background: var(--code-background);
+  color: var(--code-color);
+}
+.markdown-code-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 4px;
+  color: var(--text-color);
+  background: var(--surface-card);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.markdown-code-copy:hover,
+.markdown-code-copy.copied {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-contrast-color);
 }

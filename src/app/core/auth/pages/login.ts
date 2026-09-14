@@ -1,14 +1,12 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
 import { AuthService } from '../auth.service';
 
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [ButtonModule, RouterModule, RippleModule],
+    imports: [RouterModule],
     template: `
         <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-screen overflow-hidden">
             <div class="flex flex-col items-center justify-center">
