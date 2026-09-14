@@ -22,8 +22,8 @@
                 <tr class="app-rowgroup-header">
                     <td colspan="10">
                         <span class="flex min-w-0 items-center">
-                            <button type="button" mat-icon-button class="app-category-toggle mr-2" (click)="toggleGroup(group.id)" [attr.aria-label]="isExpanded(group.id) ? 'Collapse' : 'Expand'">
-                                <i [class]="isExpanded(group.id) ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"></i>
+                            <button type="button" mat-icon-button class="app-category-toggle app-soft-icon-button mr-2" (click)="toggleGroup(group.id)" [attr.aria-label]="isExpanded(group.id) ? 'Collapse' : 'Expand'">
+                                <i [class]="isExpanded(group.id) ? 'fa fa-angle-down' : 'fa fa-angle-right'"></i>
                             </button>
 
                             @if (group.image) {

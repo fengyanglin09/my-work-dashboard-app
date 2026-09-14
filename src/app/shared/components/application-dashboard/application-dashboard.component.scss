@@ -23,8 +23,9 @@
     }
 
     .app-rowgroup-header td {
-        background: var(--surface-hover);
+        background: #f2f6fa;
         border-top: 1px solid var(--surface-border);
+        transition: background-color 140ms ease;
     }
 
     .app-rowgroup-header span {
@@ -37,6 +38,10 @@
 
     tbody tr:hover td {
         background: var(--surface-hover);
+    }
+
+    .app-rowgroup-header:hover td {
+        background: #eaf7f1;
     }
 }
 
@@ -52,20 +57,6 @@
     height: 2rem;
     object-fit: contain;
     vertical-align: middle;
-}
-
-.app-category-toggle.mat-mdc-icon-button {
-    --mat-icon-button-state-layer-size: 2rem;
-    --mdc-icon-button-state-layer-size: 2rem;
-
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-}
-
-.app-category-toggle.mat-mdc-icon-button .mat-mdc-button-touch-target {
-    width: 2rem;
-    height: 2rem;
 }
 
 .app-backlog-trigger {
