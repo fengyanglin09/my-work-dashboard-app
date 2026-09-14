@@ -1,5 +1,14 @@
 :root[class*='app-dark'] {
-    --surface-ground: var(--p-surface-950);
-    --code-background: var(--p-surface-800);
-    --code-color: var(--p-surface-100);
+    --app-page-bg: #0f172a;
+    --app-surface: #111827;
+    --app-surface-overlay: #1f2937;
+    --app-surface-hover: rgba(148, 163, 184, 0.12);
+    --app-border: #334155;
+    --app-text: #f8fafc;
+    --app-text-muted: #cbd5e1;
+    --app-primary: #7fd6af;
+    --app-on-primary: #0f172a;
+    --surface-ground: var(--app-page-bg);
+    --code-background: #1e293b;
+    --code-color: #f1f5f9;
 }
