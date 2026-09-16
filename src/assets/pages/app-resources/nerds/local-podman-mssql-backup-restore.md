@@ -18,6 +18,60 @@ The workflow has two parts:
 When needed, copy the same file back into the container and restore it. After the restore, the
 database is exactly as it was when the backup was made.
 
+## Quick reference: short local test
+
+Use this when you want a snapshot for a short experiment and will keep using the **same** SQL
+Server container. Replace `<mssql-container>` with the name shown by the first command.
+
+### 1. Find the container and create its backup directory
+
+```bash
+podman ps --format '{{.Names}}\t{{.Image}}\t{{.Status}}'
+podman exec <mssql-container> mkdir -p /var/opt/mssql/backup
+```
+
+### 2. Create the snapshot in your SQL client
+
+```sql
+BACKUP DATABASE [nerds]
+TO DISK = N'/var/opt/mssql/backup/nerds_before_aem_test.bak'
+WITH COPY_ONLY, INIT, COMPRESSION, STATS = 10;
+```
+
+### 3. Confirm the file exists inside the container
+
+```bash
+podman exec <mssql-container> ls -lh /var/opt/mssql/backup/nerds_before_aem_test.bak
+```
+
+You can now perform the test. The backup remains available after restarting the same container,
+but it is lost if that container is removed and recreated without a persistent backup volume.
+
+### 4. Restore the snapshot when finished
+
+Stop the local API, then run this complete block in the SQL client:
+
+```sql
+USE master;
+ALTER DATABASE [nerds] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+
+RESTORE DATABASE [nerds]
+FROM DISK = N'/var/opt/mssql/backup/nerds_before_aem_test.bak'
+WITH REPLACE, RECOVERY, STATS = 10;
+
+ALTER DATABASE [nerds] SET MULTI_USER;
+```
+
+### Optional: keep a copy outside the container
+
+Copy the snapshot to your Mac Downloads folder if you want it to survive container removal or
+recreation:
+
+```bash
+podman cp <mssql-container>:/var/opt/mssql/backup/nerds_before_aem_test.bak \
+  ~/Downloads/nerds_before_aem_test.bak
+```
+
 ## Before starting
 
 - Stop the local NERDS API before restoring. It may keep database connections open.

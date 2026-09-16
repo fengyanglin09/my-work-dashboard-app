@@ -44,7 +44,8 @@ export const APP_RESOURCES: ResourceCategory[] = [
             {
                 label: 'LocalSetup',
                 items: [
-                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md')
+                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md'),
+                    doc('Set Up Git Formatting Hooks On macOS', 'assets/pages/app-resources/nerds/macos-git-hooks-formatting.md')
                 ]
             },
             {
