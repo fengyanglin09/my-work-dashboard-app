@@ -18,8 +18,8 @@ export interface MarkdownDialogData {
     standalone: true,
     imports: [MatDialogModule, MatButtonModule],
     template: `
-        <div class="flex h-full max-h-[85vh] min-h-0 flex-col bg-surface-0 text-surface-900 dark:bg-surface-900 dark:text-surface-0">
-            <div class="flex items-center justify-between gap-4 border-b border-surface-200 px-6 py-4 dark:border-surface-700">
+        <div class="flex max-h-[85vh] min-h-0 flex-col overflow-hidden bg-surface-0 text-surface-900 dark:bg-surface-900 dark:text-surface-0">
+            <div class="flex shrink-0 items-center justify-between gap-4 border-b border-surface-200 px-6 py-4 dark:border-surface-700">
                 <h2 class="m-0 text-xl font-semibold">{{ data.header }}</h2>
                 <button type="button" mat-icon-button class="app-soft-icon-button" aria-label="Close" (click)="close()">
                     <i class="fa fa-xmark"></i>

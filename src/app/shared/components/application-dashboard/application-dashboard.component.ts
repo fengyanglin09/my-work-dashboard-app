@@ -183,6 +183,7 @@ export class ApplicationDashboardComponent implements OnChanges, OnDestroy {
             data: { header: 'App Specifics', content },
             width: '50vw',
             maxWidth: '90vw',
+            maxHeight: '85vh',
             autoFocus: false,
             panelClass: 'app-dialog-panel'
         });

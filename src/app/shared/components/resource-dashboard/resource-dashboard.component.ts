@@ -74,6 +74,7 @@ export class ResourceDashboardComponent implements OnChanges {
             data: { header: 'Text Resource', content },
             width: this.dialogStyle['width'] ?? 'auto',
             maxWidth: this.dialogStyle['maxWidth'] ?? '70vw',
+            maxHeight: '85vh',
             autoFocus: false,
             panelClass: 'app-dialog-panel'
         });

@@ -44,8 +44,18 @@ export const APP_RESOURCES: ResourceCategory[] = [
             {
                 label: 'LocalSetup',
                 items: [
-                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md'),
-                    doc('SQL Server BACPAC Import - Podman macOS', 'assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md'),
+                    doc('NERDS Local Setup And Run Guide', 'assets/pages/app-resources/nerds/nerds-steup.md')
+                ]
+            },
+            {
+                label: 'Local Database',
+                items: [
+                    doc('SQL Server BACPAC Import - Podman macOS', 'assets/pages/app-resources/nerds/sqlserver_bacpac_import_podman_macos.md')
+                ]
+            },
+            {
+                label: 'Certificates And Connectivity',
+                items: [
                     doc('Java cacerts Import Reference', 'assets/pages/app-resources/nerds/Java_cacerts_Import_Reference.md'),
                     doc('Understanding Java Keystores and Truststores', 'assets/pages/app-resources/nerds/understanding_java_keystores_truststores.md'),
                     download('Zscaler Certificate DER', 'assets/pages/app-resources/nerds/zscalercert.der'),
@@ -60,11 +70,17 @@ export const APP_RESOURCES: ResourceCategory[] = [
                 ]
             },
             {
+                label: 'Creating Task Lists',
+                items: [
+                    doc('NERDS Task List Creation Steps', 'assets/pages/app-resources/nerds/nerds-tasklist-creation-steps.md'),
+                    doc('Back Up And Restore Local NERDS Database', 'assets/pages/app-resources/nerds/local-podman-mssql-backup-restore.md')
+                ]
+            },
+            {
                 label: 'App Specs',
                 items: [
                     doc('NERDS Enums And Statuses', 'assets/pages/app-resources/nerds/nerds-enums-and-statuses.md'),
                     doc('Lot, Plate, And Slide Lab Process', 'assets/pages/app-resources/nerds/lot-plate-slide-lab-process.md'),
-                    doc('NERDS Task List Creation Steps', 'assets/pages/app-resources/nerds/nerds-tasklist-creation-steps.md'),
                     doc('Swagger Manual Endpoints', 'assets/pages/app-resources/nerds/nerds-swagger.md')
                 ]
             }
