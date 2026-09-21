@@ -78,6 +78,12 @@ export const APP_RESOURCES: ResourceCategory[] = [
                 ]
             },
             {
+                label: 'Sprint And Story Management',
+                items: [
+                    doc('Story Management Guide', 'assets/pages/app-resources/nerds/story-management-guide.md')
+                ]
+            },
+            {
                 label: 'App Specs',
                 items: [
                     doc('NERDS Enums And Statuses', 'assets/pages/app-resources/nerds/nerds-enums-and-statuses.md'),
