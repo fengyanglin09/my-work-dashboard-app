@@ -244,6 +244,7 @@ export const DEVELOPMENT_RESOURCES: ResourceCategory[] = [
                         items: [
                             doc('Dashboard App Security', 'assets/pages/development-resources/security/app-security.md'),
                             doc('Client Credential API Tool Setup', 'assets/pages/development-resources/security/oauth-setup-keyrunner.md'),
+                            doc('Microsoft Graph User Profile Mapping (Mayo)', 'assets/pages/development-resources/security/microsoft-graph-user-profile-mapping.md'),
                             doc('Resource Server ASP.NET', 'assets/pages/development-resources/security/aspnet-core-resource-server.md'),
                             link('Spring Security Docs', 'https://docs.spring.io/spring-security/reference/')
                         ]
