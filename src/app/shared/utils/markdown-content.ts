@@ -7,7 +7,7 @@ export async function renderMarkdownWithCopyButtons(markdown: string): Promise<s
     // marked turns the raw .md file into regular HTML.
     // After that, we do app-specific enhancements:
     // 1. Render Mermaid diagram code blocks into SVG diagrams.
-    // 2. Add copy buttons to terminal command blocks.
+    // 2. Add copy buttons to terminal commands and SQL script blocks.
     const html = await Promise.resolve(marked.parse(markdown));
     const htmlWithMermaid = await renderMermaidDiagrams(html);
     return addCodeCopyButtons(htmlWithMermaid);
@@ -70,7 +70,8 @@ export function addCodeCopyButtons(html: string): string {
     template.innerHTML = html;
 
     // Markdown fenced blocks render as <pre><code class="language-shell">...</code></pre>.
-    // We only add copy buttons to command-like blocks, not explanatory text/json/plain blocks.
+    // We add copy buttons to pasteable terminal commands and SQL scripts, but not explanatory
+    // text, JSON, or plain code examples.
     template.content.querySelectorAll('pre > code').forEach((codeElement) => {
         const preElement = codeElement.parentElement;
 
@@ -100,8 +101,8 @@ export function addCodeCopyButtons(html: string): string {
 
 function isCopyableCommandBlock(codeElement: Element): boolean {
     // marked stores the fence language as a class, for example "language-shell".
-    // Restrict copy buttons to languages that usually mean "paste this in a terminal".
-    const copyableLanguages = new Set(['bash', 'shell', 'sh', 'zsh', 'console', 'terminal']);
+    // Restrict copy buttons to languages that usually mean "paste this into a terminal or SQL client".
+    const copyableLanguages = new Set(['bash', 'shell', 'sh', 'zsh', 'console', 'terminal', 'sql']);
     const languageClass = Array.from(codeElement.classList).find((className) => className.startsWith('language-'));
     const language = languageClass?.replace('language-', '').toLowerCase();
 
