@@ -33,7 +33,7 @@ These are the known non-prod directory work accounts.
 | Environment | Work account | Note |
 | --- | --- | --- |
 | Non-prod | `WA06693` | Use for non-prod database access/configuration. |
-| Prod | `WA06693` | Use for prod database access/configuration. |
+| Prod | `TU01164` | Use for prod database access/configuration. |
 
 ## Important Notes
 
