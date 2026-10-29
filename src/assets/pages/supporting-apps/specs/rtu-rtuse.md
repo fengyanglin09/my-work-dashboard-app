@@ -35,6 +35,37 @@ These are the known non-prod directory work accounts.
 | Non-prod | `WA06693` | Use for non-prod database access/configuration. |
 | Prod | `TU01164` | Use for prod database access/configuration. |
 
+## Production SFTP File Processing
+
+### XML / CSV Files
+
+The file is renamed, temporarily downloaded, parsed, and saved to the database.
+
+| Step | Location |
+| --- | --- |
+| Inbound | `/Production/inbound/{original-name}` |
+| Processing | `/Production/processing/{UUID}__{original-name}` |
+| Temporary local copy | `./sftpLocal/temp/{UUID}__{original-name}` |
+| Success archive | `/Production/archive/{UUID}__{original-name}` |
+| Failure archive | `/Production/error/{UUID}__{original-name}` |
+
+### RTU Attachment Folder
+
+For example, `RTU2026-25203` is moved from the inbound directory to its RTU SFTP location:
+
+| Step | Location |
+| --- | --- |
+| Inbound | `/Production/inbound/RTU2026-25203` |
+| RTU SFTP | `/Production/2026/RTU2026-25203` |
+
+### Liaison Attachment Directory
+
+No attachment files are copied to Liaison. Instead, an empty directory is created:
+
+| Destination | Location |
+| --- | --- |
+| Liaison SFTP | `/Production/2026/RTU2026-25203` |
+
 ## Important Notes
 
 - Do not assume the RTU form directory and Liaison directory use the same path.
